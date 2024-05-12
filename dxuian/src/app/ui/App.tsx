@@ -18,7 +18,7 @@ const colors = [
   "#00cc88",
 ];
 
-export default function App() {
+export default function App({className} : {className:string}) {
   const [pathIndex, setPathIndex] = useState(0);
   const progress = useMotionValue(pathIndex);
   const fill = useTransform(progress, paths.map(getIndex), colors);
@@ -42,10 +42,12 @@ export default function App() {
   }, [pathIndex]);
 
   return (
+    <div className={className}>
     <svg width="400" height="400">
       <g transform="translate(10 10) scale(17 17)">
         <motion.path fill={fill} d={path} />
       </g>
     </svg>
+    </div>
   );
 }
