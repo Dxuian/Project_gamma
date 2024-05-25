@@ -2,7 +2,6 @@ body {
   --accent: #8855ff;
   width: 100vw;
   height: 100vh;
-  /* background: #fff; */
   overflow: hidden;
   padding: 0;
   margin: 0;
@@ -10,3 +9,5 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+/* background: #fff; */
