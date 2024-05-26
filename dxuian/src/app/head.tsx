@@ -62,7 +62,7 @@ const Hero = () => {
 export default function Head({className} : {className:string}){
     return(
     <div className={className}>
-        <Hero/>
+        <Hero />
         {/* hello my name is unnat */}
     </div>
     )

@@ -1,5 +1,4 @@
 "use client"
-import "./styles.css";
 import * as React from "react";
 import { useState } from "react";
 import { star, heart, hand, plane, lightning, note , game } from "./paths";
@@ -37,7 +36,6 @@ export default function App({className} : {className:string}) {
         }
       },
     });
-
     return () => animation.stop();
   }, [pathIndex]);
 
