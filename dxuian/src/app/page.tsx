@@ -1,5 +1,6 @@
 // import Image from "next/image";
-import { Suspense } from "react"
+"use client";
+import { Suspense, useEffect, useState } from "react"
 import App from "./ui/App"
 
 // import Head from "next/head";
@@ -16,23 +17,55 @@ function Head(){
     </>
   )
 }
-// function Darkmodetoggle(){
-//   return <ModeToggle/>
-// }
-export default function Body(){
+
+
+import  isusersignin  from "@/app/isusersignin"
+
+export default  function Body(){
+   var popl =  isusersignin()
+   const [isSignedIn, setIsSignedIn] = useState(false);
+
+   useEffect(() => {
+     const fetchUser = async () => {
+       const result = await isusersignin();
+       setIsSignedIn(result);
+     };
+ 
+     fetchUser();
+   }, []);
+
+
+   
   return(
     <Suspense fallback={<Skeleton className="w-[100px] h-[20px] rounded-full" />  }><>
       <App className="absolute left-0 !float-left"/>
       <Head/>
       <Link href="/blog" prefetch={false} >blog</Link> 
+  
+      { isSignedIn ? <span>Signed in</span>  : <span>Signed out</span>}
       <ModeToggle ></ModeToggle>
-      {/* < Darkmodetoggle> */}
     </></Suspense>
-
   )
 }
 
 
 
 
+    // {/* <SessionProvider >
+    // <Greeting />
+    //   </SessionProvider> */}
+// import { SessionProvider, useSession } from "next-auth/react";
 
+// export function Greeting() {
+//   const { data: session, status } = useSession();
+
+//   if (status === "loading") {
+//     return <div>Loading...</div>;
+//   }
+
+//   if (!session?.user) {
+//     return <div>okokokokokok</div>;
+//   }
+
+//   return <div>Hi!!!</div>;
+// }

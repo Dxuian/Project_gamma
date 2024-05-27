@@ -6,7 +6,7 @@
         "type": "node-terminal",
         "request": "launch",
         "command": "npm run dev",
-        "cwd": "${workspaceFolder}/nextjs/nextjs-dashboard"
+        "cwd": "${workspaceFolder}/dxuian"
       },
       {
         "name": "Next.js: debug client-side",
@@ -28,7 +28,7 @@
           "uriFormat": "%s",
           "webRoot": "${workspaceFolder}"
         },
-        "cwd": "${workspaceFolder}/nextjs/nextjs-dashboard"
+        "cwd": "${workspaceFolder}/dxuian"
       }
     ]
   }

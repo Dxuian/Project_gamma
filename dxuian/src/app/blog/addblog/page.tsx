@@ -91,6 +91,9 @@ export  function Example() {
           <Fileadder/>
         </Field>
       </Fieldset>
+      <Script>
+        console.log("logged in script tag")
+      </Script>
     </div>
   )
 }
