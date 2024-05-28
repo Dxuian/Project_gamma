@@ -1,10 +1,13 @@
-"use server"
-import { createClient } from '@supabase/supabase-js'
+import { createClient  as frontendclient} from '@/utils/supabase/client'
+// import { createClient  as backendclient} from '@/utils/supabase/server'
 
 export default async function  isusersignin(){
-    const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL as string, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY as string)
+    const supabasefront = frontendclient()
+    // const supabaseback = frontendclient()
 
-    const user = await  supabase.auth.getUser()
+    const user = await  supabasefront.auth.getUser()
+    // const userback = await  supabasefront.auth.getUser()
+    debugger ; 
     // const session = await supabase.auth.getSession()
     var popl ;
     if (!user.error) {

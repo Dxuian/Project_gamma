@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Suspense } from "react";
 import { Button } from "@/components/ui/button"
 import Script from "next/script";
@@ -8,7 +8,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover"
-
+import { signout } from "../server";
 import { CircleX } from 'lucide-react';
 import { FileInput, Label } from "flowbite-react";
 import { PopoverClose } from "@radix-ui/react-popover";
@@ -42,35 +42,6 @@ export  function Example() {
     <div className="w-full max-w-lg px-4">
       <Fieldset className="space-y-6 rounded-xl bg-white/5 p-6 sm:p-10">
         <Legend className="text-base/7 font-semibold text-white">Add blog</Legend>
-        {/* <Field>
-          <Label className="text-sm/6 font-medium text-white">N</Label>
-          <Input
-            className={clsx(
-              'mt-3 block w-full rounded-lg border-none bg-white/5 py-1.5 px-3 text-sm/6 text-white',
-              'focus:outline-none data-[focus]:outline-2 data-[focus]:-outline-offset-2 data-[focus]:outline-white/25'
-            )}
-          />
-        </Field> */}
-        {/* <Field>
-          <Label className="text-sm/6 font-medium text-white">Country</Label>
-          <Description className="text-sm/6 text-white/50">We currently only ship to North America.</Description>
-          <div className="relative">
-            <Select
-              className={clsx(
-                'mt-3 block w-full appearance-none rounded-lg border-none bg-white/5 py-1.5 px-3 text-sm/6 text-white',
-                'focus:outline-none data-[focus]:outline-2 data-[focus]:-outline-offset-2 data-[focus]:outline-white/25'
-              )}
-            >
-              <option>Canada</option>
-              <option>Mexico</option>
-              <option>United States</option>
-            </Select>
-            <ChevronDownIcon
-              className="group pointer-events-none absolute top-2.5 right-2.5 size-4 fill-white/60"
-              aria-hidden="true"
-            />
-          </div>
-        </Field> */}
         <Field>
           <Label className="text-sm/6 font-medium text-white">Delivery notes</Label>
           <Description className="text-sm/6 text-white/50">
@@ -239,12 +210,27 @@ function Addblog({className}:{className?:string}) {
     )
 
 }
-export default function Blogpage({className}:{className:string}) {
+
+import isusersignin from "@/app/isusersignin";
+
+export default   function Blogpage({className}:{className:string}) {
+    let [isSignedIn , setisSignedIn] = useState(false)
+    useEffect( () => {
+        const fetchData = async () => {
+            let c = await isusersignin();
+            debugger ; 
+            setisSignedIn(c)
+        };
+        fetchData();
+    }, []);
+    // let isSignedIn =  isusersignin();
     return (
         <div className={className}>
             <div >
                 {/* add blog bruh */}
                 <Addblog className=""></Addblog>
+                {isSignedIn ? <span>signed in </span> : <span>not signed in</span>}
+                {isSignedIn ? <button onClick={()=>{signout()}}>Sign out </button> : <></>}
             </div>
         </div>
     )

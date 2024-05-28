@@ -41,7 +41,7 @@ export default  function Body(){
       <App className="absolute left-0 !float-left"/>
       <Head/>
       <Link href="/blog" prefetch={false} >blog</Link> 
-  
+    
       { isSignedIn ? <span>Signed in</span>  : <span>Signed out</span>}
       <ModeToggle ></ModeToggle>
     </></Suspense>
@@ -49,23 +49,3 @@ export default  function Body(){
 }
 
 
-
-
-    // {/* <SessionProvider >
-    // <Greeting />
-    //   </SessionProvider> */}
-// import { SessionProvider, useSession } from "next-auth/react";
-
-// export function Greeting() {
-//   const { data: session, status } = useSession();
-
-//   if (status === "loading") {
-//     return <div>Loading...</div>;
-//   }
-
-//   if (!session?.user) {
-//     return <div>okokokokokok</div>;
-//   }
-
-//   return <div>Hi!!!</div>;
-// }
