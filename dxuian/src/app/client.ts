@@ -1,14 +1,14 @@
 "use server"
-// import { createClient  as frontendclient} from '@/utils/supabase/client'
 import { createClient  as backendclient} from '@/utils/supabase/server'
+import { createClient  as frontend} from '@/utils/supabase/client'
 import { redirect } from 'next/navigation'
 export async function signin(prevstate:any , formData:FormData) {
-    debugger ; 
+    // debugger ; 
     const supaback =  await backendclient()
     let email = String(formData.get('email'));
     let password = String(formData.get('password'));
     let data , error;
-    debugger;
+    // debugger;
     console.log(`email, password are ${email}, ${password}`)
     try {
       ({ data, error } = await supaback.auth.signInWithPassword({
@@ -40,7 +40,7 @@ export async function signin(prevstate:any , formData:FormData) {
   
 export async function signout() {
   const supaback = await backendclient()
-  debugger;
+  // debugger;
      const { error } = await supaback.auth.signOut()    // await supabaseback.auth.signOut();
     console.log("logged out !!!!!!")
     redirect("/blog/signin")
@@ -49,9 +49,8 @@ export async function signout() {
 
 export default async function isusersignin() {
   const supaback = await backendclient()
-  const {data} = await supaback.auth.getSession();
-  // debugger;
-   if (data?.session) {
+  const { data: { user } } = await supaback.auth.getUser() 
+   if (user) {
      return true;
    }
    return false ;
@@ -59,22 +58,26 @@ export default async function isusersignin() {
 
 
 // import { createClient } from '@supabase/supabase-js'
-export async function fileupload(file:Buffer)
+export async function fileupload(file:Buffer ,  filename:string , supabase:any)
 {
-
     // Create Supabase client
-    const supabase = backendclient()
-    uploadFile(file,supabase)
+    // let isusersignissn = await isusersignin() ;
+    // const supabase = await createClient(process.env.NEXT_PUBLIC_SUPABASE_URL as string ,process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY as string)
+    uploadFile(file,filename,supabase)
     // Upload file using standard upload
-    
-
 }
-
-async function uploadFile(file:Buffer, supabase:any) {
-  const { data, error } = await supabase.storage.from('bucket_name').upload('/', file ,   {contentType: 'image/*'})
+// import { createClient } from '@supabase/supabase-js'
+async function uploadFile(file:Buffer,filename:string ,  supabase:any) {
+  let data ,  error;
+  // ( { data , error } = await supabase.storage.getBucket('portfolioblog')) ;
+  // ( { data, error } = await supabase.storage.createBucket('avatars', {public: false,allowedMimeTypes: ['image/*'],fileSizeLimit: 10000000,}) )
+  ( { data, error } = await supabase.storage.from('portfolioblog').upload(`${filename}`, file ))
   if (error) {
     // Handle error
     console.log("Eroor")
+    console.log('Error uploading file:', error.message)
+    throw error
+    
   } else {
     // Handle success
     console.log("Success")

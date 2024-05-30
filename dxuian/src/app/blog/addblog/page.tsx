@@ -23,9 +23,8 @@ import test from './checker'
 
 function addtotextarea(emoji: any) {
   console.log(emoji);
-  document.getElementsByTagName('textarea')[0].value += emoji.emoji;
+  document.querySelectorAll("textarea")[1].value += emoji.emoji;
 }
-
 function Emojichooser(props: {}) {
   return (
     <div>
@@ -33,6 +32,7 @@ function Emojichooser(props: {}) {
     </div>
   );
 }
+
 
 export function Example() {
   return (
@@ -44,10 +44,8 @@ export function Example() {
           <Description className="text-sm/6 text-white/50">
             If you have a tiger, we'd like to know about it.
           </Description>
-          <Textarea
-
-            name="content"
-          />
+          <Textarea name="title"  />
+          <Textarea name="content"  />
           <Emojichooser></Emojichooser>
         </Field>
         <Field>
@@ -118,13 +116,13 @@ export function Fileadder() {
 
 
 
-import { useActionState } from "react";
+import { useFormState } from "react-dom";
 let initialState = {
   message: ""
 }
-export async function Form() {
+export  function Form() {
   console.log("hahaha");
-  let [state,action] = useActionState( test , initialState);
+  let [state,action] = useFormState( test , initialState);
   return (
     <>
       <form action={action} >
