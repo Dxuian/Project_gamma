@@ -1,42 +1,49 @@
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "DXU's blog",
-  description: "lets talk",
-};
-
-
-
-
-
+"use server"
+import isusersignin from "@/app/client"
 
 export default async function RootLayout({ children }: { children: any }) {
-  let blogs = fetchblogs();
+  
   return (<>
     <div>
       <Dialogbox children={children}></Dialogbox>
     </div>
-    <br />
-    <div id="bloglist">
-      IVE WORKED ON SOME STUFF
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <span className="!text-5xl " >{blogs}</span>
-    </div>
+    
   </>
   );
 }
-import isusersignin from "@/app/isusersignin"
 
+
+
+import {Redirecttaddblog } from "@/app/blog/s"
+async function fetchblogs() {
+  return `blogs by me 
+  cfcf 
+  cfcfcf \n
+  cfcfcf \n
+  cfcfcf \n
+  cfcfcf \n
+  fcfcfc \n
+  
+  `
+}
+// import React, { createContext } from 'react';
+// export const HideContext = createContext();
+import  Blogpage  from "@/app/blog/s"
+import { Clicomp } from "@/app/blog/s";
 async function Dialogbox({ children }: { children: any }) {
-  let issignedin = await isusersignin();
-  let isopen = true;
-  return (<>
-    {issignedin ? <Redirecttaddblog /> :  <>{children}</> }
+  let issignedin = await isusersignin() ;
+  let blogs =  await fetchblogs();
+  // console.log(children)
+  return (
+      <>
+        <br />
+        <div id="bloglist">
+          <span className="!text-5xl " >{blogs}</span>
+        </div>
+        {children} 
+  {issignedin ?<> <Redirecttaddblog /> <Clicomp /> </> : <Blogpage></Blogpage> }
   </>
+
   )
 }
 
@@ -46,11 +53,5 @@ async function Dialogbox({ children }: { children: any }) {
 
 
 
-async function Redirecttaddblog() {
-  return (<button /*onClick={() => { redirect("/blog/addblog") }}*/ >ADD A BLOG</button>)
-}
 
 
-async function fetchblogs() {
-  return "blogs by me "
-}

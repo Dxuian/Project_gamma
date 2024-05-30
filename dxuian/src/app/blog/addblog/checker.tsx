@@ -1,36 +1,11 @@
 "use server"
 
-// export default async function test(e: any) {
-// //   e.preventDefault(); // prevent the default form submission
-//   const formData = new FormData(e.target); // create a new FormData object from the form
-// //   debugger ; 
-//   const content = e.get('content'); // get the value of the textarea with the name "content"
-// //   for (const value of formData.values()) {
-// //     console.log(value);
-// //   }
-//   const file  = e.get('file') ;
-
-//   //save the file 
-//     console.log(file) ;
-//     console.log(content) ;
-
-
-
-//   console.log(content); // log the value
-
-//   // print all fields in object e 
-// //   for (var key in e) {
-// //     console.log(key);
-// //   }
-//   console.log(e["keys"]);
-// }
-
-// "use server"
 
 import fs from 'fs/promises';
+import { redirect } from 'next/navigation';
 import path from 'path';
 
-export default async function test(e: FormData) {
+export default async function test(prevstate:any,e: FormData) {
   const content = e.get('content'); // get the value of the textarea with the name "content"
   const filesss : any  = e.get('file');
     console.log("ASdasd") ;
@@ -39,6 +14,7 @@ export default async function test(e: FormData) {
     const filename = filesss["name"];
     const fileBuffer = Buffer.from(await filesss.arrayBuffer());
 
+    
     // Define the path where the file will be saved
     const savePath = path.join(process.cwd(), 'uploads', filename);
 
@@ -50,12 +26,19 @@ export default async function test(e: FormData) {
       await fs.writeFile(savePath, fileBuffer);
 
       console.log(`File saved successfully to ${savePath}`);
-    } catch (error) {
+    } 
+    catch (error) {
       console.error('Error saving the file:', error);
+      return {
+        message:'Error saving the file:'
+      }
     }
   } else {
-    console.log('No file found in the FormData');
+    console.log('No file found in the Form Data');
+    return {message:'No file found in the Form Data'};
   }
-
-  console.log(e.keys()); // Log the keys of the FormData
+  redirect("/blog")
+  return {message:'Success'};
+  // console.log(e.keys()); // Log the keys of the FormData
 }
+

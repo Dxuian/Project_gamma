@@ -1,6 +1,5 @@
-"use client";
-import React, { useEffect, useState } from "react";
-import { Suspense } from "react";
+"use client"
+import { Suspense, useEffect } from "react";
 import { Button } from "@/components/ui/button"
 import Script from "next/script";
 import {
@@ -8,28 +7,26 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover"
-import { signout } from "../server";
 import { CircleX } from 'lucide-react';
 import { FileInput, Label } from "flowbite-react";
 import { PopoverClose } from "@radix-ui/react-popover";
 import { Textarea } from "@/components/ui/textarea"
 
-import { Description, Field, Fieldset, Input,  Legend, Select } from '@headlessui/react'
+import { Description, Field, Fieldset, Input, Legend, Select } from '@headlessui/react'
 const labels = require('@headlessui/react').Label;
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import clsx from 'clsx'
 import EmojiPicker from 'emoji-picker-react';
 import { Emoji, EmojiStyle } from 'emoji-picker-react';
 import { FormEvent } from 'react'
-import type { NextApiRequest, NextApiResponse } from 'next'
 import test from './checker'
 
-function addtotextarea(emoji: any){
+function addtotextarea(emoji: any) {
   console.log(emoji);
   document.getElementsByTagName('textarea')[0].value += emoji.emoji;
 }
 
-function Emojichooser(props:{}) {
+function Emojichooser(props: {}) {
   return (
     <div>
       <EmojiPicker  /*reactionsDefaultOpen={true}*/ onEmojiClick={addtotextarea} />
@@ -37,7 +34,7 @@ function Emojichooser(props:{}) {
   );
 }
 
-export  function Example() {
+export function Example() {
   return (
     <div className="w-full max-w-lg px-4">
       <Fieldset className="space-y-6 rounded-xl bg-white/5 p-6 sm:p-10">
@@ -48,18 +45,14 @@ export  function Example() {
             If you have a tiger, we'd like to know about it.
           </Description>
           <Textarea
-            // className={clsx(
-            //   'mt-3 block w-full resize-none rounded-lg border-none bg-white/5 py-1.5 px-3 text-sm/6 text-white',
-            //   'focus:outline-none data-[focus]:outline-2 data-[focus]:-outline-offset-2 data-[focus]:outline-white/25'
-            // )}
-            // rows={3}
+
             name="content"
           />
           <Emojichooser></Emojichooser>
         </Field>
         <Field>
           <Label className="text-sm/6 font-medium text-white">Add a image</Label>
-          <Fileadder/>
+          <Fileadder />
         </Field>
       </Fieldset>
       <Script>
@@ -125,114 +118,73 @@ export function Fileadder() {
 
 
 
-export  async function  formhandler(event: FormEvent<HTMLFormElement>) {
-  // console.log(e.target.elements); // Access form elements here
-  // var name  = e.name 
-  event.preventDefault()
-  console.log("form submitted")
-  const formData = new FormData(event.currentTarget)
-  // const response = await fetch('/api/auth', {
-  //   method: 'POST',
-  //   body: formData,
-  // })
-
-  // res.red
-  // return false ;
+import { useActionState } from "react";
+let initialState = {
+  message: ""
 }
-
-
-
-
-export function Form(){
-  console.log("hahaha") ;
-  // const router = useRouter()
-
+export async function Form() {
+  console.log("hahaha");
+  let [state,action] = useActionState( test , initialState);
   return (
-  <>
-    <form action={test} >
+    <>
+      <form action={action} >
         <Example></Example>
-      <button type="submit" className="btn btn-primary">Submit</button>
-    </form>
-  </>
+        <button type="submit" className="btn btn-primary">Submit</button>
+        {state?.message}
+      </form>
+      {/* <script>
+      window.addEventListener('DOMContentLoaded', function() {
+        hiderElement = document.getElementById('hider')
+        hiderElement.hidden = true;
+      });
+</script> */}
+
+    </>
   )
 }
 
-   
+
 
 function Modal() {
   return (
     <><label className="btn btn-primary" htmlFor="modal-2">Open Modal</label>
-    <input className="modal-state" id="modal-2" type="checkbox" />
-    <div className="modal w-screen">
-      <label className="modal-overlay" htmlFor="modal-2"></label>
-      <div className="modal-content flex flex-col gap-5 max-w-3xl">
-        <label htmlFor="modal-2" className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</label>
-        <h2 className="text-xl">Modal title 2</h2>
-        <span>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur dolorum voluptate ratione dicta. Maxime cupiditate, est commodi consectetur earum iure, optio, obcaecati in nulla saepe maiores nobis iste quasi alias!
-          <Form></Form>
-        </span>
-        {/* <div className="flex gap-3">
-          <button className="btn btn-error btn-block">Delete</button>
-          <button className="btn btn-block">Cancel</button>
-        </div> */}
-      </div>
-    </div></>
+      <input className="modal-state" id="modal-2" type="checkbox" />
+      <div className="modal w-screen">
+        <label className="modal-overlay" htmlFor="modal-2"></label>
+        <div className="modal-content flex flex-col gap-5 max-w-3xl">
+          <label htmlFor="modal-2" className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</label>
+          <h2 className="text-xl">Modal title 2</h2>
+          <span>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur dolorum voluptate ratione dicta. Maxime cupiditate, est commodi consectetur earum iure, optio, obcaecati in nulla saepe maiores nobis iste quasi alias!
+            <Form></Form>
+          </span>
+        </div>
+      </div></>
   )
 }
 
-function Addblog({className}:{className?:string}) {
-    return (
-        <div className={className}>
-           add blog bruh
-            <Modal></Modal>
-           {/* <Popover>
-              <PopoverTrigger>Open</PopoverTrigger>
-              <PopoverContent>
-                  <Form></Form>
-                  <PopoverClose asChild>
-                      <button><Icon /></button>
-                  </PopoverClose>
-              </PopoverContent>
-          </Popover> */}
-          {/* <Popover>
-            <PopoverTrigger>Open</PopoverTrigger>
-            <PopoverContent>Place content for the popover here.  
-              
-            <PopoverTrigger><Icon></Icon></PopoverTrigger>
-              
-               </PopoverContent>
-          </Popover> */}
-
-           
-
-        </div>
-    )
+function Addblog({ className }: { className?: string }) {
+  return (
+    <div className={className}>
+      add blog bruh
+      <Modal></Modal>
+    </div>
+  )
 
 }
 
-import isusersignin from "@/app/isusersignin";
 
-export default   function Blogpage({className}:{className:string}) {
-    let [isSignedIn , setisSignedIn] = useState(false)
-    useEffect( () => {
-        const fetchData = async () => {
-            let c = await isusersignin();
-            debugger ; 
-            setisSignedIn(c)
-        };
-        fetchData();
-    }, []);
-    // let isSignedIn =  isusersignin();
-    return (
-        <div className={className}>
-            <div >
-                {/* add blog bruh */}
-                <Addblog className=""></Addblog>
-                {isSignedIn ? <span>signed in </span> : <span>not signed in</span>}
-                {isSignedIn ? <button onClick={()=>{signout()}}>Sign out </button> : <></>}
-            </div>
-        </div>
-    )
+
+
+export default function Addblogtopage({ className }: { className: string }) {
+
+  return (
+    <div className={className}>
+      <div >
+        <Addblog className=""></Addblog>
+      </div>
+    </div>
+
+  )
 
 }
