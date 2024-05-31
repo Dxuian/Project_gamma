@@ -1,11 +1,11 @@
 "use client"
 import {
-    Dialog,
-    DialogContent,
-    DialogDescription,
-    DialogHeader,
-    DialogTitle,
-    DialogTrigger,
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
 } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
 import { useState } from "react"
@@ -13,9 +13,9 @@ import { signin } from "@/app/client";
 import { useFormState } from "react-dom";
 
 let signinitialState = {
-    message:""
-  };
-  import React from "react";
+  message: ""
+};
+import React from "react";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils"
@@ -40,60 +40,58 @@ import { ButtonOutline } from "@/app/blog/staticcom";
 
 
 var initialState = {
-    message : ""
-  }
-
-
-
-
-
-export default  function Blogpage() {
-    let [state, setter] = useState(false)
-    let [isopen, setopen] = useState(false)
-    return (<>
-        <Dialog open={isopen}  onOpenChange={() => {
-            // debugger;
-            if (isopen == false) {
-                if(state == false)
-                {
-                    window.history.pushState({}, "", "/blog/signin");
-                }
-                else
-                {
-                }
-                
-                setopen(true)
-            }
-            if (isopen == true ) {
-                window.history.pushState({}, "", "/blog");
-                setopen(false)
-            }
-
-            if (state == true) {
-                setter(false)   
-                return ;
-            }
-           
-        }}>
-            <DialogTrigger>
-                <ButtonOutline text="Add blog" />
-            </DialogTrigger>
-            <DialogContent>
-               {state == false  ? <Signinform setter={setter}/> : <Signupform />}
-            </DialogContent>
-        </Dialog>
-    </>
-    )
+  message: ""
 }
 
 
 
 
-function Signinform({setter}:{setter:any}) {
-    let [state , action ] = useFormState(signin, signinitialState)
-    //change the url to /blog/signin without moving 
-    
-    return (<div><form action={action} className="mx-auto flex w-full max-w-lg flex-col rounded-xl border border-border bg-backgroundSecondary p-4 sm:p-20">
+
+export default function Blogpage() {
+  let [state, setter] = useState(false)
+  let [isopen, setopen] = useState(false)
+  return (<>
+    <Dialog open={isopen} onOpenChange={() => {
+      // debugger;
+      if (isopen == false) {
+        if (state == false) {
+          window.history.pushState({}, "", "/blog/signin");
+        }
+        else {
+        }
+
+        setopen(true)
+      }
+      if (isopen == true) {
+        window.history.pushState({}, "", "/blog");
+        setopen(false)
+      }
+
+      if (state == true) {
+        setter(false)
+        return;
+      }
+
+    }}>
+      <DialogTrigger>
+        <ButtonOutline text="Add blog" />
+      </DialogTrigger>
+      <DialogContent>
+        {state == false ? <Signinform setter={setter} /> : <Signupform />}
+      </DialogContent>
+    </Dialog>
+  </>
+  )
+}
+
+
+
+
+function Signinform({ setter }: { setter: any }) {
+  let [state, action] = useFormState(signin, signinitialState)
+  //change the url to /blog/signin without moving 
+
+  return (<div><form action={action} className="mx-auto flex w-full max-w-lg flex-col rounded-xl border border-border bg-backgroundSecondary p-4 sm:p-20">
     <div className="flex w-full flex-col gap-2">
       <p>Sign in with</p>
       <div className="flex w-full flex-col gap-2">
@@ -113,11 +111,11 @@ function Signinform({setter}:{setter:any}) {
       </div>
     </div>
     <div className="divider my-6 text-xs text-content2">or continue with</div>
-  
+
     <div className="form-group">
       <div className="form-field">
         <label className="form-label">Email address</label>
-  
+
         <input placeholder="Type here" type="email" name="email" className="input max-w-full" />
         <label className="form-label">
           <span className="form-label-alt">Please enter a valid email.</span>
@@ -147,19 +145,19 @@ function Signinform({setter}:{setter:any}) {
           <button type="submit" className="btn btn-primary w-full">Sign in</button>
         </div>
       </div>
-  
+
       <div className="form-field">
         <div className="form-control">
-          <span  id="signupopener" className="link link-underline-hover link-primary text-sm" onClick={()=>{setter(true)}} >Don't have an account? 
-          <span className="underlined" >
-            &nbsp; Sign up
+          <span id="signupopener" className="link link-underline-hover link-primary text-sm" onClick={() => { setter(true) }} >Don't have an account?
+            <span className="underlined" >
+              &nbsp; Sign up
             </ span>
-            </span>
+          </span>
         </div>
       </div>
     </div>
   </form></div>)
-}    
+}
 
 
 
@@ -170,8 +168,8 @@ function Signinform({setter}:{setter:any}) {
 
 
 
-export  function Signupform() {
-  var [state , action] =  useFormState(signUpNewUser,initialState)
+export function Signupform() {
+  var [state, action] = useFormState(signUpNewUser, initialState)
   window.history.pushState({}, "", "/blog/signup");
 
   return (
@@ -184,38 +182,38 @@ export  function Signupform() {
       </CardHeader>
       <CardContent>
         <form action={action}>
-        <div className="grid gap-4">
-          <div className="grid grid-cols-2 gap-4">
-            <div className="grid gap-2">
-              <Label htmlFor="first-name">First name</Label>
-              <Input id="first-name" placeholder="Max" name="fname" required />
+          <div className="grid gap-4">
+            <div className="grid grid-cols-2 gap-4">
+              <div className="grid gap-2">
+                <Label htmlFor="first-name">First name</Label>
+                <Input id="first-name" placeholder="Max" name="fname" required />
+              </div>
+              <div className="grid gap-2">
+                <Label htmlFor="last-name">Last name</Label>
+                <Input id="last-name" placeholder="Robinson" name="lname" required />
+              </div>
             </div>
             <div className="grid gap-2">
-              <Label htmlFor="last-name">Last name</Label>
-              <Input id="last-name" placeholder="Robinson" name="lname" required />
+              <Label htmlFor="email">Email</Label>
+              <Input
+                id="email"
+                type="email"
+                placeholder="m@example.com"
+                name="email"
+                required
+              />
             </div>
+            <div className="grid gap-2">
+              <Label htmlFor="password" >Password</Label>
+              <Input id="password" name="password" type="password" />
+            </div>
+            <Button type="submit" className="w-full">
+              Create an account
+            </Button>
+            <Button variant="outline" className="w-full">
+              <IconBrandGoogle className="h-4 w-4 text-neutral-800 dark:text-neutral-300" /> &nbsp; &nbsp;   Sign up with Google
+            </Button>
           </div>
-          <div className="grid gap-2">
-            <Label htmlFor="email">Email</Label>
-            <Input
-              id="email"
-              type="email"
-              placeholder="m@example.com"
-              name="email"
-              required
-            />
-          </div>
-          <div className="grid gap-2">
-            <Label htmlFor="password" >Password</Label>
-            <Input id="password" name="password" type="password" />
-          </div>
-          <Button type="submit" className="w-full">
-            Create an account
-          </Button>
-          <Button variant="outline" className="w-full">
-          <IconBrandGoogle className="h-4 w-4 text-neutral-800 dark:text-neutral-300" /> &nbsp; &nbsp;   Sign up with Google
-          </Button>
-        </div>
         </form>
         <div className="mt-4 text-center text-sm">
           {state?.message}
@@ -229,31 +227,34 @@ export  function Signupform() {
 
 
 import { usePathname } from 'next/navigation'
-import  Link  from 'next/link'
-export   function Redirecttaddblog() {
+import Link from 'next/link'
+export function Redirecttaddblog() {
   const router = usePathname();
   if (router == "/blog/addblog") {
     return (<></>)
-  }  
+  }
   return (<Link id="hider" href="/blog/addblog" ><button >redirectbtn</button></Link>)
-  
+
 }
 
 
 
 // import { usePathname } from "next/navigation";
 import { signout } from "@/app/client"
-export function Clicomp(){
+export function Clicomp() {
   // let pathname = usePathname();
   // if(pathname=="/blog/addblog"){
   //   return (
   //   <></>
-     
+
   // }
   console.log("ok giving signouts")
   return (
     <form action={signout}>
-            <button   type="submit" className="!text-lg !text-blue-500 !font-semibold !bg-gray-100 !p-4 rounded shadow-lg">Sign out toh krle</button>
+      <button type="submit" className="!text-lg !text-blue-500 !font-semibold !bg-gray-100 !p-4 rounded shadow-lg">Sign out toh krle</button>
     </form>
   )
 }
+
+
+

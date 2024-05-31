@@ -18,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={styles.bodyc}>
+      <body className={styles.body}>
         <Container >{children}</Container>  
         </body>
      </html>
