@@ -18,8 +18,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={styles.body}>
-        <Container >{children}</Container>  
+      <body className={styles.bodycontainer}>
+        <Container >{children}</Container>
         </body>
      </html>
   );

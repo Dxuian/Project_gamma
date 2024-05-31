@@ -37,11 +37,7 @@ export async function signUpNewUser(prevstate:any , formData:FormData) {
     return {message : "Success"}
   }
 
-export async function getblogs(count:number){
-    //return count - 10 last posts 
-    // return stuff
-    await new Promise(resolve => setTimeout(resolve, 8000));
-    let x = ["lmao","lmao","lmao","lmao","lmao","lmao","lmao","lmao",]
-    return [...x, ...x, ...x, ...x, ...x, ...x, ...x, ...x];
-}
+
+
+
 
