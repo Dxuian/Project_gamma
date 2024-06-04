@@ -44,7 +44,7 @@ var initialState = {
 
 
 
-export default  function Blogpage() {
+export default  function Signinaltdialogbox() {
     let [state, setter] = useState(false)
     let [isopen, setopen] = useState(false)
     return (<>
@@ -65,10 +65,9 @@ export default  function Blogpage() {
                 setter(false)   
                 return ;
             }
-           
         }}>
-            <DialogTrigger>
-                <ButtonOutline text="Add blog" />
+            <DialogTrigger className="px-4">
+                <span id="clicker" >{"Add blog"}</span>
             </DialogTrigger>
             <DialogContent>
                {state == false  ? <Signinform setter={setter}/> : <Signupform />}
@@ -87,19 +86,7 @@ import { useRouter } from "next/navigation";
 import { createClient as frontendclient } from "@/utils/supabase/client";
  function Signinform({setter}:{setter:any}) {
     let [state , action ] = useFormState(signin, signinitialState)
-    // debugger ; 
-    // useEffect(() => {
-    //   debugger ; 
-    //   // console.log(state)
-    //   //helo
-    //   if(state?.message == "Success")
-    //     {
-    //         debugger;
-    //         //pokit here 
-    //         let rounter = useRouter();
-    //         rounter.push("/blog/addblog")
-    //     }
-    // }, [state])
+
     let actiongoogle = async () => {
       debugger ; 
       const supabase = await frontendclient();
@@ -111,7 +98,7 @@ import { createClient as frontendclient } from "@/utils/supabase/client";
       })      
     }
     return (
-    <div>
+    <div id="sif">
       <div className="mx-auto flex w-full max-w-lg flex-col rounded-xl border border-border bg-backgroundSecondary p-4 sm:p-20">
     <div className="flex w-full flex-col gap-2">
       <p>Sign in with</p>
@@ -268,24 +255,24 @@ export  function Signupform() {
 
 import { usePathname } from 'next/navigation'
 import  Link  from 'next/link'
-export   function Redirecttaddblog() {
+export   function Redirecttaddblog({className}:{className:string}) {
   const router = usePathname();
   if (router == "/blog/addblog") {
     return (<></>)
   }  
-  return (<Link id="hider" href="/blog/addblog" ><button >redirectbtn</button></Link>)
+  return (<Link id="hider" href="/blog/addblog" className="px-4" ><button >redirectbtn</button></Link>)
   
 }
 
 
 
 import { signout } from "@/app/client"
-export function Clicomp(){
+export function Clicomp({className}:{className:string}){
 
   console.log("ok giving signouts")
   return (
     <form action={signout}>
-            <button   type="submit" className="!text-lg !text-blue-500 !font-semibold !bg-gray-100 !p-4 rounded shadow-lg">Sign out toh krle</button>
+            <button   type="submit" className="!text-lg !text-blue-500 !font-semibold !bg-gray-100 !p-4 rounded shadow-lg !px-4">Sign out toh krle</button>
     </form>
   )
 }

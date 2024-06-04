@@ -3,7 +3,7 @@ const {
   default: flattenColorPalette,
 } = require("tailwindcss/lib/util/flattenColorPalette");
 
-
+const flowbite = require("flowbite-react/tailwind");
 const config = {
   mode:"jit",
   rippleui: {
@@ -33,6 +33,7 @@ const config = {
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
     "./node_modules/flowbite/**/*.js",
+    flowbite.content(),
 	],
   prefix: "",
   theme: {
@@ -110,6 +111,7 @@ const config = {
     require('flowbite/plugin'),
     require("autoprefixer"),
     require('daisyui'),
+    flowbite.plugin(),
     addVariablesForColors
   ],
 } satisfies Config

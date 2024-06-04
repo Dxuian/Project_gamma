@@ -26,6 +26,6 @@ export const BottomGradient = () => {
   
 
   
-  export function ButtonOutline({ text }: { text: string }) {
-    return <Button variant="outline"><span id="clicker">{text}</span></Button>
+export function ButtonOutline({ text }: { text: string }) {
+    return /*<Button variant="outline">*//*</Button>*/
 }

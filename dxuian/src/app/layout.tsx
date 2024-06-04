@@ -1,22 +1,24 @@
 // "use server"
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
+import { headers } from "next/headers";
 import styles from "./ui/styles.module.css";
 
 import { ThemeProvider } from "@/components/theme-provider"
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "DXU",
   description: "HI!!!!!!!!",
 };
-
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  const header =  headers();
+  const url = header.get('x-url');
+  console.log(url + " is the url")
   return (
     <html lang="en">
       <body className={styles.bodyc}>
@@ -26,13 +28,10 @@ export default function RootLayout({
   );
 }
 
-
 function Container({ children }: { children: any }) {
   return (
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-      <div>
       {children}
-      </div>
     </ThemeProvider>
   )
 }

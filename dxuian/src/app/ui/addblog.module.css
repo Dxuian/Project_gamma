@@ -16,4 +16,9 @@
     background: var(--accent);
     bottom: 100px;
   }
+
+.wallahi > span {
+padding: 0 !important;
+
+}
   
