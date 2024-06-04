@@ -42,7 +42,7 @@ export function Example() {
         <Field>
           <Label className="text-sm/6 font-medium text-white">Delivery notes</Label>
           <Description className="text-sm/6 text-white/50">
-            If you have a tiger, we'd like to know about it.
+            If you have a tiger, we&apos;d like to know about it.
           </Description>
           <Textarea name="title"  />
           <Textarea name="content"  />
@@ -53,32 +53,17 @@ export function Example() {
           <Fileadder />
         </Field>
       </Fieldset>
-      <Script>
+      {/* <Script>
         console.log("logged in script tag")
-      </Script>
+      </Script> */}
     </div>
   )
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 const Icon = () => {
   return (
     <CircleX className="absolute right-2 top-2" />
   );
 };
-
-
 export function Fileadder() {
   return (
     <div className="flex w-full items-center justify-center">
@@ -112,10 +97,6 @@ export function Fileadder() {
     </div>
   );
 }
-
-
-
-
 import { useFormState } from "react-dom";
 let initialState = {
   message: ""
@@ -130,13 +111,6 @@ export  function Form() {
         <button type="submit" className="btn btn-primary">Submit</button>
         {state?.message}
       </form>
-      {/* <script>
-      window.addEventListener('DOMContentLoaded', function() {
-        hiderElement = document.getElementById('hider')
-        hiderElement.hidden = true;
-      });
-</script> */}
-
     </>
   )
 }

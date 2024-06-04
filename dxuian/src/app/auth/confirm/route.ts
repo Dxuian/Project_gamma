@@ -13,6 +13,7 @@ export async function GET(request: NextRequest) {
 
   if (token_hash && type) {
     const cookieStore = cookies()
+    // debugger ; 
     const supabase = createServerClient(
       process.env.NEXT_PUBLIC_SUPABASE_URL!,
       process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,

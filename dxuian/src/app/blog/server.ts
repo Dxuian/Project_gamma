@@ -10,8 +10,8 @@ export async function signUpNewUser(prevstate:any , formData:FormData) {
     const password = String(formData.get('password'));
     const fname = String(formData.get('fname'));
     const lname = String(formData.get('lname'));
-    debugger ; 
-    console.log(`email, password, fname, lname are ${email}, ${password}, ${fname}, ${lname}`)
+    // debugger ; 
+    // console.log(`email, password, fname, lname are ${email}, ${password}, ${fname}, ${lname}`)
     var data  , error ;
     try {
         ({ data, error } = await supabaseback.auth.signUp({
@@ -36,6 +36,10 @@ export async function signUpNewUser(prevstate:any , formData:FormData) {
     redirect("/blog/signin")
     return {message : "Success"}
   }
+
+  
+
+
 
 
 

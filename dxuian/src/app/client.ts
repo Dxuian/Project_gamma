@@ -1,7 +1,8 @@
 "use server"
 import { createClient  as backendclient} from '@/utils/supabase/server'
-import { createClient  as frontend} from '@/utils/supabase/client'
+// import { createClient  as frontend} from '@/utils/supabase/client'
 import { redirect } from 'next/navigation'
+
 export async function signin(prevstate:any , formData:FormData) {
     // debugger ; 
     const supaback =  await backendclient()
@@ -9,7 +10,7 @@ export async function signin(prevstate:any , formData:FormData) {
     let password = String(formData.get('password'));
     let data , error;
     // debugger;
-    console.log(`email, password are ${email}, ${password}`)
+    // console.log(`email, password are ${email}, ${password}`)
     try {
       ({ data, error } = await supaback.auth.signInWithPassword({
         email: email,
@@ -19,11 +20,7 @@ export async function signin(prevstate:any , formData:FormData) {
       console.log(e);
       return { message: (e as Error).message };
     }
-    
-    console.log(data, error);
-    
-    // Add a delay before calling getSession
-    
+
     let session = await supaback.auth.getSession();
     // let session = await supabaseback.auth.getSession();
     let access_token = session?.data.session?.access_token as string;
@@ -37,7 +34,8 @@ export async function signin(prevstate:any , formData:FormData) {
     await redirect("/blog/addblog")
     return {message : "Success"}
 }
-  
+export const gotoblog = () =>{()=>{redirect("/blog")}}
+
 export async function signout() {
   const supaback = await backendclient()
   // debugger;
@@ -75,11 +73,48 @@ async function uploadFile(file:Buffer,filename:string ,  supabase:any) {
   if (error) {
     // Handle error
     console.log("Eroor")
-    console.log('Error uploading file:', error.message)
+    // console.log('Error uploading file:', error.message)
     throw error
     
   } else {
     // Handle success
     console.log("Success")
   }
+}
+
+
+export async function singinwithgooggle(prevstate:any , formData:FormData) {
+  debugger ;
+  const supabase = await backendclient()
+  const { data, error } = await supabase.auth.signInWithOAuth({
+    provider: 'google',
+    options: {
+      redirectTo: getURL(),
+    }
+  })
+  if (error)
+  {
+    return {message : "An error occured while signing in with google. Please try again later."}
+  }
+  // const { error, data } = await supabase.auth.api.exchangeCodeForSession('your-auth-code')
+  if (data.url)
+  {
+    // return {message : "Success"}
+    redirect(data.url as string)
+  }
+  return {message : "Success"}
+}
+
+
+const getURL = () => {
+  let url =
+    process?.env?.NEXT_PUBLIC_SITE_URL ?? // Set this to your site URL in production env.
+    process?.env?.NEXT_PUBLIC_VERCEL_URL ??  // Automatically set by Vercel.
+    process?.env?.DXU_URL ??
+    'http://localhost:3000/blog'
+  // Make sure to include `https://` when not localhost.
+  url = url.includes('http') ? url : `https://${url}`
+  // Make sure to include a trailing `/`.
+  url = url.charAt(url.length - 1) === '/' ? url : `${url}/`
+  return url
 }

@@ -11,7 +11,7 @@ const Hero = () => {
           <div className="lg:col-span-1"></div>
           <div className="lg:col-span-10 flex flex-col items-center">
             <p className="md:text-body-xl text-body-lg font-medium pb-4">
-              Hey there, I'm dxu 👋
+              Hey there, I&apos;m dxu 👋
             </p>
             <h1 className="lg:text-display-2xl md:text-display-xl text-display-md font-semibold pb-10">
             learning new technologies  and gaining experience
