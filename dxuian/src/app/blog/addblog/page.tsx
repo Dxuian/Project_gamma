@@ -32,8 +32,6 @@ function Emojichooser(props: {}) {
     </div>
   );
 }
-
-
 export function Example() {
   return (
     <div className="w-full max-w-lg px-4">
@@ -114,9 +112,6 @@ export  function Form() {
     </>
   )
 }
-
-
-
 function Modal() {
   return (
     <><label className="btn btn-primary" htmlFor="modal-2">Open Modal</label>
@@ -134,29 +129,26 @@ function Modal() {
       </div></>
   )
 }
-
 function Addblog({ className }: { className?: string }) {
   return (
     <div className={className}>
-      add blog bruh
       <Modal></Modal>
     </div>
   )
 
 }
-
-
-
-
-export default function Addblogtopage({ className }: { className: string }) {
+export  function Addblogtopage({ className }: { className: string }) {
 
   return (
     <div className={className}>
-      <div >
         <Addblog className=""></Addblog>
-      </div>
     </div>
 
   )
 
+}
+export default function A({ className }: { className: string }) {
+  return (
+   <></>
+  )
 }

@@ -9,10 +9,9 @@ export default async  function RootLayout({children,}: Readonly<{children: React
    redirect("/blog/signin")
   }
   return (
-
             <>
               {children}
-              {isSignedIn ? <span>signed in </span> : <span>not signed in</span>}
+              {/* {isSignedIn ? <span>signed in </span> : <span>not signed in</span>} */}
             </>
   );
 }

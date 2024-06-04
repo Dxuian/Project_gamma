@@ -16,9 +16,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
 
-  const header =  headers();
-  const url = header.get('x-url');
-  console.log(url + " is the url")
+  // const header =  headers();
+  // const url = header.get('x-url');
+  // console.log(url + " is the url")
   return (
     <html lang="en">
       <body className={styles.bodyc}>

@@ -36,14 +36,12 @@ import { ButtonOutline } from "@/app/blog/staticcom";
 
 
 
-var initialState = {
+
+
+
+export var initialState = {
     message : ""
   }
-
-
-
-
-
 export default  function Signinaltdialogbox() {
     let [state, setter] = useState(false)
     let [isopen, setopen] = useState(false)
@@ -60,14 +58,13 @@ export default  function Signinaltdialogbox() {
                 window.history.pushState({}, "", "/blog");
                 setopen(false)
             }
-
             if (state == true) {
                 setter(false)   
                 return ;
             }
         }}>
-            <DialogTrigger className="px-4">
-                <span id="clicker" >{"Add blog"}</span>
+            <DialogTrigger className="">
+                <span id="clicker" >Add blog</span>
             </DialogTrigger>
             <DialogContent>
                {state == false  ? <Signinform setter={setter}/> : <Signupform />}
