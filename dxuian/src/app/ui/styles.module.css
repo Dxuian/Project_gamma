@@ -1,7 +1,5 @@
 .bodyc {
   --accent: #8855ff;
-  /* width: 100vw; */
-  /* height: 100vh; */
   overflow-y: scroll;
   overflow-x: hidden;
   padding: 0;
@@ -11,4 +9,4 @@
   align-items: center;
 }
 
-/* background: #fff; */
+

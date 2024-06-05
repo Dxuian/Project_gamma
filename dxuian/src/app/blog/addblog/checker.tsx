@@ -8,7 +8,7 @@ import z from "zod";
 let schemaforform = z.object({
   title: z.string().min(1).max(20).optional(),
   content: z.string().min(1).max(300),
-  file: z.any().refine((file) => file?.size <= 800000, `Max image size is 5MB.`).refine((file) => ["image/jpeg", "image/jpg", "image/png", "image/webp", "image/bmp"].includes(file?.type), "Only .jpg, .jpeg, .png and .webp formats are supported.")
+  file: z.any().refine((file) => file ? file.size <= 800000 : true, `Max image size is 5MB.`).refine((file) => file ? ["image/jpeg", "image/jpg", "image/png", "image/webp", "image/bmp"].includes(file.type) : true, "Only .jpg, .jpeg, .png and .webp formats are supported.").optional()
 })
 
 
@@ -42,20 +42,21 @@ import { revalidatePath } from 'next/cache';
 export default async function test(prevstate: any, e: FormData) {
   let supabase = await backend()
   const { data, error } = await supabase.auth.getUser();
-
   if (error) {
     return { message: `Error getting user: ${error.message}. Please contact admin` };
   }
-
+  let file = e.get("file");
+  if (file instanceof File && file.size === 0) {
+    file =  null  ; 
+    e.delete("file");
+  }
   let result = schemaforform.safeParse({
     title: e.get('title'),
     content: e.get('content'),
-    file: e.get('file'),
+    file: file,
   });
-  if (result.success) {
-    // console.log('Form data is valid');
-  }
-  else {
+
+  if(!result.success) {
     return { message: `Form data is invalid: ${JSON.parse(result.error.message)[0].message}` };
   }
   
@@ -69,7 +70,7 @@ export default async function test(prevstate: any, e: FormData) {
   }
   const content = e.get('content'); // get the value of the textarea with the name "content"
   let title = e.get('title'); // get the value of the textarea with the name "content"
-  let filesss: any = e.get('file');
+  let filesss: any = file;
   let timestamp = Date.now();
   let separator = process.env.SEPARATOR as string;
   let filename : any  = "" ;
@@ -95,7 +96,7 @@ export default async function test(prevstate: any, e: FormData) {
   }
   console.log("ASdasd");
   revalidatePath("/blog")
-  redirect("/blog")
+  // redirect("/blog")
   return { message: 'Success' };
   // console.log(e.keys()); // Log the keys of the FormData
 }

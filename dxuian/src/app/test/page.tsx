@@ -106,8 +106,26 @@ export  function Page({blogslist , component}:{blogslist:any[] , component:any }
         <motion.div id="hell" className="fixed z-10 top-0 left-0 right-0 h-[10px] bg-red-500 origin-left"   style={{ scaleX }}/>
         <div className="flex gap-4 !w-full bg-gradient-to-b from-slate-50 from-30% via-gray-200 from-30% to-zinc-200  from-30% dark:bg-gradient-to-b dark:from-slate-900 dark:from-30% dark:via-violet-800 dark:from-30%  dark:to-fuchsia-900 dark:from-30% flex-col">
         {component}
-        {blogslist.map((x,key) => (<CardWithForm     key={key}  src={x.filename} alt={x.filenameforalt} title={x.title} username={x.by} timestamp={x.timestamp}  content={x.content}/>))}
-      </div>
+        {/* //halowayfinder */}
+{blogslist.map((x,key) => {
+    let timestampNumber = Number(x.timestamp);
+  let date = new Date(timestampNumber);
+  let datePart = date.toDateString(); // "Sun Jun 02 2024"
+  let timePart = date.toTimeString().split(' ')[0]; // "12:22:22"
+  let timestamp = datePart + ' ' + timePart;
+
+  return (
+    <CardWithForm
+      key={key}
+      src={x.filename}
+      alt={x.filenameforalt}
+      title={x.title}
+      username={x.by}
+      timestamp={timestamp}
+      content={x.content}
+    />
+  );
+})}      </div>
       </>
     )
 }
@@ -163,7 +181,7 @@ export function CardWithForm({src , alt ,  title ,  username , timestamp , conte
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
   return (<>
-    <Card ref={ref} className="w-[80%]  !mx-auto  !mb-12 !h-[35%] md:max-w-[50%]  m-2" style={{transform: isInView ? "none" : "translateX(-200px)", opacity: isInView ? 1 : 0, transition: "all 0.9s cubic-bezier(.88,1.99,.55,.34) 0.5s"}}>
+    <Card ref={ref} className="w-[80%]  !mx-auto  !mb-12 !h-[35%] md:max-w-[50%]  m-2" style={{transform: isInView ? "none" : "translateX(-200px)", opacity: isInView ? 1 : 0, transition: "all 0.4s cubic-bezier(.88,1.99,.55,.34) 0.5s"}}>
       <CardHeader>
         <CardTitle>By <span className="">{username}</span></CardTitle>
         <br></br>

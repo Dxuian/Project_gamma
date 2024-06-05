@@ -112,7 +112,20 @@ const config = {
     require("autoprefixer"),
     require('daisyui'),
     flowbite.plugin(),
-    addVariablesForColors
+    addVariablesForColors,
+    function({ addUtilities  }:{ addUtilities : any}) {
+      const newUtilities = {
+        '.no-scrollbar': {
+          '-ms-overflow-style': 'none',
+          'scrollbar-width': 'none',
+          '&::-webkit-scrollbar': {
+            display: 'none',
+          },
+        },
+      }
+      addUtilities(newUtilities)
+    }
+
   ],
 } satisfies Config
 
