@@ -47,7 +47,7 @@ export async function fetchblogs() {
 
 
 export default  async function Blogsser({component}: {component: any}) {
-  let blogs: any =  fetchblogs();
+  let blogs: any = await fetchblogs();
   if (blogs.length == 0) {
     return <>None yet!!</>
   }

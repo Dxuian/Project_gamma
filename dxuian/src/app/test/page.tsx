@@ -93,14 +93,13 @@ export default function Pa() {
 
 
 // import { Component } from "@/app/test/server"
-export async  function Page({ blogslist, component }: { blogslist: any[], component: any }) {
+export   function Page({ blogslist, component }: { blogslist: any[], component: any }) {
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
     restDelta: 0.001
   });
-  blogslist = await blogslist;
   return (
     <>
       <motion.div id="hell" className="fixed z-10 top-0 left-0 right-0 h-[10px] bg-red-500 origin-left" style={{ scaleX }} />
