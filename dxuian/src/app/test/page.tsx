@@ -92,7 +92,6 @@ export default function Pa() {
 
 
 
-// import { Component } from "@/app/test/server"
 export   function Page({ blogslist, component }: { blogslist: any[], component: any }) {
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {

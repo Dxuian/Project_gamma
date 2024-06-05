@@ -40,7 +40,8 @@ export async  function Component() {
 
 
 
-
+import { Suspense } from "react"
+import { Skeleton } from "@/components/ui/skeleton"
 import Blogsser from "@/app/blog/blogscli";
 export default async function RootLayout({ children }: { children: any }) {
   const component = Component();
@@ -48,7 +49,9 @@ export default async function RootLayout({ children }: { children: any }) {
   return (
   <div id="con" className="!w-full">
     {children} 
-    <Blogsser component={component} />
+    <Suspense fallback={<Skeleton className="w-[100vw] h-[100vh]" ><span className="loading absolute top-1/2 left-1/2 loading-infinity loading-lg"></span></Skeleton>}>
+      <Blogsser component={component} />
+    </Suspense>
   </div >
   );
 }
