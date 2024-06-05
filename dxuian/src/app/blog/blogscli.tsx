@@ -15,7 +15,7 @@ export async function fetchblogs() {
   const connectionString = process.env.DATABASE_URL as string
   const client = postgres(connectionString, { prepare: false, ssl: { rejectUnauthorized: false } });
   const db = await drizzle(client, { schema });
-  let result: { by: string; title: string | null; content: string; filename: any; timestamp: bigint; filenameforalt?: string }[] = await db.select({
+  let result: { by: string; title: string | null; content: string; filename: any; timestamp: bigint; filenameforalt?: string ; h?:any ; w?:any }[] = await db.select({
     by: posts.by,
     title: posts.title,
     content: posts.content,
@@ -29,6 +29,8 @@ export async function fetchblogs() {
     if (x.filename) {
       let temp = x.filename.split(process.env.SEPARATOR as string)
       x.filenameforalt = temp[4];
+      x.h = temp[2];
+      x.w = temp[3];
       console.log(x.filenameforalt)
       const { data, error } = await supabase.storage.from('portfolioblog').createSignedUrl(x.filename, Number(process.env.IMGTIMEOUT) as number)
       if (data) {

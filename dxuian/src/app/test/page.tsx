@@ -123,6 +123,8 @@ export  function Page({blogslist , component}:{blogslist:any[] , component:any }
       username={x.by}
       timestamp={timestamp}
       content={x.content}
+      h={x.h}
+      w={x.w}
     />
   );
 })}      </div>
@@ -177,7 +179,7 @@ export  function Pages({blogslist}:{blogslist:any[]}) {
 
 
 
-export function CardWithForm({src , alt ,  title ,  username , timestamp , content }:{src?:any; alt?:any ; content : any ; title?:any ; username:any ; timestamp:any}) {
+export function CardWithForm({src , alt ,  title ,  username , timestamp , content , h ,w }:{src?:any; alt?:any ; content : any ; title?:any ; username:any ; timestamp:any ; h?:any ; w?:any}) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
   return (<>
@@ -189,7 +191,7 @@ export function CardWithForm({src , alt ,  title ,  username , timestamp , conte
       </CardHeader>
       <CardContent>
       <div className="flex flex-col">
-      {src ? <SuspenseImage src={src} h={100}   alt="random" /> : <></>}
+      {src ? <SuspenseImage src={src} h={h}   alt="random" /> : <></>}
       <br></br>
       <br></br>
       <br></br>

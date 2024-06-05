@@ -17,7 +17,7 @@ export async function signin(prevstate:any , formData:FormData) {
         password: password,
       }));
     } catch (e) {
-      console.log(e);
+      // console.log(e);
       return { message: (e as Error).message };
     }
 
@@ -30,7 +30,7 @@ export async function signin(prevstate:any , formData:FormData) {
         refresh_token,
       });
     
-    console.log("logged in !!!!!!")
+    // console.log("logged in !!!!!!")
     await redirect("/blog/addblog")
     return {message : "Success"}
 }

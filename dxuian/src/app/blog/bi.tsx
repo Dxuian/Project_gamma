@@ -30,6 +30,7 @@ const SuspenseImage = ({ src, alt , h , w }:{src:any;alt:any ,h?:any ; w?:any}) 
   }, [src]);
   if (isLoading) {
     let height = h;
+    // debugger;
     let style = {
       height: `${height}px`,
       width: '100%',

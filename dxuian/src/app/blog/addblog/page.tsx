@@ -84,7 +84,6 @@ export function Example() {
         <Fileadder />
       </Field>
     </>
-    // {/* </div> */}
   )
 }
 const Icon = () => {
@@ -92,39 +91,7 @@ const Icon = () => {
     <CircleX className="absolute right-2 top-2" />
   );
 };
-// export function Fileadder() {
-//   return (
-//     <div className="flex w-full items-center justify-center">
-//       <Label
-//         htmlFor="dropzone-file"
-//         className="flex h-64 w-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 hover:bg-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:hover:border-gray-500 dark:hover:bg-gray-600"
-//       >
-//         <div className="flex flex-col items-center justify-center pb-6 pt-5">
-//           <svg
-//             className="mb-4 h-8 w-8 text-gray-500 dark:text-gray-400"
-//             aria-hidden="true"
-//             xmlns="http://www.w3.org/2000/svg"
-//             fill="none"
-//             viewBox="0 0 20 16"
-//           >
-//             <path
-//               stroke="currentColor"
-//               strokeLinecap="round"
-//               strokeLinejoin="round"
-//               strokeWidth="2"
-//               d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
-//             />
-//           </svg>
-//           <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
-//             <span className="font-semibold">Click to upload</span> or drag and drop
-//           </p>
-//           <p className="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
-//         </div>
-//         <FileInput id="dropzone-file" className="hidden" name="file" />
-//       </Label>
-//     </div>
-//   );
-// }
+
 import React, { useState } from 'react';
 
 export function Fileadder() {
@@ -166,7 +133,7 @@ export function Fileadder() {
     </div>
   );
 }
-import { useFormState } from "react-dom";
+import { useFormState, useFormStatus } from "react-dom";
 let initialState = {
   message: ""
 }
@@ -187,18 +154,26 @@ export function Form({ setOpen }: any) {
     <>
       <form action={action} >
         <Example></Example>
-          <button type="submit" className="relative mt-2 w-full inline-flex h-12 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
-            <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
-            <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-slate-950 px-3 py-1 text-sm font-medium text-white backdrop-blur-3xl">
-              Add blog
-            </span>
-          </button>
+          <Submit></Submit>
         {state?.message}
       </form>
     </>
   )
 }
 
+
+
+function Submit() {
+  const { pending } = useFormStatus();
+  return (
+        <button type="submit" disabled={pending} className="relative mt-2 w-full inline-flex h-12 overflow-hidden rounded-full p-[1px] focus:outline-none">
+            <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
+            <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-slate-950 px-3 py-1 text-sm font-medium text-white backdrop-blur-3xl">
+              {pending ? <span className="loading loading-spinner text-warning"></span> : "Add blog"}
+            </span>
+          </button>
+  );
+}
 
 
 import {
@@ -209,6 +184,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
+import { Sub } from "@radix-ui/react-dropdown-menu";
 
 function Modal() {
   let [open, setOpen] = useState(false);

@@ -10,7 +10,7 @@ import {
 import { Button } from "@/components/ui/button"
 import { useEffect, useState } from "react"
 import { signin  } from "@/app/client";
-import { useFormState } from "react-dom";
+import { useFormState, useFormStatus } from "react-dom";
 
 let signinitialState = {
     message:""
@@ -78,30 +78,13 @@ export default  function Signinaltdialogbox() {
 let signinitialStategoogle :any  = {
   message:""
 }
-import { useRouter } from "next/navigation";
-// import {useEffect} from "react";
-import { createClient as frontendclient } from "@/utils/supabase/client";
- function Signinform({setter}:{setter:any}) {
-    let [state , action ] = useFormState(signin, signinitialState)
 
-    let actiongoogle = async () => {
-      debugger ; 
-      const supabase = await frontendclient();
-      await supabase.auth.signInWithOAuth({
-        provider:"google",
-        options: {
-          redirectTo: `${location.origin}/auth/callback`,
-        },
-      })      
-    }
-    return (
-    <div id="sif">
-      <div className="mx-auto flex w-full max-w-lg flex-col rounded-xl border border-border bg-backgroundSecondary p-4 sm:p-20">
-    <div className="flex w-full flex-col gap-2">
-      <p>Sign in with</p>
-      <div className="flex w-full flex-col gap-2">
-        <form action={actiongoogle}>
-        <button type="submit" className="btn gap-2 bg-gray-5 !w-full ">
+
+function Submitgoogle() {
+  const { pending } = useFormStatus();
+  return (
+
+    <button type="submit" className="btn gap-2 bg-gray-5 !w-full ">
           <svg stroke="currentColor" fill="currentColor" strokeWidth="0" version="1.1" viewBox="0 0 48 48" enableBackground="new 0 0 48 48" className="h-5 w-5" xmlns="http://www.w3.org/2000/svg">
             <path fill="#FFC107" d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24c0,11.045,8.955,20,20,20c11.045,0,20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"></path>
             <path fill="#FF3D00" d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657        C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"></path>
@@ -112,9 +95,43 @@ import { createClient as frontendclient } from "@/utils/supabase/client";
                 c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"
             ></path>
           </svg>
-          <span>Sign up with google</span>
+          <span>Sign up with google {pending ? <span className="loading loading-spinner text-primary"></span> : null}</span>
         </button>
-        {/* {stategoogle?.message} */}
+
+  );
+}
+function Singinnormal(){
+  let { pending } = useFormStatus();
+  // let [state,setter] = useState(pending)
+  return(<button type="submit" className="btn btn-primary w-full">Sign in {pending ? <span className="loading loading-spinner text-primary"></span> : null}</button>)
+}
+
+let actiongoogle = async () => {
+  const supabase = await frontendclient();
+  await supabase.auth.signInWithOAuth({
+    provider:"google",
+    options: {
+      redirectTo: `${location.origin}/auth/callback`,
+    },
+  })      
+}
+
+
+import { useRouter } from "next/navigation";
+// import {useEffect} from "react";
+import { createClient as frontendclient } from "@/utils/supabase/client";
+ function Signinform({setter}:{setter:any}) {
+    let [state , action ] = useFormState(signin, signinitialState)
+
+
+    return (
+    <div id="sif">
+      <div className="mx-auto flex w-full max-w-lg flex-col rounded-xl border border-border bg-backgroundSecondary p-4 sm:p-20">
+    <div className="flex w-full flex-col gap-2">
+      <p>Sign in with</p>
+      <div className="flex w-full flex-col gap-2">
+        <form action={actiongoogle}>
+          <Submitgoogle></Submitgoogle>
         </form>
       </div>
     </div>
@@ -152,7 +169,7 @@ import { createClient as frontendclient } from "@/utils/supabase/client";
       </div>
       <div className="form-field pt-5">
         <div className="form-control justify-between">
-          <button type="submit" className="btn btn-primary w-full">Sign in</button>
+          <Singinnormal />
         </div>
       </div>
   
@@ -178,7 +195,12 @@ import { createClient as frontendclient } from "@/utils/supabase/client";
 
 
 
-
+function Singupsubmit(){
+  let {pending} = useFormStatus();
+  return (<Button type="submit" className="w-full ">
+  Create an account {pending ? <span className="loading loading-spinner text-success"></span> : null}
+</Button>)
+}
 
 export  function Signupform() {
   var [state , action] =  useFormState(signUpNewUser,initialState)
@@ -230,9 +252,7 @@ export  function Signupform() {
             <Input id="password" name="password" type="password" />
           </div>
           <br></br>
-          <Button type="submit" className="w-full ">
-            Create an account
-          </Button>
+          <Singupsubmit />
           {state?.message}
           </form>
           <Button onClick={actiongoogle}  variant="outline" className="w-full ">
