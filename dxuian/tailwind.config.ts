@@ -111,6 +111,7 @@ const config = {
     require('flowbite/plugin'),
     require("autoprefixer"),
     require('daisyui'),
+    require('@sira-ui/tailwind'),
     flowbite.plugin(),
     addVariablesForColors,
     function({ addUtilities  }:{ addUtilities : any}) {

@@ -29,12 +29,17 @@ const SuspenseImage = ({ src, alt , h , w }:{src:any;alt:any ,h?:any ; w?:any}) 
     loadImage();
   }, [src]);
   if (isLoading) {
-    let height = h;
+    let height = Math.min(h, window.innerHeight * 0.3);
+let style = {
+  height: `${height}px`,
+  width: '100%',
+};
+    // let height = h;
     // debugger;
-    let style = {
-      height: `${height}px`,
-      width: '100%',
-    };
+    // let style = {
+    //   height: `${height}px`,
+    //   width: '100%',
+    // };
     // console.log(style);
     return <Skeleton style={style} />;
   }
@@ -48,7 +53,7 @@ const SuspenseImage = ({ src, alt , h , w }:{src:any;alt:any ,h?:any ; w?:any}) 
     return <Skeleton style={style} />;
   }
 //  console.log(`finally` +`${w}px` + `${h}px`) ;
-  return <img   /*={`${h}%`}*/ src={imgSrc || undefined} alt={alt} />;
+  return <img   /*={`${h}%`}*/ src={imgSrc || undefined} title={alt} alt={alt} />;
 };
 
 export default SuspenseImage;

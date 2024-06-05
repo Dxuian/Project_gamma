@@ -181,7 +181,7 @@ export function CardWithForm({ src, alt, title, username, timestamp, content, h,
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
   return (<>
-    <Card ref={ref} className="w-[80%]  !mx-auto  !mb-12 !h-[35%] md:max-w-[50%]  m-2" style={{ transform: isInView ? "none" : "translateX(-200px)", opacity: isInView ? 1 : 0, transition: "all 0.4s cubic-bezier(.88,1.99,.55,.34) 0.5s" }}>
+    <Card ref={ref}   className="w-[80%]  !mx-auto  !mb-12 !h-[35%] md:max-w-[50%]  m-2" style={{ transform: isInView ? "none" : "translateX(-200px)", opacity: isInView ? 1 : 0, transition: "all 0.4s cubic-bezier(.88,1.99,.55,.34) 0.5s" }}>
       <CardHeader>
         <CardTitle>By <span className="">{username}</span></CardTitle>
         <br></br>
@@ -189,7 +189,7 @@ export function CardWithForm({ src, alt, title, username, timestamp, content, h,
       </CardHeader>
       <CardContent>
         <div className="flex flex-col">
-          {src ? <SuspenseImage src={src} h={h} alt="random" /> : <></>}
+          {src ? <SuspenseImage src={src} h={h} alt={alt} /> : <></>}
           <br></br>
           <br></br>
           <br></br>
