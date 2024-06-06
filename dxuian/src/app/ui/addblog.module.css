@@ -8,6 +8,18 @@
     transform-origin: 0%;
 }
 
+
+
+.progresshome {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(120,0,121,1) 48%, rgba(252,0,255,1) 100%); 
+      transform-origin: 0%;
+}
+
 .progress {
     position: fixed;
     left: 0;

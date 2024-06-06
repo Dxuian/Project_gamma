@@ -2,7 +2,9 @@ import type { Config } from "tailwindcss"
 const {
   default: flattenColorPalette,
 } = require("tailwindcss/lib/util/flattenColorPalette");
+const colors = require("tailwindcss/colors");
 
+const defaultTheme = require("tailwindcss/defaultTheme");
 const flowbite = require("flowbite-react/tailwind");
 const config = {
   mode:"jit",
