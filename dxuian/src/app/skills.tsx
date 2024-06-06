@@ -51,7 +51,7 @@ export function  LitIcon ({className}: {className: string}){
       )
 }
 
-
+import styles from  "@/app/ui/addblog.module.css"
 export function Skills() {
     return (
 <section className="py-10">
@@ -62,37 +62,30 @@ export function Skills() {
             </h1>
             <div className="text-5xl opacity-75 flex gap-8 flex-wrap w-full sm:justify-center justify-center">
 
-        <Link className="text-yellow-500" href="/your-path"><IoLogoJavascript /></Link>
-<Link className="text-blue-600" href="/www.google.com"><FaHtml5 /></Link>
-<Link className="text-blue-400" href="/your-path"><FaCss3Alt /></Link>
+            <Link className="text-yellow-500" href="https://www.javascript.com/"><div className={styles.scaleonhover}><IoLogoJavascript /></div></Link>
+<Link className="text-blue-600" href="https://developer.mozilla.org/en-US/docs/Web/HTML"><div className={styles.scaleonhover}><FaHtml5 /></div></Link>
+<Link className="text-blue-400" href="https://developer.mozilla.org/en-US/docs/Web/CSS"><div className={styles.scaleonhover}><FaCss3Alt /></div></Link>
+<Link className="text-blue-700" href="https://isocpp.org/"><div className={styles.scaleonhover}><SiCplusplus /></div></Link>
+<Link className="text-yellow-300" href="https://www.python.org/"><div className={styles.scaleonhover}><FaPython /></div></Link>
+<Link className="text-blue-800" href="https://www.typescriptlang.org/"><div className={styles.scaleonhover}><SiTypescript /></div></Link>
+<Link className="text-blue-700" href="https://en.wikipedia.org/wiki/C_(programming_language)"><div className={styles.scaleonhover}><SiC /></div></Link>
+<Link className="text-blue-500" href="https://reactjs.org/"><div className={styles.scaleonhover}><FaReact /></div></Link>
+<Link className="text-green-500" href="https://numpy.org/"><div className={styles.scaleonhover}><SiNumpy /></div></Link>
+<Link className="text-red-500" href="https://pandas.pydata.org/"><div className={styles.scaleonhover}><SiPandas /></div></Link>
+<Link className="text-purple-500" href="https://scikit-learn.org/"><div className={styles.scaleonhover}><SiScikitlearn /></div></Link>
+<Link className="text-orange-500" href="https://www.tensorflow.org/"><div className={styles.scaleonhover}><SiTensorflow /></div></Link>
+<Link className="text-blue-500" href="https://code.visualstudio.com/"><div className={styles.scaleonhover}><VscVscode /></div></Link>
+<Link className="text-white-500" href="https://git-scm.com/"><div className={styles.scaleonhover}><FaGitAlt /></div></Link>
+<Link className="text-white" href="https://github.com/"><div className={styles.scaleonhover}><FaGithub /></div></Link>
+<Link className="text-green-600" href="https://nodejs.org/"><div className={styles.scaleonhover}><DiNodejs /></div></Link>
+<Link className="text-blue-300" href="https://www.fastify.io/"><div className={styles.scaleonhover}><SiFastify /></div></Link>
+<Link className="text-green-700" href="https://www.djangoproject.com/"><div className={styles.scaleonhover}><DiDjango /></div></Link>
+<Link className="text-white" href="https://nextjs.org/"><div className={styles.scaleonhover}><RiNextjsFill /></div></Link>
+<Link className="text-blue-600" href="https://www.google.com/chrome/"><div className={styles.scaleonhover}><FaChrome /></div></Link>
+<Link className="text-green-500" href="https://lit.dev/"><div className={styles.scaleonhover}><LitIcon className="text-sm !h-12"/></div></Link>
+<Link className="text-purple-500" href="https://getbootstrap.com/"><div className={styles.scaleonhover}><FaBootstrap /></div></Link>
+<Link className="text-blue-500" href="https://tailwindcss.com/"><div className={styles.scaleonhover}><RiTailwindCssFill /></div></Link>
 
-<Link className="text-blue-700" href="/your-path"><SiCplusplus /></Link>
-<Link className="text-yellow-300" href="/your-path"><FaPython /></Link>
-<Link className="text-blue-800" href="/your-path"><SiTypescript /></Link>
-<Link className="text-blue-700" href="/your-path"><SiC /></Link>
-<Link className="text-blue-500" href="/your-path"><FaReact /></Link>
-
-<Link className="text-green-500" href="/your-path"><SiNumpy /></Link>
-<Link className="text-red-500" href="/your-path"><SiPandas /></Link>
-<Link className="text-purple-500" href="/your-path"><SiScikitlearn /></Link>
-<Link className="text-orange-500" href="/your-path"><SiTensorflow /></Link>
-
-<Link className="text-blue-500" href="/your-path"><VscVscode /></Link>
-<Link className="text-white-500" href="/your-path"><FaGitAlt /></Link>
-<Link className="text-black" href="/your-path"><FaGithub /></Link>
-
-<Link className="text-green-600" href="/your-path"><DiNodejs /></Link>
-<Link className="text-blue-300" href="/your-path"><SiFastify /></Link>
-<Link className="text-green-700" href="/your-path"><DiDjango /></Link>
-<Link className="text-black" href="/your-path"><RiNextjsFill /></Link>
-
-
-
-<Link className="text-blue-600" href="/your-path"><FaChrome /></Link>
-
-<Link className="text-green-500" href="/your-path"><LitIcon className="text-sm !h-12"/></Link>
-<Link className="text-purple-500" href="/your-path"><FaBootstrap /></Link>
-<Link className="text-blue-500" href="/your-path"><RiTailwindCssFill /></Link>
 
 
 
@@ -104,25 +97,22 @@ export function Skills() {
             </h1>
             <div className="text-5xl opacity-75 flex gap-8 flex-wrap w-full sm:justify-center justify-center">
 
-<Link className="text-yellow-500" href="/your-path"><SiBabel /></Link>
-<Link className="text-orange-500" href="/your-path"><FaUbuntu /></Link>
+            <Link className="text-yellow-500" href="https://babeljs.io/"><div className={styles.scaleonhover}><SiBabel /></div></Link>
+<Link className="text-orange-500" href="https://ubuntu.com/"><div className={styles.scaleonhover}><FaUbuntu /></div></Link>
+<Link className="text-blue-800" href="https://www.microsoft.com/en-us/windows"><div className={styles.scaleonhover}><FaWindows /></div></Link>
+<Link className="text-pink-500" href="https://sass-lang.com/"><div className={styles.scaleonhover}><FaSass /></div></Link>
+<Link className="text-green-500" href="https://supabase.io/"><div className={styles.scaleonhover}><RiSupabaseFill /></div></Link>
+<Link className="text-red-600" href="https://render.com/"><div className={styles.scaleonhover}><SiRender /></div></Link>
+<Link className="text-blue-700" href="https://azure.microsoft.com/"><div className={styles.scaleonhover}><SiMicrosoftazure /></div></Link>
+<Link className="text-red-500" href="https://jupyter.org/"><div className={styles.scaleonhover}><SiJupyter /></div></Link>
+<Link className="text-black" href="https://www.kernel.org/"><div className={styles.scaleonhover}><FcLinux /></div></Link>
+<Link className="p-1 border rounded border-1 bg-black text-white" href="https://ui.shadcn.com/"><div className={styles.scaleonhover}><SiShadcnui /></div></Link>
+<Link className="text-yellow-300" href="https://webpack.js.org/"><div className={styles.scaleonhover}><SiWebpack /></div></Link>
+<Link className="text-blue-500" href="https://www.docker.com/"><div className={styles.scaleonhover}><FaDocker /></div></Link>
+<Link className="text-blue-600" href="https://www.sqlite.org/"><div className={styles.scaleonhover}><SiSqlite /></div></Link>
+<Link className="text-orange-500" href="https://www.mysql.com/"><div className={styles.scaleonhover}><SiMysql /></div></Link>
+<Link className="text-blue-600" href="https://www.postgresql.org/"><div className={styles.scaleonhover}><BiLogoPostgresql /></div></Link>
 
-<Link className="text-blue-800" href="/your-path"><FaWindows /></Link>
-
-<Link className="text-pink-500" href="/your-path"><FaSass /></Link>
-            <Link className="text-green-500" href="/your-path"><RiSupabaseFill /></Link>
-<Link className="text-red-600" href="/your-path"><SiRender /></Link>
-<Link className="text-blue-700" href="/your-path"><SiMicrosoftazure /></Link>
-<Link className="text-red-500" href="/your-path"><SiJupyter /></Link>
-<Link className="text-black" href="/your-path"><FcLinux /></Link>
-<Link className=" p-1 border rounded border-1 bg-black text-white" href="/your-path"><SiShadcnui /></Link>
-<Link className="text-yellow-300" href="/your-path"><SiWebpack /></Link>
-
-
-<Link className="text-blue-500" href="/your-path"><FaDocker /></Link>
-<Link className="text-blue-600" href="/your-path"><SiSqlite /></Link>
-<Link className="text-orange-500" href="/your-path"><SiMysql /></Link>
-<Link className="text-blue-600" href="/your-path"><BiLogoPostgresql /></Link>
             </div>
         </div>
     </div>

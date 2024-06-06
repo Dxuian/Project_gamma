@@ -12,7 +12,7 @@ import Link from 'next/link'
 export async function Component() {
   const isSignedIn = await isusersignin();
   return (
-    <div className="inline-flex !sticky top-4 mx-auto  rounded-md shadow-sm">
+    <div className="inline-flex !sticky top-4 mx-auto z-50 rounded-md shadow-sm">
       <Link href="/blog" aria-current="page" className="px-4 py-1 text-sm font-medium text-blue-700 bg-white border border-gray-200 rounded-s-lg hover:bg-gray-100 focus:z-10  focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700  dark:focus:text-white">
         Blog
       </Link>
@@ -53,6 +53,7 @@ import { AppWithUI } from "@/app/t"
 import About from "./about"
 import {Skills} from "./skills"
 import Scrollfx from "./scrollfx"
+import Projects from "./projects"
 export default async function Body() {
   return (
     <div className="w-full flex flex-col">
@@ -70,6 +71,7 @@ export default async function Body() {
         <About />
         <Skills />
         <Scrollfx />
+        <Projects />
         <Head />
         {/* </FollowerPointerCard> */}
       </Suspense>

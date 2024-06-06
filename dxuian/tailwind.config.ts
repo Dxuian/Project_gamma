@@ -8,6 +8,11 @@ const defaultTheme = require("tailwindcss/defaultTheme");
 const flowbite = require("flowbite-react/tailwind");
 const config = {
   mode:"jit",
+  variants: {
+    extend: {
+      transform: ['hover', 'focus'],
+    },
+  },
   rippleui: {
 		themes: [
 			{
