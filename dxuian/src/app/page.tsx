@@ -48,16 +48,17 @@ function Head() {
 import App from "@/app/ui/App"
 import isusersignin from "@/app/client"
 import Pa from "@/app/test/page"
-import { FollowerPointerCard, Lincomponent, TypewriterComponent } from "@/app/clienta"
+import { FollowerPointerCard, Lincomponent, TypewriterComponent , Footer } from "@/app/clienta"
 import { AppWithUI } from "@/app/t"
 import About from "./about"
 import {Skills} from "./skills"
 import Scrollfx from "./scrollfx"
 import Projects from "./projects"
+import { Skills as Skilsta } from "./skills11"
 export default async function Body() {
   return (
     <div className="w-full flex flex-col">
-      <Suspense fallback={<div className='skeleton wave w-[100vw] h-[100vh] success' ><div className="loading absolute top-1/2 mx-auto bottom-1/2 loading-infinity loading-lg"></div></div>}>
+      <Suspense fallback={<div className='skeleton wave w-[100vw] h-[100vh] success' ><div className="loading absolute top-1/2 mx-auto left-1/2 right-1/2 bottom-1/2 loading-infinity loading-lg"></div></div>}>
         {/* <FollowerPointerCard > */}
         <Lincomponent />
         {/* <Pa /> */}
@@ -72,6 +73,9 @@ export default async function Body() {
         <Skills />
         <Scrollfx />
         <Projects />
+        <Skilsta />
+        <Footer />
+        {/*
         <Head />
         {/* </FollowerPointerCard> */}
       </Suspense>
@@ -96,7 +100,6 @@ function Topanimations(){
         </div>
   )
 }
-
 
 
 

@@ -14,10 +14,10 @@ const projects: Project[] = [
     thumbnail: '/nf.jpg'
   },
   {
-    name: 'Personal Portfolio Website',
+    name: 'Personal Portfolio/blog Website',
     slug: '/',
     description:
-      'A personal portfolio to showcase your programming projects, resume, and skills in a beautifully designed format.',
+      'A personal portfolio + blog to showcase your programming projects, resume, and skills in a beautifully designed format.',
     thumbnail: '/portfolio.jpg'
   },
   {
@@ -32,7 +32,7 @@ const projects: Project[] = [
     slug: 'https://github.com/Dxuian/Youtube-shorts-blocker-extension',
     description:
     'A Chrome extension that allows users to block YouTube shorts for a distraction-free viewing experience.',
-    thumbnail: '/ytshort.jpg'
+    thumbnail: '/ytshort.gif'
   },
 ];
 

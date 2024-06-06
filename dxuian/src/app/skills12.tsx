@@ -6,8 +6,13 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { CodeIcon } from 'lucide-react';
 
-import { Skill } from '@/types/skill';
+// import { Skill } from '@/types/skill';
 
+export interface Skill {
+  name: string;
+  description?: string;
+  Icon?: React.ComponentType<{ className?: string }>;
+}
 import { cn } from '@/lib/utils';
 
 interface SkillCardProps extends Skill {

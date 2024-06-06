@@ -1,12 +1,53 @@
 import React from 'react';
-import SkillCard from './skill-card';
+import SkillCard from './skills12';
 
-import Reveal from '@/components/reveal';
+import Reveal from './reveal';
 
-import { skills } from '@/components/sections/skills/config';
-import MotionWrap from '@/components/motion-wrap';
 
-function Skills() {
+
+
+
+export interface Skill {
+  name: string;
+  description?: string;
+  Icon?: React.ComponentType<{ className?: string }>;
+}
+import {
+  CodeIcon,
+  DatabaseIcon,
+  LayoutIcon,
+  
+} from 'lucide-react';
+import { IoMdSpeedometer } from "react-icons/io";
+const skills: Skill[] = [
+  {
+    name: 'Web Development',
+    description: 'Building beautiful and functional websites.',
+    Icon: CodeIcon
+  },
+  {
+    name: 'UI/UX Design',
+    description: 'Creating delightful user experiences.',
+    Icon: LayoutIcon
+  },
+  {
+    name: 'Database Management',
+    description: 'Storing and organizing data efficiently.',
+    Icon: DatabaseIcon
+  },
+  {
+    name: 'Data Structures & Algorithms',
+    description: 'Data structures and algorithms  used to solve problems.',
+    Icon: IoMdSpeedometer
+  }
+];
+
+export { skills };
+
+
+import MotionWrap from './motion-wrap';
+
+export function Skills() {
   return (
     <MotionWrap className="w-full py-24 lg:py-32" id="skills">
       <div className="space-y-4 px-4 md:px-6 lg:space-y-10">

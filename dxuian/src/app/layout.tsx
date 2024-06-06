@@ -24,10 +24,12 @@ export default function RootLayout({
   );
 }
 
+import { Toaster } from "@/components/ui/toaster"
 function Container({ children }: { children: any }) {
   return (
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
       {children}
+      <Toaster />
     </ThemeProvider>
   )
 }
