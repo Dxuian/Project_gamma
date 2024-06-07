@@ -103,27 +103,33 @@ export   function Page({ blogslist, component }: { blogslist: any[], component: 
       <div className="flex gap-4 !w-full bg-gradient-to-b from-slate-50 from-30% via-gray-200 from-30% to-zinc-200  from-30% dark:bg-gradient-to-b dark:from-slate-900 dark:from-30% dark:via-violet-800 dark:from-30%  dark:to-fuchsia-900 dark:from-30% flex-col">
         {component}
         {/* //halowayfinder */}
-        {blogslist.map((x, key) => {
-          let timestampNumber = Number(x.timestamp);
-          let date = new Date(timestampNumber);
-          let datePart = date.toDateString(); // "Sun Jun 02 2024"
-          let timePart = date.toTimeString().split(' ')[0]; // "12:22:22"
-          let timestamp = datePart + ' ' + timePart;
 
-          return (
-            <CardWithForm
-              key={key}
-              src={x.filename}
-              alt={x.filenameforalt}
-              title={x.title}
-              username={x.by}
-              timestamp={timestamp}
-              content={x.content}
-              h={x.h}
-              w={x.w}
-            />
-          );
-        })}
+{blogslist.length === 0 ? (
+  <h1 className="text-center ">None yet</h1>
+) : (
+  blogslist.map((x, key) => {
+    let timestampNumber = Number(x.timestamp);
+    let date = new Date(timestampNumber);
+    let datePart = date.toDateString(); // "Sun Jun 02 2024"
+    let timePart = date.toTimeString().split(' ')[0]; // "12:22:22"
+    let timestamp = datePart + ' ' + timePart;
+
+    return (
+      <CardWithForm
+        key={key}
+        src={x.filename}
+        alt={x.filenameforalt}
+        title={x.title}
+        username={x.by}
+        timestamp={timestamp}
+        content={x.content}
+        h={x.h}
+        w={x.w}
+      />
+    );
+  })
+)}
+        
       </div>
     </>
   )
