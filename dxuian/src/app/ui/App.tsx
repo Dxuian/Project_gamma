@@ -37,7 +37,8 @@ export default function App({className } : {className:string}) {
 
   React.useEffect(() => {
     const animation = animate(progress, pathIndex, {
-      duration: 3,
+      duration: 4
+      ,
       // ease: "easeInOut",
       onComplete: () => {
         if (pathIndex === paths.length - 1) {

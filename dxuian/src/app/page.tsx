@@ -42,7 +42,7 @@ async function Component() {
 
 export default async function Body() {
   return (
-    <Suspense fallback={<div className='skeleton wave w-[100vw] h-[100vh] success' ><div className="loading absolute top-1/2 mx-auto left-1/2 right-1/2 bottom-1/2 loading-infinity loading-lg"></div></div>}>
+    <Suspense fallback={<div className='skeleton wave w-[100vw] h-[100vh] success' ><div className="loading absolute top-1/2 mx-auto  left-[45vw]  bottom-1/2 loading-infinity loading-lg"></div></div>}>
       
     <div className="w-full flex flex-col">
         <Lincomponent />
