@@ -19,7 +19,7 @@ import { Skills as Skilsta } from "./skills11"
 
 
 
-export async function Component() {
+async function Component() {
   const isSignedIn = await isusersignin();
   return (
     <div className="inline-flex !sticky top-12 md:top-4 mx-auto z-50 rounded-md shadow-sm">
