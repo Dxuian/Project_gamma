@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   authors: [{ name: 'dxu' }],
   creator: 'Unnat bharol',
   publisher: 'Unnat bharol @ vercel ',
-  keywords: ['Next.js', 'React', 'JavaScript','Portfolio','Blog' , 'Tailwind CSS','dxu' , 'dxuian' , 'unnat bharol'  ,'technology' , 'Open source0'  'Knowledge',
+  keywords: ['Next.js', 'React', 'JavaScript','Portfolio','Blog' , 'Tailwind CSS','dxu' , 'dxuian' , 'unnat bharol'  ,'technology' , 'Open source0' , 'Knowledge',
     "Javascript",
   "HTML5",
   "CSS3",
