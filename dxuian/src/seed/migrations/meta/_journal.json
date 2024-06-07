@@ -57,6 +57,13 @@
       "when": 1717104636675,
       "tag": "0007_awesome_skreet",
       "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "6",
+      "when": 1717746634514,
+      "tag": "0008_shallow_klaw",
+      "breakpoints": true
     }
   ]
 }
