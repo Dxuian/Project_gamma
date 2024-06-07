@@ -1,12 +1,59 @@
+"use server"
 import React from 'react';
 import ProjectCard from './project-card';
 
 import Reveal from './reveal';
 
-import { projects } from './config';
+
+
+
+
+ interface Project {
+  name: string;
+  slug: string;
+  description?: string;
+  thumbnail?: string;
+}
+
+const projects: Project[] = [
+  {
+    name: 'NeuraForex',
+    slug: 'https://neuraforex.azurewebsites.net/',
+    description:
+      'A Web app that helps users track forex activites  and lets them predict future prices to increase gains.',
+    thumbnail: '/nf.jpg'
+  },
+  {
+    name: 'Youtube shorts blocker - chrome extension',
+    slug: 'https://github.com/Dxuian/Youtube-shorts-blocker-extension',
+    description:
+    'A Chrome extension that allows users to block YouTube shorts for a distraction-free viewing experience.',
+    thumbnail: '/ytshort.gif'
+  },
+  {
+    name: 'Keychamp',
+    slug: 'https://keychamp.onrender.com/handler',
+    description:
+      'A platform where people can compete to see who is better at typing and can compete real-time.',
+    thumbnail: '/kc.jpg'
+  },
+  {
+    name: 'Personal Portfolio/blog Website',
+    slug: '/',
+    description:
+      'A personal portfolio + blog to showcase your programming projects, resume, and skills in a beautifully designed format.',
+    thumbnail: '/portfolio.jpg'
+  },
+
+];
+
+
+
+
+
 import MotionWrap from './motion-wrap';
 
-function Projects() {
+async function Projects() {
   return (
     <MotionWrap className="w-full py-24 lg:py-32" id="projects">
       <div className="space-y-4 px-4 md:space-y-6 md:px-6 lg:space-y-10">

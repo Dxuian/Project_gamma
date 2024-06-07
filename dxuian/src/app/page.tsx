@@ -3,7 +3,18 @@ import { Suspense, } from "react"
 import { ModeToggle } from "./ui/darkmode"
 import Link from 'next/link'
 
+import { signout } from "@/app/client"
 
+import App from "@/app/ui/App"
+import isusersignin from "@/app/client"
+// import Pa from "@/app/test/page"
+import {  Lincomponent, TypewriterComponent , Footer  } from "@/app/clienta"
+import { AppWithUI } from "@/app/t"
+import About from "./about"
+import {Skills} from "./skills"
+import Scrollfx from "./scrollfx"
+import Projects from "./projects"
+import { Skills as Skilsta } from "./skills11"
 
 
 
@@ -28,16 +39,7 @@ export async function Component() {
 
 
 
-import App from "@/app/ui/App"
-import isusersignin from "@/app/client"
-// import Pa from "@/app/test/page"
-import {  Lincomponent, TypewriterComponent , Footer ,AuroraBackground } from "@/app/clienta"
-import { AppWithUI } from "@/app/t"
-import About from "./about"
-import {Skills} from "./skills"
-import Scrollfx from "./scrollfx"
-import Projects from "./projects"
-import { Skills as Skilsta } from "./skills11"
+
 export default async function Body() {
   return (
     <Suspense fallback={<div className='skeleton wave w-[100vw] h-[100vh] success' ><div className="loading absolute top-1/2 mx-auto left-1/2 right-1/2 bottom-1/2 loading-infinity loading-lg"></div></div>}>
@@ -71,28 +73,29 @@ import Reveal from '@/app/reveal';
 
 function Topanimations(){
   return(
+        <Reveal >
     <div className="grid grid-cols-1 md:grid-cols-2 gap-32 p-8 !pt-12">
       <div className="relative  flex items-center justify-center">
-
+        <div className="relative  flex items-center justify-center">
         <AppWithUI /> 
+        </div>
         <div className="absolute  flex !text-6xl text-center">
           <TypewriterComponent />
         </div>
+      
       </div>
-      <div className="relative  flex items-center justify-center">
         <Reveal >
+      <div className="relative  flex items-center justify-center">
           <App className="transform rounded-lg border-2 border-slate-500 p-2 md:p-4 transition-transform duration-500 ease-in-out scale-75 z-10" />
-        </Reveal>
       </div>
+        </Reveal>
     </div>
+        </Reveal>
   )
 }
 
 
 
-
-import { signout } from "@/app/client"
-import { Skeleton } from "@/components/ui/skeleton";
 
 
 

@@ -1,9 +1,10 @@
+"use server"
 import React from 'react';
 import MotionWrap from '@/app/motion-wrap';
 import Reveal from '@/app/reveal';
 
 import Link from 'next/link';
-function About() {
+async function About() {
   return (
     <MotionWrap className="w-full py-24  lg:py-32" id="about">
       {/* TODO: Redesign for horizontal */}
@@ -76,7 +77,7 @@ import Image from 'next/image';
 
 
 
-export function Location() {
+export async function Location() {
   return (
     <div className="rounded-lg mt-4 mx-auto border bg-card text-card-foreground float-right w-full lg:w-3/4 mb-4">
       <div className="flex flex-col space-y-1.5 p-6">

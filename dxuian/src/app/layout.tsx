@@ -1,16 +1,24 @@
-// "use server"
-import type { Metadata } from "next";
 import "./globals.css";
-import { headers } from "next/headers";
+
 import styles from "./ui/styles.module.css";
 
 import { ThemeProvider } from "@/components/theme-provider"
 
+
+import type { Metadata } from "next";
 export const metadata: Metadata = {
-  title: "DXU",
-  description: "HI!!!!!!!!",
+  //@ts-ignore
+  title: {
+    default: 'DXU',
+  },
+  description: "Portfolio website built by dxu using Next.js and Tailwind CSS.",
+  authors: [{ name: 'dxu' }],
+  creator: 'Unnat bharol',
+  publisher: 'Unnat bharol @ vercel ',
+
 };
-export default function RootLayout({
+
+export default async  function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -23,12 +31,10 @@ export default function RootLayout({
     </html>
   );
 }
-import { Suspense } from "react"
 import { Toaster } from "@/components/ui/toaster"
 function Container({ children }: { children: any }) {
   return (
     <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
-
       {children}
       <Toaster />
     </ThemeProvider>

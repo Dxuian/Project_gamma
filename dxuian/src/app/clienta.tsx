@@ -196,7 +196,6 @@ import { FaDiscord } from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
 import { FaGithub } from "react-icons/fa";
 import { useToast } from "@/components/ui/use-toast"
-import { Toaster } from "@/components/ui/toaster"
 
 import { FaLinkedin } from "react-icons/fa";
 export function Footer()

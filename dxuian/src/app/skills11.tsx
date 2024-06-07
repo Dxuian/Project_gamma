@@ -1,3 +1,5 @@
+"use server"
+
 import React from 'react';
 import SkillCard from './skills12';
 
@@ -7,7 +9,7 @@ import Reveal from './reveal';
 
 
 
-export interface Skill {
+ interface Skill {
   name: string;
   description?: string;
   Icon?: React.ComponentType<{ className?: string }>;
@@ -42,12 +44,11 @@ const skills: Skill[] = [
   }
 ];
 
-export { skills };
 
 
 import MotionWrap from './motion-wrap';
 
-export function Skills() {
+export async function Skills() {
   return (
     <MotionWrap className="w-full py-24 lg:py-32" id="skills">
       <div className="space-y-4 px-4 md:px-6 lg:space-y-10">

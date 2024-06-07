@@ -1,3 +1,4 @@
+"use server"
 import { IoLogoJavascript } from "react-icons/io";
 import { FaHtml5 } from "react-icons/fa";
 import { FaCss3Alt } from "react-icons/fa";
@@ -37,7 +38,7 @@ import { SiShadcnui } from "react-icons/si";
 import { SiWebpack } from "react-icons/si";
 import Link from 'next/link';
 
-export function LitIcon({ className }: { className: string }) {
+export async function LitIcon({ className }: { className: string }) {
     return (
         <div className={className}>
             <svg width="100%" height="100%" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
@@ -53,7 +54,7 @@ export function LitIcon({ className }: { className: string }) {
 import Reveal from '@/app/reveal';
 
 import styles from "@/app/ui/addblog.module.css"
-export function Skills() {
+export async function Skills() {
     return (
         <section className="py-10">
             <div className="container mx-auto">

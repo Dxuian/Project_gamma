@@ -29,7 +29,7 @@ const SuspenseImage = ({ src, alt , h , w }:{src:any;alt:any ,h?:any ; w?:any}) 
     loadImage();
   }, [src]);
   if (isLoading) {
-    let height = Math.min(h, window.innerHeight * 0.3);
+    let height = Math.min(h, (window.innerHeight * 0.3)||720);
 let style = {
   height: `${height}px`,
   width: '100%',
