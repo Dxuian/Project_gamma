@@ -5,9 +5,11 @@ import { motion, useInView, useAnimation } from 'framer-motion';
 interface RevealProps {
   children: React.ReactNode;
   width?: 'fit-content' | '100%';
+  className?: string;
+  
 }
 
-const Reveal = ({ children, width = '100%' }: RevealProps) => {
+const Reveal = ({ children, width = '100%' , className }: RevealProps) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: false });
 
@@ -22,7 +24,7 @@ const Reveal = ({ children, width = '100%' }: RevealProps) => {
   }, [isInView]);
 
   return (
-    <div ref={ref} style={{ position: 'relative', width, overflow: 'hidden' }}>
+    <div ref={ref} className={className} style={{ position: 'relative', width, overflow: 'hidden' }}>
       <motion.div
         variants={{
           hidden: { opacity: 0, y: 75 },

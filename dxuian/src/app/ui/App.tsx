@@ -29,7 +29,7 @@ const colors = [
   "#00cc88",
 ];
 
-export default function App({className} : {className:string}) {
+export default function App({className } : {className:string}) {
   const [pathIndex, setPathIndex] = useState(0);
   const progress = useMotionValue(pathIndex);
   const fill = useTransform(progress, paths.map(getIndex), colors);
@@ -54,7 +54,7 @@ export default function App({className} : {className:string}) {
   return (
     <div className={className}>
     <svg width="400" height="400">
-      <g transform="translate(10 10) scale(17 17)">
+      <g className="mx-auto" transform=" scale(17 17)">
         <motion.path fill={fill} d={path} />
       </g>
     </svg>

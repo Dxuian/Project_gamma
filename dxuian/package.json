@@ -49,6 +49,7 @@
     "react-icons": "^5.2.1",
     "react-imgix": "^9.8.1",
     "react-lazy-load-image-component": "^1.6.0",
+    "react-responsive": "^10.0.0",
     "resend": "^3.2.0",
     "rippleui": "^1.12.1",
     "server-only": "^0.0.1",

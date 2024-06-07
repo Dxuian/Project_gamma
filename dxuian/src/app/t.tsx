@@ -3,18 +3,23 @@ import "@/app/ui/cir.css"
 import { useState } from "react";
 import { motion } from "framer-motion"
 
+import { useMediaQuery } from 'react-responsive'
+
 export default function App() {
+  const isSmallScreen = useMediaQuery({ query: '(max-width: 600px)' })
+  const scale = isSmallScreen ? 1.5 : 2;
+
   return (
     <motion.div
       className="box"
       layout // Keep the layout prop
       animate={{
-        scale: [1, 2, 2, 1, 1],
+        scale: [1, scale, scale, 1, 1],
         rotate: [0, 0, 180, 180, 0],
         borderRadius: ["0%", "0%", "50%", "50%", "0%"]
       }}
       transition={{
-        duration: 2,
+        duration: 10,
         ease: "easeInOut",
         times: [0, 0.2, 0.5, 0.8, 1],
         repeat: Infinity,

@@ -12,7 +12,7 @@ import Link from 'next/link'
 export async function Component() {
   const isSignedIn = await isusersignin();
   return (
-    <div className="inline-flex !sticky top-4 mx-auto z-50 rounded-md shadow-sm">
+    <div className="inline-flex !sticky top-12 md:top-4 mx-auto z-50 rounded-md shadow-sm">
       <Link href="/blog" aria-current="page" className="px-4 py-1 text-sm font-medium text-blue-700 bg-white border border-gray-200 rounded-s-lg hover:bg-gray-100 focus:z-10  focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700  dark:focus:text-white">
         Blog
       </Link>
@@ -33,16 +33,6 @@ export async function Component() {
   );
 }
 
-function Head() {
-  return (
-    <>
-      <div>
-        hello my name is unnat
-      </div>
-      <LoremIpsum />
-    </>
-  )
-}
 
 
 import App from "@/app/ui/App"
@@ -57,9 +47,9 @@ import Projects from "./projects"
 import { Skills as Skilsta } from "./skills11"
 export default async function Body() {
   return (
+        //  <FollowerPointerCard > 
     <div className="w-full flex flex-col">
       <Suspense fallback={<div className='skeleton wave w-[100vw] h-[100vh] success' ><div className="loading absolute top-1/2 mx-auto left-1/2 right-1/2 bottom-1/2 loading-infinity loading-lg"></div></div>}>
-        {/* <FollowerPointerCard > */}
         <Lincomponent />
         {/* <Pa /> */}
         {/* <div className=" !sticky top-4 left-1/2"> */}
@@ -75,29 +65,31 @@ export default async function Body() {
         <Projects />
         <Skilsta />
         <Footer />
-        {/*
-        <Head />
-        {/* </FollowerPointerCard> */}
+        
+        {/* <Head /> */}
       </Suspense>
+      {/* </FollowerPointerCard> */}
     </ div >
-
   )
 }
 
+import Reveal from '@/app/reveal';
 
 function Topanimations(){
   return(
-<div className="flex p-8  !pt-12 flex-row">
-          <div className="flex !w-1/2 mx-auto justify-center items-center">
-            <AppWithUI />
-          </div>
-          <div className="flex justify-center items-center !w-1/2">
-            <App className="" />
-            <div className="flex !text-6xl text-center absolute  ">
-              <TypewriterComponent />
-            </div>
-          </div>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-40 p-8 !pt-12">
+      <div className="relative flex items-center justify-center">
+        <AppWithUI />
+        <div className="absolute  flex !text-6xl text-center">
+          <TypewriterComponent />
         </div>
+      </div>
+      <div className="relative flex items-center justify-center">
+        <Reveal >
+          <App className="transform transition-transform duration-500 ease-in-out scale-75 z-10" />
+        </Reveal>
+      </div>
+    </div>
   )
 }
 
