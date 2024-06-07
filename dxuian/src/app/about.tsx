@@ -2,6 +2,7 @@ import React from 'react';
 import MotionWrap from '@/app/motion-wrap';
 import Reveal from '@/app/reveal';
 
+import Link from 'next/link';
 function About() {
   return (
     <MotionWrap className="w-full py-24  lg:py-32" id="about">
@@ -30,10 +31,9 @@ function About() {
           </p>
         </div>
         <p className="mt-6 max-w-[700px] text-gray-500 dark:text-gray-400 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-          I am a final year student at DTU and am  always up to leaning new things.
-          I have experience working with a variety of
-          web technologies and frameworks and I am always eager to learn new
-          things and take on new challenges.
+        I'm a final year student at DTU and am constantly learning new things.
+         My experience spans a range of web technologies, frameworks, and tools.
+        I'm always open to learning new concepts and am available for &nbsp;<Link scroll={false} href="#footerformer"> hiring opportunities</Link>
         </p>
       </div>
     </MotionWrap>

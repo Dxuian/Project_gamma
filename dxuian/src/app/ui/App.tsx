@@ -37,7 +37,7 @@ export default function App({className } : {className:string}) {
 
   React.useEffect(() => {
     const animation = animate(progress, pathIndex, {
-      duration: 25,
+      duration: 6,
       // ease: "easeInOut",
       onComplete: () => {
         if (pathIndex === paths.length - 1) {
@@ -52,17 +52,58 @@ export default function App({className } : {className:string}) {
   }, [pathIndex]);
 
   return (
-    <div className={className}>
-    <svg width="400" height="400">
-      <g className="mx-auto" transform=" scale(17 17)">
-        <motion.path fill={fill} d={path} />
+    <div className={className} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+    <svg className="!mx-auto" width="400" height="400">
+      <g className="!mx-auto" transform=" scale(17 17)">
+        <motion.path fill={fill}  d={path} />
       </g>
     </svg>
     </div>
   );
 }
+// import  { useMemo } from 'react';
 
+// export default function App({ className }: { className: string }) {
+//   const [pathIndex, setPathIndex] = React.useState(0);
+//   const progress = useMotionValue(pathIndex);
 
+//   // Construct the paths array inside the component
+//   const paths = useMemo(
+//     () => [lightning, hand, heart, star, game, lightning],
+//     []
+//   );
+
+//   // Use useTransform directly without memoization
+//   const fill = useTransform(progress, paths.map(getIndex), colors);
+
+//   // Use useFlubber directly without memoization
+//   const path = useFlubber(progress, paths);
+
+//   React.useEffect(() => {
+//     const animation = animate(progress, pathIndex, {
+//       duration: 10,
+//       onComplete: () => {
+//         if (pathIndex === paths.length - 1) {
+//           progress.set(0);
+//           setPathIndex(1);
+//         } else {
+//           setPathIndex(pathIndex + 1);
+//         }
+//       },
+//     });
+//     return () => animation.stop();
+//   }, [pathIndex, progress, paths]);
+
+//   return (
+//     <div className={className} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+//       <svg className="!mx-auto" width="400" height="400">
+//         <g className="!mx-auto" transform=" scale(17 17)">
+//           <motion.path fill={fill} d={path} />
+//         </g>
+//       </svg>
+//     </div>
+//   );
+// }
 
 
 

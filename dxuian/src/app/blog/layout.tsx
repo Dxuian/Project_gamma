@@ -43,16 +43,21 @@ export async  function Component() {
 import { Suspense } from "react"
 import { Skeleton } from "@/components/ui/skeleton"
 import Blogsser from "@/app/blog/blogscli";
+
+import { FollowerPointerCard} from "@/app/clienta"
+
 export default async function RootLayout({ children }: { children: any }) {
   const component = Component();
   const isusersignedin = await isusersignin();
   return (
+    <FollowerPointerCard > 
   <div id="con" className="!w-full">
     {children} 
     <Suspense fallback={<Skeleton className="w-[100vw] h-[100vh]" ><div className="loading absolute top-1/2 left-1/2 mx-auto bottom-1/2 loading-infinity loading-lg"></div></Skeleton>}>
       <Blogsser component={component} />
     </Suspense>
   </div >
+</FollowerPointerCard> 
   );
 }
 

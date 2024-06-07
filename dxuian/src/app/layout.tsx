@@ -23,11 +23,12 @@ export default function RootLayout({
     </html>
   );
 }
-
+import { Suspense } from "react"
 import { Toaster } from "@/components/ui/toaster"
 function Container({ children }: { children: any }) {
   return (
-    <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+    <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
+
       {children}
       <Toaster />
     </ThemeProvider>

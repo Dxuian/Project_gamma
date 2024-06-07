@@ -89,7 +89,7 @@ export function Skills() {
                 </div>
                 <div data-aos="fade-up" data-aos-anchor-placement="center-bottom">
                     <h1 className="mt-8 text-2xl text-transparent bg-clip-text bg-gradient-to-r from-[#d7d7d7] to-[#616161] font-extrabold py-3 text-center">
-                        Tools
+                        Tools i've used 
                     </h1>
                     <div className="text-5xl opacity-75 flex gap-8 flex-wrap w-full sm:justify-center justify-center">
 
@@ -141,7 +141,7 @@ export function Skills() {
                         </span>
                         <span>
                             <Reveal>
-                                <Link className="text-blue-700" href="https://azure.microsoft.com/">
+                                <Link className="text-blue-700" href="https://azure.microsoft.com/en-in/products/app-service/containers?activetab=pivot:deploytab">
                                     <div className={styles.scaleonhover}>
                                         <SiMicrosoftazure />
                                     </div>

@@ -78,7 +78,7 @@ export default function Scrollfx() {
   return (
 <div className="bg-gradient-to-t from-[#020817] my-8 -skew-y-6 via-[#f05252] 10% to-[#020817]">
       <section className="bg-red-500 mt-6 mb-6  !w-[100vw] -rotate-5 PY-2 ">
-  <ParallaxText baseVelocity={-5}>Something corny</ParallaxText>
+  <ParallaxText baseVelocity={-5}>Fueled by curiosity, powered by knowledge.</ParallaxText>
   <ParallaxText baseVelocity={5}>Im always open to learning new things</ParallaxText>
 </section>
 </div>

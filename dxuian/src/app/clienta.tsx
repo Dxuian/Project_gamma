@@ -198,20 +198,23 @@ import { FaGithub } from "react-icons/fa";
 import { useToast } from "@/components/ui/use-toast"
 import { Toaster } from "@/components/ui/toaster"
 
-
+import { FaLinkedin } from "react-icons/fa";
 export function Footer()
 {
   const { toast } = useToast()
   
   return (
-<footer className="footer items-center p-4 border-t-2 text-neutral-content">
-    <aside className="items-center grid-flow-col">
+<footer id="footerformer" className="footer items-center p-4 border-t-2 text-neutral-content">
+    <aside className="items-center text-center md:text-right grid-flow-col">
     <svg width="36" height="36" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fillRule="evenodd" clipRule="evenodd" className="fill-current"><path d="M22.672 15.226l-2.432.811.841 2.515c.33 1.019-.209 2.127-1.23 2.456-1.15.325-2.148-.321-2.463-1.226l-.84-2.518-5.013 1.677.84 2.517c.391 1.203-.434 2.542-1.831 2.542-.88 0-1.601-.564-1.86-1.314l-.842-2.516-2.431.809c-1.135.328-2.145-.317-2.463-1.229-.329-1.018.211-2.127 1.231-2.456l2.432-.809-1.621-4.823-2.432.808c-1.355.384-2.558-.59-2.558-1.839 0-.817.509-1.582 1.327-1.846l2.433-.809-.842-2.515c-.33-1.02.211-2.129 1.232-2.458 1.02-.329 2.13.209 2.461 1.229l.842 2.515 5.011-1.677-.839-2.517c-.403-1.238.484-2.553 1.843-2.553.819 0 1.585.509 1.85 1.326l.841 2.517 2.431-.81c1.02-.33 2.131.211 2.461 1.229.332 1.018-.21 2.126-1.23 2.456l-2.433.809 1.622 4.823 2.433-.809c1.242-.401 2.557.484 2.557 1.838 0 .819-.51 1.583-1.328 1.847m-8.992-6.428l-5.01 1.675 1.619 4.828 5.011-1.674-1.62-4.829z"></path></svg> 
     <p>Copyright © 2024 - All right reserved</p>
   </aside> 
   <nav className="grid-flow-col  text-3xl gap-4 md:place-self-center justify-self-end">
     <a href="https://discord.gg/tSwRjq2ZVA" className={`text-blue-500 hover:text-purple-700  ${styles.scaleonhover}`} title={"Join the discord server for quick chat"}>
     <FaDiscord />
+    </a>
+    <a href="https://www.linkedin.com/in/unnat-bharol" className={`text-blue-500 hover:text-blue-500  ${styles.scaleonhover}`} title={"Join the discord server for quick chat"}>
+    <FaLinkedin />
     </a>
     <span className={`text-red-500 hover:text-orange-700  ${styles.scaleonhover}`}>
 <SiGmail title={"Click to copy Email"}
@@ -237,6 +240,61 @@ export function Footer()
 
 
 
+
+
+
+import  { ReactNode } from "react";
+
+interface AuroraBackgroundProps extends React.HTMLProps<HTMLDivElement> {
+  children: ReactNode;
+  showRadialGradient?: boolean;
+}
+
+export const AuroraBackground = ({
+  className,
+  children,
+  showRadialGradient = true,
+  ...props
+}: AuroraBackgroundProps) => {
+  return (
+    <main>
+      <div
+        className={cn(
+          "relative flex flex-col  h-[100vh] items-center justify-center bg-zinc-50 dark:bg-zinc-900  text-slate-950 transition-bg",
+          className
+        )}
+        {...props}
+      >
+        <div className="absolute inset-0 overflow-hidden">
+          <div
+            //   I'm sorry but this is what peak developer performance looks like // trigger warning
+            className={cn(
+              `
+            [--white-gradient:repeating-linear-gradient(100deg,var(--white)_0%,var(--white)_7%,var(--transparent)_10%,var(--transparent)_12%,var(--white)_16%)]
+            [--dark-gradient:repeating-linear-gradient(100deg,var(--black)_0%,var(--black)_7%,var(--transparent)_10%,var(--transparent)_12%,var(--black)_16%)]
+            [--aurora:repeating-linear-gradient(100deg,var(--blue-500)_10%,var(--indigo-300)_15%,var(--blue-300)_20%,var(--violet-200)_25%,var(--blue-400)_30%)]
+            [background-image:var(--white-gradient),var(--aurora)]
+            dark:[background-image:var(--dark-gradient),var(--aurora)]
+            [background-size:300%,_200%]
+            [background-position:50%_50%,50%_50%]
+            filter blur-[10px] invert dark:invert-0
+            after:content-[""] after:absolute after:inset-0 after:[background-image:var(--white-gradient),var(--aurora)] 
+            after:dark:[background-image:var(--dark-gradient),var(--aurora)]
+            after:[background-size:200%,_100%] 
+            after:animate-aurora after:[background-attachment:fixed] after:mix-blend-difference
+            pointer-events-none
+            absolute -inset-[10px] opacity-50 will-change-transform`,
+
+              showRadialGradient &&
+                `[mask-image:radial-gradient(ellipse_at_100%_0%,black_10%,var(--transparent)_70%)]`
+            )}
+          ></div>
+        </div>
+        {children}
+      </div>
+    </main>
+  );
+};
 
 
 
