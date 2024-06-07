@@ -32,7 +32,7 @@ const SuspenseImage = ({ src, alt, h, w }: { src: any; alt: any, h?: any; w?: an
 if (isLoading) {
   let height;
   if (typeof window !== 'undefined') {
-    height = Math.min(h, (window.innerHeight * 0.3) || 720);
+    height = Math.min(h, (window.innerHeight * 0.3) || 402);
   } else {
     height = h;
   }
