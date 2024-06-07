@@ -80,9 +80,9 @@ function Topanimations(){
         </div>
       </div>
       <div className="relative  flex items-center justify-center">
-        {/* <Reveal > */}
+        <Reveal >
           <App className="transform rounded-lg border-2 border-slate-500 p-2 md:p-4 transition-transform duration-500 ease-in-out scale-75 z-10" />
-        {/* </Reveal> */}
+        </Reveal>
       </div>
     </div>
   )
