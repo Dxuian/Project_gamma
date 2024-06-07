@@ -91,7 +91,7 @@ export async function Skills() {
                 </div>
                 <div data-aos="fade-up" data-aos-anchor-placement="center-bottom">
                     <h1 className="mt-8 text-2xl text-transparent bg-clip-text bg-gradient-to-r from-[#d7d7d7] to-[#616161] font-extrabold py-3 text-center">
-                        Tools i've used 
+                        Tools i&apos;ve used 
                     </h1>
                     <div className="text-5xl opacity-75 flex gap-8 flex-wrap w-full sm:justify-center justify-center">
 

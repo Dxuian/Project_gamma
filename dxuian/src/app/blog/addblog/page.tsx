@@ -140,12 +140,13 @@ let initialState = {
 import { redirect } from 'next/navigation'
 import { useRouter } from 'next/navigation'
 export function Form({ setOpen }: any) {
-  console.log("hahaha");
+  // console.log("hahaha");
+  const router = useRouter();
   let [state, action] = useFormState(test, initialState);
   debugger; 
   if(state?.message=="Success")
   {
-    const router = useRouter();
+    
     console.log("success");
     setOpen(false);
     router.push("/blog");

@@ -32,9 +32,9 @@ async function About() {
           </p>
         </div>
         <p className="mt-6 max-w-[700px] text-gray-500 dark:text-gray-400 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-        I'm a final year student at DTU and am constantly learning new things.
+        I&apos;m a final year student at DTU and am constantly learning new things.
          My experience spans a range of web technologies, frameworks, and tools.
-        I'm always open to learning new concepts and am available for &nbsp;<Link scroll={false} href="#footerformer"> hiring opportunities</Link>
+        I&apos;m always open to learning new concepts and am available for &nbsp;<Link scroll={false} href="#footerformer"> hiring opportunities</Link>
         </p>
       </div>
     </MotionWrap>

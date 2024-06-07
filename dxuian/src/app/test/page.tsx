@@ -166,7 +166,7 @@ export function Pages({ blogslist }: { blogslist: any[] }) {
       <motion.div id="hell" className="fixed z-10 top-0 left-0 right-0 h-[10px] bg-red-500 origin-left" style={{ scaleX }} />
       <div className="flex gap-4 !w-full bg-gradient-to-b from-slate-50 from-30% via-gray-200 from-30% to-zinc-200  from-30% dark:bg-gradient-to-b dark:from-slate-900 dark:from-30% dark:via-violet-800 dark:from-30%  dark:to-fuchsia-900 dark:from-30% flex-col">
         <Components />
-        {blogslist.map((x) => (<CardWithForm src={x.filename} alt={x.filenameforalt} title={x.title} username={x.by} timestamp={x.timestamp} content={x.content} />))}
+        {blogslist.map((x,index) => (<CardWithForm  key={index} src={x.filename} alt={x.filenameforalt} title={x.title} username={x.by} timestamp={x.timestamp} content={x.content} />))}
       </div>
     </>
   )
@@ -177,7 +177,7 @@ export function Pages({ blogslist }: { blogslist: any[] }) {
 
 
 
-export function CardWithForm({ src, alt, title, username, timestamp, content, h, w }: { src?: any; alt?: any; content: any; title?: any; username: any; timestamp: any; h?: any; w?: any }) {
+export function CardWithForm({ src, alt, title, username, timestamp, content, h, w , key }: { src?: any; alt?: any; content: any; title?: any; username: any; timestamp: any; h?: any; w?: any ; key:any }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
   return (<>

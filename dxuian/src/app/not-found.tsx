@@ -44,7 +44,7 @@ export default function NotFound() {
       Uh-oh!
     </h1>
 
-    <p className="mt-4 text-gray-500 dark:text-gray-400">We can't find that page.</p>
+    <p className="mt-4 text-gray-500 dark:text-gray-400">We can&apos;t find that page.</p>
     <div className="m-2 p-2 text-gray-500 border  border-1 border-slate-500 rounded-md">
     <Link className="mt-4   dark:text-gray-400" href="/">Return Home</Link>
     </div>

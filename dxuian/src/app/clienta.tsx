@@ -160,7 +160,7 @@ export const TypewriterComponent = () => {
   return (
     <div>
       <h1>
-        Hi, I'm dxu&nbsp;
+        Hi, I&apos;m dxu&nbsp;
         <span id="changingWord">
           <Typewriter
             onInit={(typewriter) => {
