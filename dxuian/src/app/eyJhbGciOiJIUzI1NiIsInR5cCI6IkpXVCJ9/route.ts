@@ -36,7 +36,7 @@ export async function GET(request: NextRequest) {
 
 
 
-export async function finddb() {
+async function finddb() {
     const connectionString = process.env.DATABASE_URL as string
     const client = postgres(connectionString, { prepare: false, ssl: { rejectUnauthorized: false } });
     const db = await drizzle(client, { schema });
