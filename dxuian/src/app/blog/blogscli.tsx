@@ -1,9 +1,7 @@
 "use server"
 import 'server-only';
 
-import SuspenseImage from "@/app/blog/bi"
 import Script from 'next/script'
-import { Suspense } from 'react';
 import  {Page}  from '@/app/test/page'
 import * as schema from '@/seed/schema';
 import { drizzle } from 'drizzle-orm/postgres-js';
@@ -15,6 +13,7 @@ export async function fetchblogs() {
   const connectionString = process.env.DATABASE_URL as string
   const client = postgres(connectionString, { prepare: false, ssl: { rejectUnauthorized: false } });
   const db = await drizzle(client, { schema });
+
   let result: { by: string; title: string | null; content: string; filename: any; timestamp: bigint; filenameforalt?: string ; h?:any ; w?:any }[] = await db.select({
     by: posts.by,
     title: posts.title,
@@ -24,7 +23,8 @@ export async function fetchblogs() {
   })
     .from(posts)
     .orderBy(desc(posts.timestamp));
-  let supabase = await createClient();
+
+  // let supabase = await createClient();
   for (let x of result) {
     if (x.filename) {
       let temp = x.filename.split(process.env.SEPARATOR as string)
@@ -32,14 +32,27 @@ export async function fetchblogs() {
       x.h = temp[2];
       x.w = temp[3];
       console.log(x.filenameforalt)
-      const { data, error } = await supabase.storage.from('portfolioblog').createSignedUrl(x.filename, Number(process.env.IMGTIMEOUT) as number)
-      if (data) {
-        x.filename = data.signedUrl
-      }
-      else {
-        x.filename = "skeletonimg.jpg"
-        x.filenameforalt = "error loading image"
-      }
+      // const { data, error } = await supabase.storage.from('portfolioblog').createSignedUrl(x.filename, Number(process.env.IMGTIMEOUT) as number)
+      let link  =`https://jsiydmlmywbrdnwjwwik.supabase.co/storage/v1/object/public/portfolioblog/${x.filename}`
+      x.filename = link
+
+      // let starttime = new Date().getTime();
+      // let response =  await (fetch(link))
+      // response = await response
+
+
+      // let endtime = new Date().getTime();
+      // console.log("Time taken for fetching image: ", endtime - starttime, "ms")
+      // console.log(data?.signedUrl)
+      //@ts-ignore
+      // if ((await response)?.statusCode =="404")
+      //   {
+
+      //   }
+      // else {
+      //   x.filename = "skeletonimg.jpg"
+      //   x.filenameforalt = "error loading image"
+      // }
     }
   }
   return result;
@@ -57,7 +70,6 @@ export default  async function Blogsser({component}: {component: any}) {
        <Script src="lazysizes.min.js" strategy="lazyOnload" />
       </div>
   );
-
 }
 
 

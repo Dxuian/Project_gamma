@@ -29,18 +29,22 @@ const SuspenseImage = ({ src, alt, h, w }: { src: any; alt: any, h?: any; w?: an
   if (src == "skeletonimg.jpg") {
     return <Skeleton className='h-96 w-full' />;
   }
-  if (isLoading) {
-    let height = Math.min(h, (window.innerHeight * 0.3) || 720);
-    let style = {
-      height: `${height}px`,
-      width: '100%',
-    };
-    return <Skeleton style={style} />;
+if (isLoading) {
+  let height;
+  if (typeof window !== 'undefined') {
+    height = Math.min(h, (window.innerHeight * 0.3) || 720);
+  } else {
+    height = h;
   }
+  let style = {
+    height: `${height}px`,
+    width: '100%',
+  };
+  return <Skeleton style={style} />;
+}
   if (error) {
-    let height = h;
     let style = {
-      height: `${height}px`,
+      height: `${360}px`,
       width: '100%',
     };
     console.log(("An error occurred while loading the image"));
