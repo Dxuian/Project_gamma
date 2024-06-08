@@ -2,9 +2,6 @@
 import {
     Dialog,
     DialogContent,
-    DialogDescription,
-    DialogHeader,
-    DialogTitle,
     DialogTrigger,
 } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
@@ -18,7 +15,6 @@ let signinitialState = {
 import React from "react";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
-import { cn } from "@/lib/utils"
 import {IconBrandGoogle} from "@tabler/icons-react";
 
 import {
@@ -29,7 +25,6 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import { signUpNewUser } from "./server";
-import { ButtonOutline } from "@/app/blog/staticcom";
 
 
 
@@ -74,10 +69,6 @@ export default  function Signinaltdialogbox() {
     )
 }
 
-
-let signinitialStategoogle :any  = {
-  message:""
-}
 
 
 function Submitgoogle() {
@@ -128,21 +119,15 @@ function Singinnormal(){
   return(<button type="submit" className="btn btn-primary w-full">Sign in {pending ? <span className="loading loading-spinner text-warning"></span>  : null}</button>)
 }
 
-let actiongoogle = async () => {
-  debugger ; 
-  const supabase = await frontendclient();
-  await supabase.auth.signInWithOAuth({
-    provider:"google",
-    options: {
-      redirectTo: `${location.origin}/auth/callback`,
-    },
-  })      
+
+
+let actiongoogle2 = async () => {
+  debugger ;
+  signIn("google")
 }
 
 
-import { useRouter } from "next/navigation";
-// import {useEffect} from "react";
-import { createClient as frontendclient } from "@/utils/supabase/client";
+import { signIn } from "next-auth/react"
  function Signinform({setter}:{setter:any}) {
     let [state , action ] = useFormState(signin, signinitialState)
 
@@ -153,9 +138,14 @@ import { createClient as frontendclient } from "@/utils/supabase/client";
     <div className="flex w-full flex-col gap-2">
       <p>Sign in with</p>
       <div className="flex w-full flex-col gap-2">
-        <form action={actiongoogle}>
+        {/* <Fomponent> */}
+          {/* <Submitgoogle></Submitgoogle> */}
+        {/* </Fomponent> */}
+        <form action={actiongoogle2}>
           <Submitgoogle></Submitgoogle>
         </form>
+      {/* <Button onClick={() => signIn("google")}>Sign In</Button> */}
+
       </div>
     </div>
     <form action={action}>
@@ -228,16 +218,6 @@ function Singupsubmit(){
 export  function Signupform() {
   var [state , action] =  useFormState(signUpNewUser,initialState)
   // window.history.pushState({}, "", "/blog/signup");
-  let actiongoogle = async () => {
-    debugger ; 
-    const supabase = await frontendclient();
-    await supabase.auth.signInWithOAuth({
-      provider:"google",
-      options: {
-        redirectTo: `${location.origin}/auth/callback`,
-      },
-    })      
-  }
   return (
     <Card className="mx-auto max-w-sm">
       <CardHeader>
@@ -278,9 +258,9 @@ export  function Signupform() {
           <Singupsubmit />
           {state?.message}
           </form>
-          <Button onClick={actiongoogle}  variant="outline" className="w-full ">
-          <IconBrandGoogle className="h-4 w-4 text-neutral-800 dark:text-neutral-300" /> &nbsp; &nbsp;   Sign in with Google
-          </Button>
+          <form action={actiongoogle2}>
+            <Submitgoogle2 />
+          </form>
         </div>
         <div className="mt-4 text-center text-sm">
           
@@ -291,10 +271,35 @@ export  function Signupform() {
 }
 
 
+export function Submitgoogle2(){
+  let { pending } = useFormStatus();
+  const [state, setState] = useState(false);
 
+  useEffect(() => {
+    if (pending) {
+      setState(true);
+      debugger;
+    }
+  }, [pending]);
+  return (
+    <Button type="submit" variant="outline" className="w-full ">
+          <IconBrandGoogle className="h-4 w-4 text-neutral-800 dark:text-neutral-300" /> &nbsp; &nbsp;   Sign in with Google
+          {(pending || state) &&   <span className="inline-flex items-center">
+
+<span className="inline-block ml-2">
+  <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24" className="w-4 h-4 text-gray-300 animate-spin">
+    <path d="M32 3C35.8083 3 39.5794 3.75011 43.0978 5.20749C46.6163 6.66488 49.8132 8.80101 52.5061 11.4939C55.199 14.1868 57.3351 17.3837 58.7925 20.9022C60.2499 24.4206 61 28.1917 61 32C61 35.8083 60.2499 39.5794 58.7925 43.0978C57.3351 46.6163 55.199 49.8132 52.5061 52.5061C49.8132 55.199 46.6163 57.3351 43.0978 58.7925C39.5794 60.2499 35.8083 61 32 61C28.1917 61 24.4206 60.2499 20.9022 58.7925C17.3837 57.3351 14.1868 55.199 11.4939 52.5061C8.801 49.8132 6.66487 46.6163 5.20749 43.0978C3.7501 39.5794 3 35.8083 3 32C3 28.1917 3.75011 24.4206 5.2075 20.9022C6.66489 17.3837 8.80101 14.1868 11.4939 11.4939C14.1868 8.80099 17.3838 6.66487 20.9022 5.20749C24.4206 3.7501 28.1917 3 32 3L32 3Z" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"></path>
+    <path d="M32 3C36.5778 3 41.0906 4.08374 45.1692 6.16256C49.2477 8.24138 52.7762 11.2562 55.466 14.9605C58.1558 18.6647 59.9304 22.9531 60.6448 27.4748C61.3591 31.9965 60.9928 36.6232 59.5759 40.9762" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" className="text-gray-900"></path>
+  </svg>
+</span>
+</span> }
+    </Button>
+  )
+}
 
 import { usePathname } from 'next/navigation'
 import  Link  from 'next/link'
+import { Sub } from "@radix-ui/react-dropdown-menu";
 export   function Redirecttaddblog({className}:{className:string}) {
   const router = usePathname();
   if (router == "/blog/addblog") {
@@ -306,13 +311,13 @@ export   function Redirecttaddblog({className}:{className:string}) {
 
 
 
-import { signout } from "@/app/client"
-export function Clicomp({className}:{className:string}){
+// import { signout } from "@/app/client"
+// export function Clicomp({className}:{className:string}){
 
-  console.log("ok giving signouts")
-  return (
-    <form action={signout}>
-            <button   type="submit" className="!text-lg !text-blue-500 !font-semibold !bg-gray-100 !p-4 rounded shadow-lg !px-4">Sign out toh krle</button>
-    </form>
-  )
-}
+//   console.log("ok giving signouts")
+//   return (
+//     <form action={signout}>
+//             <button   type="submit" className="!text-lg !text-blue-500 !font-semibold !bg-gray-100 !p-4 rounded shadow-lg !px-4">Sign out toh krle</button>
+//     </form>
+//   )
+// }

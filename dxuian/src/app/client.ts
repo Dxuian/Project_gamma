@@ -2,33 +2,50 @@
 import { createClient  as backendclient} from '@/utils/supabase/server'
 // import { createClient  as frontend} from '@/utils/supabase/client'
 import { redirect } from 'next/navigation'
+import { signIn } from "@/auth"
 
+
+ 
+import { object, string } from "zod"
+ 
+const signInSchema = object({
+  email: string({ required_error: "Email is required" })
+    .min(1, "Email is required")
+    .email("Invalid email"),
+  password: string({ required_error: "Password is required" })
+    .min(1, "Password is required")
+    .min(6, "Password must be more than 6 characters")
+    .max(32, "Password must be less than 32 characters"),
+})
 export async function signin(prevstate:any , formData:FormData) {
     // debugger ; 
     const supaback =  await backendclient()
     let email = String(formData.get('email'));
     let password = String(formData.get('password'));
-    let data , error;
-    // debugger;
-    // console.log(`email, password are ${email}, ${password}`)
+    let result =  signInSchema.safeParse({
+      email: email,
+      password: password,
+    });
+    if(!result.success) {
+      return { message: `try again: ${JSON.parse(result.error.message)[0].message}` };
+    }
+    
+    signIn("credentials", formData)
     try {
-      ({ data, error } = await supaback.auth.signInWithPassword({
-        email: email,
-        password: password,
-      }));
+
     } catch (e) {
       // console.log(e);
       return { message: (e as Error).message };
     }
 
-    let session = await supaback.auth.getSession();
-    // let session = await supabaseback.auth.getSession();
-    let access_token = session?.data.session?.access_token as string;
-    let refresh_token = session?.data.session?.refresh_token as string;
-    const sessionRes = await supaback.auth.setSession({
-        access_token,
-        refresh_token,
-      });
+    // let session = await supaback.auth.getSession();
+    // // let session = await supabaseback.auth.getSession();
+    // let access_token = session?.data.session?.access_token as string;
+    // let refresh_token = session?.data.session?.refresh_token as string;
+    // const sessionRes = await supaback.auth.setSession({
+    //     access_token,
+    //     refresh_token,
+    //   });
     
     // console.log("logged in !!!!!!")
     await redirect("/blog/addblog")
@@ -36,22 +53,42 @@ export async function signin(prevstate:any , formData:FormData) {
 }
 export const gotoblog = () =>{()=>{redirect("/blog")}}
 
+
+
+import {signOut } from "@/auth"
 export async function signout() {
-  const supaback = await backendclient()
-  // debugger;
-     const { error } = await supaback.auth.signOut()    // await supabaseback.auth.signOut();
-    console.log("logged out !!!!!!")
+  // const supaback = await backendclient()
+  // // debugger;
+  //    const { error } = await supaback.auth.signOut()    // await supabaseback.auth.signOut();
+  //   console.log("logged out !!!!!!")
+    await signOut()
     redirect("/blog/signin")
 }
 
 
+// export default async function isusersignin() {
+//   const supaback = await backendclient()
+//   const { data: { user } } = await supaback.auth.getUser() 
+//    if (user) {
+//      return true;
+//    }
+//    return false ;
+// }
+import { auth } from "../auth"
 export default async function isusersignin() {
-  const supaback = await backendclient()
-  const { data: { user } } = await supaback.auth.getUser() 
-   if (user) {
-     return true;
-   }
-   return false ;
+  const session = await auth()
+ console.log("lmaooooooo")
+  if (!session?.user){
+
+    return false
+  } 
+  return session
+  // const supaback = await backendclient()
+  // const { data: { user } } = await supaback.auth.getUser() 
+  //  if (user) {
+  //    return true;
+  //  }
+  //  return false ;
 }
 
 
@@ -60,7 +97,6 @@ export async function fileupload(file:Buffer ,  filename:string , supabase:any)
 {
     // Create Supabase client
     // let isusersignissn = await isusersignin() ;
-    // const supabase = await createClient(process.env.NEXT_PUBLIC_SUPABASE_URL as string ,process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY as string)
     uploadFile(file,filename,supabase)
     // Upload file using standard upload
 }

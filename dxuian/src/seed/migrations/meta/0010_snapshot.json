@@ -1,7 +1,31 @@
 {
+  "id": "35690c59-7b36-46a3-96ff-4023ce3591c2",
+  "prevId": "f2cc3508-0997-48d7-a4b9-545a02f30e99",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
+    "public.addordel": {
+      "name": "addordel",
+      "schema": "",
+      "columns": {
+        "string": {
+          "name": "string",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "when": {
+          "name": "when",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
     "public.posts": {
       "name": "posts",
       "schema": "",
@@ -45,6 +69,7 @@
       },
       "indexes": {
         "timestampidx": {
+          "name": "timestampidx",
           "columns": [
             {
               "expression": "timestamp",
@@ -53,10 +78,10 @@
               "nulls": "last"
             }
           ],
-          "name": "timestampidx",
           "isUnique": false,
+          "concurrently": false,
           "method": "btree",
-          "concurrently": false
+          "with": {}
         }
       },
       "foreignKeys": {},
@@ -72,21 +97,47 @@
       "uniqueConstraints": {
         "posts_filename_unique": {
           "name": "posts_filename_unique",
+          "nullsNotDistinct": false,
           "columns": [
             "filename"
-          ],
-          "nullsNotDistinct": false
+          ]
         }
       }
+    },
+    "public.user": {
+      "name": "user",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "email": {
+          "name": "email",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
     }
   },
   "enums": {},
   "schemas": {},
   "_meta": {
+    "columns": {},
     "schemas": {},
-    "tables": {},
-    "columns": {}
-  },
-  "id": "7b975c0b-2180-4c74-b4dc-6fd50be2ffa3",
-  "prevId": "0c2f1a9d-c350-4e2f-a66c-4b96a396f985"
+    "tables": {}
+  }
 }

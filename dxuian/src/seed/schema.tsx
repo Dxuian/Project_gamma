@@ -35,6 +35,17 @@ export const posts = pgTable('posts', {
   timestampidx: index("timestampidx").on(table.timestamp),
 }));
 
+
+export const users = pgTable("user", {
+  id: text("id")
+     .notNull()
+    .$defaultFn(() => crypto.randomUUID()),
+  name: text("name"),
+  password: text("password").notNull(),
+  email: text("email").primaryKey(),
+});
+
+
 export const addordel  =  pgTable('addordel', {
   string: text('string').notNull(),
   when: text('when').notNull(),

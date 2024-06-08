@@ -1,7 +1,7 @@
 "use client"
 import * as React from "react";
 import { useState } from "react";
-import { star, heart, hand, plane, lightning, note , game } from "./paths";
+import { star, heart, hand,  lightning  , game } from "./paths";
 import { motion, useMotionValue, useTransform, animate } from "framer-motion";
 import {
    getIndex,

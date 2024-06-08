@@ -1,7 +1,31 @@
 {
+  "id": "3f3151b5-f9d2-4c7d-b78c-4c8e66db1487",
+  "prevId": "d63c414f-292c-4301-8bc0-b08460d3c956",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
+    "public.addordel": {
+      "name": "addordel",
+      "schema": "",
+      "columns": {
+        "string": {
+          "name": "string",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "when": {
+          "name": "when",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
     "public.posts": {
       "name": "posts",
       "schema": "",
@@ -45,6 +69,7 @@
       },
       "indexes": {
         "timestampidx": {
+          "name": "timestampidx",
           "columns": [
             {
               "expression": "timestamp",
@@ -53,10 +78,10 @@
               "nulls": "last"
             }
           ],
-          "name": "timestampidx",
           "isUnique": false,
+          "concurrently": false,
           "method": "btree",
-          "concurrently": false
+          "with": {}
         }
       },
       "foreignKeys": {},
@@ -72,10 +97,10 @@
       "uniqueConstraints": {
         "posts_filename_unique": {
           "name": "posts_filename_unique",
+          "nullsNotDistinct": false,
           "columns": [
             "filename"
-          ],
-          "nullsNotDistinct": false
+          ]
         }
       }
     }
@@ -83,10 +108,8 @@
   "enums": {},
   "schemas": {},
   "_meta": {
+    "columns": {},
     "schemas": {},
-    "tables": {},
-    "columns": {}
-  },
-  "id": "7b975c0b-2180-4c74-b4dc-6fd50be2ffa3",
-  "prevId": "0c2f1a9d-c350-4e2f-a66c-4b96a396f985"
+    "tables": {}
+  }
 }

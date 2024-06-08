@@ -1,7 +1,6 @@
 "use client"
 import { Skeleton } from '@/components/ui/skeleton';
 import { useState, useEffect } from 'react';
-const delay = (ms: any) => new Promise(res => setTimeout(res, ms));
 
 
 const SuspenseImage = ({ src, alt, h, w }: { src: any; alt: any, h?: any; w?: any }) => {
@@ -43,6 +42,7 @@ if (isLoading) {
   return <Skeleton style={style} />;
 }
   if (error) {
+    debugger ; 
     let style = {
       height: `${360}px`,
       width: '100%',

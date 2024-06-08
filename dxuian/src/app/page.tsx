@@ -3,7 +3,6 @@ import { Suspense, } from "react"
 import { ModeToggle } from "./ui/darkmode"
 import Link from 'next/link'
 
-import { signout } from "@/app/client"
 
 import App from "@/app/ui/App"
 import isusersignin from "@/app/client"
@@ -18,15 +17,21 @@ import { Skills as Skilsta } from "./skills11"
 
 
 
-
+import { signOut } from "@/auth"
+import { unstable_noStore as noStore } from 'next/cache';
 async function Component() {
+  noStore();
   const isSignedIn = await isusersignin();
   return (
     <div className="inline-flex !sticky top-12 md:top-4 mx-auto z-50 rounded-md shadow-sm">
       <Link href="/blog" aria-current="page" className="px-4 py-1 text-sm font-medium text-blue-700 bg-white border border-gray-200 rounded-s-lg hover:bg-gray-100 focus:z-10  focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700  dark:focus:text-white">
         Blog
       </Link>
-      {isSignedIn ? <form action={signout}>
+      
+      {isSignedIn ? <form
+      action={async () => {
+        "use server"   
+        await signOut()}}>
         <input value={"Sign out"} type="submit" className="px-4 py-1 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-e-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10  focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700  dark:focus:text-white">
         </input>
       </form> : <Link href="/blog/signin" className="px-4 py-1 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-e-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10  focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700  dark:focus:text-white">

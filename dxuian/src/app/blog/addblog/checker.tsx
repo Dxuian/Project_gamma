@@ -37,13 +37,14 @@ async function savetofs(filesss: any, filename: string, supabase: any) {
   }
 }
 
+
+import isusersignin from "@/app/client"
 import { createClient as backend } from '@/utils/supabase/server'
 import { revalidatePath } from 'next/cache';
 export default async function test(prevstate: any, e: FormData) {
-  let supabase = await backend()
-  const { data, error } = await supabase.auth.getUser();
-  if (error) {
-    return { message: `Error getting user: ${error.message}. Please contact admin` };
+  const  data = await isusersignin(); 
+  if (!data) {
+    return { message: `Error getting user: credentials . Please contact admin` };
   }
   let file = e.get("file");
   if (file instanceof File && file.size === 0) {
@@ -60,20 +61,22 @@ export default async function test(prevstate: any, e: FormData) {
     return { message: `Form data is invalid: ${JSON.parse(result.error.message)[0].message}` };
   }
   
-  let id = data?.user.id;
-  let fname: string = data?.user?.user_metadata.fname
-  let lname: string = data?.user?.user_metadata.lname || " ";
-  let username: string = `${fname} ${lname}`;
-  if(data.user.app_metadata.provider=="google")
-  {
-      username = data.user.user_metadata.full_name;
-  }
+  let id = data?.user?.id;
+  let fname: string = data?.user?.name as string
+  // let lname: string = data?.user?.user_metadata.lname || " ";
+  // let username: string = `${fname} ${lname}`;
+  let username: string = fname;
+  // if(data.user.app_metadata.provider=="google")
+  // {
+  //     username = data.user.user_metadata.full_name;
+  // }
   const content = e.get('content'); // get the value of the textarea with the name "content"
   let title = e.get('title'); // get the value of the textarea with the name "content"
   let filesss: any = file;
   let timestamp = Date.now();
   let separator = process.env.SEPARATOR as string;
   let filename : any  = "" ;
+  let supabase = await backend()
   if (filesss) {
   const buffer = await filesss.arrayBuffer();
   const metadata = await sharp(Buffer.from(buffer)).metadata();

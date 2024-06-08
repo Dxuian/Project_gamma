@@ -1,7 +1,31 @@
 {
+  "id": "430a9745-11c9-4646-96de-a96d9bc7d95d",
+  "prevId": "ae763805-0ac6-4890-9ea3-d74f05b184d2",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
+    "public.addordel": {
+      "name": "addordel",
+      "schema": "",
+      "columns": {
+        "string": {
+          "name": "string",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "when": {
+          "name": "when",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
     "public.posts": {
       "name": "posts",
       "schema": "",
@@ -45,6 +69,7 @@
       },
       "indexes": {
         "timestampidx": {
+          "name": "timestampidx",
           "columns": [
             {
               "expression": "timestamp",
@@ -53,10 +78,10 @@
               "nulls": "last"
             }
           ],
-          "name": "timestampidx",
           "isUnique": false,
+          "concurrently": false,
           "method": "btree",
-          "concurrently": false
+          "with": {}
         }
       },
       "foreignKeys": {},
@@ -72,21 +97,55 @@
       "uniqueConstraints": {
         "posts_filename_unique": {
           "name": "posts_filename_unique",
+          "nullsNotDistinct": false,
           "columns": [
             "filename"
-          ],
-          "nullsNotDistinct": false
+          ]
         }
       }
+    },
+    "public.user": {
+      "name": "user",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "email": {
+          "name": "email",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {
+        "user_id_email_pk": {
+          "name": "user_id_email_pk",
+          "columns": [
+            "id",
+            "email"
+          ]
+        }
+      },
+      "uniqueConstraints": {}
     }
   },
   "enums": {},
   "schemas": {},
   "_meta": {
+    "columns": {},
     "schemas": {},
-    "tables": {},
-    "columns": {}
-  },
-  "id": "7b975c0b-2180-4c74-b4dc-6fd50be2ffa3",
-  "prevId": "0c2f1a9d-c350-4e2f-a66c-4b96a396f985"
+    "tables": {}
+  }
 }

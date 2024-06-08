@@ -9,6 +9,9 @@ import { headers } from "next/headers"
 import Link from "next/link"
 import { signout } from "@/app/client";
 import {Addblogtopage} from "@/app/blog/addblog/page" 
+// import {signOut } from "@/auth"
+
+
 export async  function Component() {
   const isSignedIn = await isusersignin();
   const headersList  = headers();
@@ -26,7 +29,7 @@ export async  function Component() {
     : 
     <></>
     }
-  {isSignedIn ? <form action={signout}>
+    {isSignedIn ? <form  action={signout}>
     <input  type="submit" value="Signout"   className="px-4 py-1 edging text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-e-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10  focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700  dark:focus:text-white">
     </input>
   </form> : 
@@ -44,7 +47,6 @@ import { Suspense } from "react"
 import { Skeleton } from "@/components/ui/skeleton"
 import Blogsser from "@/app/blog/blogscli";
 
-import { FollowerPointerCard} from "@/app/clienta"
 
 export default async function RootLayout({ children }: { children: any }) {
   const component = Component();

@@ -1,7 +1,5 @@
 {
-  "id": "0c2f1a9d-c350-4e2f-a66c-4b96a396f985",
-  "prevId": "9e135c06-3f49-4d47-82e2-7396a7b773aa",
-  "version": "6",
+  "version": "7",
   "dialect": "postgresql",
   "tables": {
     "public.posts": {
@@ -47,11 +45,18 @@
       },
       "indexes": {
         "timestampidx": {
-          "name": "timestampidx",
           "columns": [
-            "timestamp"
+            {
+              "expression": "timestamp",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
           ],
-          "isUnique": false
+          "name": "timestampidx",
+          "isUnique": false,
+          "method": "btree",
+          "concurrently": false
         }
       },
       "foreignKeys": {},
@@ -67,10 +72,10 @@
       "uniqueConstraints": {
         "posts_filename_unique": {
           "name": "posts_filename_unique",
-          "nullsNotDistinct": false,
           "columns": [
             "filename"
-          ]
+          ],
+          "nullsNotDistinct": false
         }
       }
     }
@@ -78,8 +83,10 @@
   "enums": {},
   "schemas": {},
   "_meta": {
-    "columns": {},
     "schemas": {},
-    "tables": {}
-  }
+    "tables": {},
+    "columns": {}
+  },
+  "id": "0c2f1a9d-c350-4e2f-a66c-4b96a396f985",
+  "prevId": "9e135c06-3f49-4d47-82e2-7396a7b773aa"
 }

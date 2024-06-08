@@ -34,13 +34,13 @@ export function InputWithLabel() {
 }
 
 
-import { Description, Field, Fieldset, Input, Legend, Select } from '@headlessui/react'
-import { ChevronDownIcon } from '@heroicons/react/20/solid'
-import clsx from 'clsx'
+import { Field} from '@headlessui/react'
+// import { ChevronDownIcon } from '@heroicons/react/20/solid'
+// import clsx from 'clsx'
 import EmojiPicker from 'emoji-picker-react';
 import { Theme } from 'emoji-picker-react';
-import { Emoji, EmojiStyle } from 'emoji-picker-react';
-import { FormEvent } from 'react'
+// import { Emoji, EmojiStyle } from 'emoji-picker-react';
+// import { FormEvent } from 'react'
 import test from './checker'
 
 function addtotextarea(emoji: any) {
@@ -86,11 +86,7 @@ export function Example() {
     </>
   )
 }
-const Icon = () => {
-  return (
-    <CircleX className="absolute right-2 top-2" />
-  );
-};
+
 
 import React, { useState } from 'react';
 
@@ -185,7 +181,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
-import { Sub } from "@radix-ui/react-dropdown-menu";
 
 function Modal() {
   let [open, setOpen] = useState(false);

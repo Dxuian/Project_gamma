@@ -13,22 +13,7 @@ import {
 } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import SuspenseImage from "@/app/blog/bi"
-import {
-  Menubar,
-  MenubarCheckboxItem,
-  MenubarContent,
-  MenubarItem,
-  MenubarMenu,
-  MenubarRadioGroup,
-  MenubarRadioItem,
-  MenubarSeparator,
-  MenubarShortcut,
-  MenubarSub,
-  MenubarSubContent,
-  MenubarSubTrigger,
-  MenubarTrigger,
-} from "@/components/ui/menubar"
-import { timeStamp } from "console";
+
 
 const img1 = "data:image/png;base64,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";
 const img2 = "https://wallpapers.com/images/hd/anime-4k-pictures-q1cg89niv319ld1a.jpg";
@@ -50,7 +35,6 @@ export function ButtonGroupDefault() {
   );
 }
 
-import { Button } from "flowbite-react";
 import styles from "@/app/ui/addblog.module.css"
 import Link from "next/link"
 import { signout } from "@/app/client"
@@ -182,7 +166,7 @@ export function Pages({ blogslist }: { blogslist: any[] }) {
 
 
 
-export function CardWithForm({ src, alt, title, username, timestamp, content, h, w , key }: { src?: any; alt?: any; content: any; title?: any; username: any; timestamp: any; h?: any; w?: any ; key:any }) {
+export function CardWithForm({ src, alt, title, username, timestamp, content, h, w , }: { src?: any; alt?: any; content: any; title?: any; username: any; timestamp: any; h?: any; w?: any  }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
   return (<>

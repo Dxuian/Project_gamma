@@ -1,7 +1,5 @@
 {
-  "id": "490c7286-938f-4191-949a-6674620169d4",
-  "prevId": "2325ffa2-183a-4531-970d-529d34f6ad05",
-  "version": "6",
+  "version": "7",
   "dialect": "postgresql",
   "tables": {
     "public.addordel": {
@@ -69,11 +67,18 @@
       },
       "indexes": {
         "timestampidx": {
-          "name": "timestampidx",
           "columns": [
-            "timestamp"
+            {
+              "expression": "timestamp",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
           ],
-          "isUnique": false
+          "name": "timestampidx",
+          "isUnique": false,
+          "method": "btree",
+          "concurrently": false
         }
       },
       "foreignKeys": {},
@@ -89,10 +94,10 @@
       "uniqueConstraints": {
         "posts_filename_unique": {
           "name": "posts_filename_unique",
-          "nullsNotDistinct": false,
           "columns": [
             "filename"
-          ]
+          ],
+          "nullsNotDistinct": false
         }
       }
     }
@@ -100,8 +105,10 @@
   "enums": {},
   "schemas": {},
   "_meta": {
-    "columns": {},
     "schemas": {},
-    "tables": {}
-  }
+    "tables": {},
+    "columns": {}
+  },
+  "id": "490c7286-938f-4191-949a-6674620169d4",
+  "prevId": "2325ffa2-183a-4531-970d-529d34f6ad05"
 }
