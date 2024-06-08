@@ -32,9 +32,13 @@ export default function App() {
   );
 }
 
+import { Suspense } from "react";
 export function AppWithUI() {
   const [count, setCount] = useState(0);
   return (
-    <App key={count} />
+    // <Suspense fallback={    <div className='skeleton wave w-full h-full success' ></div>    }>
+      <App key={count} />
+    // </Suspense>
+
   );
 }
