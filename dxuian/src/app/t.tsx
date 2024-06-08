@@ -8,7 +8,6 @@ import { useMediaQuery } from 'react-responsive'
 export default function App() {
   const isSmallScreen = useMediaQuery({ query: '(max-width: 600px)' })
   const scale = isSmallScreen ? 1.5 : 2;
-
   return (
     <motion.div
       className="box"
@@ -32,13 +31,14 @@ export default function App() {
   );
 }
 
+import {Skeleton} from "@/components/ui/skeleton"
 import { Suspense } from "react";
 export function AppWithUI() {
-  const [count, setCount] = useState(0);
+  // const [count, setCount] = useState(0);
   return (
-    // <Suspense fallback={    <div className='skeleton wave w-full h-full success' ></div>    }>
-      <App key={count} />
-    // </Suspense>
+    <Suspense fallback={   <Skeleton className="!h-full !w-full"></Skeleton> }>
+      <App  />
+     </Suspense>
 
   );
 }

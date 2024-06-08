@@ -44,10 +44,10 @@ async function Component() {
 
 
 
-
+import {Skeleton } from "@/components/ui/skeleton"
 export default async function Body() {
   return (
-    <Suspense fallback={<div className='skeleton wave w-[100vw] h-[100vh] success' ><div className="loading absolute top-1/2 mx-auto  left-[45vw]  bottom-1/2 loading-infinity loading-lg"></div></div>}>
+    <Suspense fallback={<Skeleton className="!h-full !w-full" ><div className="loading absolute top-1/2 left-[50vw] loading-infinity loading-lg"></div></Skeleton>}>
       
     <div className="w-full flex flex-col">
         <Lincomponent />
