@@ -79,6 +79,9 @@ export const metadata: Metadata = {
 
 };
 
+import { Inter } from 'next/font/google';
+ 
+export const inter = Inter({ subsets: ['latin'] });
 export default async  function RootLayout({
   children,
 }: Readonly<{
@@ -86,7 +89,7 @@ export default async  function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={styles.bodyc}>
+      <body className={`${styles.bodyc} ${inter.className} antialiased`}>
         <Container >{children}</Container>
       </body>
     </html>
@@ -95,7 +98,7 @@ export default async  function RootLayout({
 import { Toaster } from "@/components/ui/toaster"
 function Container({ children }: { children: any }) {
   return (
-    <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
+    <ThemeProvider  attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
       {children}
       <Toaster />
     </ThemeProvider>
