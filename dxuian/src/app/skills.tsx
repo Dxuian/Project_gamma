@@ -11,6 +11,7 @@ import { SiTensorflow } from "react-icons/si";
 import { SiTypescript } from "react-icons/si";
 import { VscVscode } from "react-icons/vsc";
 import { FaGitAlt } from "react-icons/fa";
+import { SiFlask } from "react-icons/si";
 import { FaGithub } from "react-icons/fa";
 import { DiNodejs } from "react-icons/di";
 import { SiDrizzle } from "react-icons/si";
@@ -123,6 +124,17 @@ export async function Skills() {
                                 </Link>
                             </Reveal>
                         </span>
+                        
+                        <span>
+                            <Reveal>
+                                <Link className="text-yellow-500" href="https://flask.palletsprojects.com/en/3.0.x/">
+                                    <div className={styles.scaleonhover}>
+                                        <SiFlask  />
+                                    </div>
+                                </Link>
+                            </Reveal>
+                        </span>
+
                         <span>
                             <Reveal>
                                 <Link className="text-pink-500" href="https://sass-lang.com/">
