@@ -52,7 +52,7 @@ export default function App() {
           borderRadius: ["0%", "0%", "50%", "50%", "0%"]
         }}
         transition={{
-          duration: 20,
+          duration: 7,
           ease: "easeInOut",
           times: [0, 0.2, 0.5, 0.8, 1],
           repeat: Infinity,
