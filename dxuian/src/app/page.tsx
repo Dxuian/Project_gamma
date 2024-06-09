@@ -78,7 +78,7 @@ import Reveal from '@/app/reveal';
 
 function Topanimations(){
   return(
-        <Reveal >
+        // <Reveal >
     <div className="grid grid-cols-1 md:grid-cols-2 gap-32 p-8 !pt-12">
       <div className="relative  flex items-center justify-center">
         <div className="relative  flex items-center justify-center">
@@ -89,13 +89,14 @@ function Topanimations(){
         </div>
       
       </div>
-        <Reveal >
+        {/* <Reveal > */}
       <div className="relative  flex items-center justify-center">
+        
           <App className="transform rounded-lg border-2 border-slate-500 p-2 md:p-4 transition-transform duration-500 ease-in-out scale-75 z-10" />
       </div>
-        </Reveal>
+        {/* </Reveal> */}
     </div>
-        </Reveal>
+        // </Reveal>
   )
 }
 

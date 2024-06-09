@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SVG Morphing</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+  <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/MorphSVGPlugin3.min.js"></script> <!-- Add this line -->
+
+  <style>
+    #svg-container {
+      position: relative;
+      width: 800px; /* Adjust width as needed */
+      height: 400px; /* Adjust height as needed */
+      margin: auto;
+    }
+    #svg2 {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  </style>
+</head>
+<body>
+
+<div id="svg-container">
+  <svg version="1.1" id="svg2" viewBox="9 80 800 400" xmlns="http://www.w3.org/2000/svg">
+    <style>
+      .st0{fill:#1D1D1D;stroke:#000000;stroke-miterlimit:10;}
+      .st1{fill:#0ae448;}
+    </style>
+    <rect id="background" x="9" y="80" class="st0" width="800" height="400"/>
+    <path id="circle" class="st1" d="M490.1,280.649c0,44.459-36.041,80.5-80.5,80.5s-80.5-36.041-80.5-80.5s36.041-80.5,80.5-80.5
+    S490.1,236.19,490.1,280.649z"/>
+    <path id="hippo" class="st1" d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+  </svg>
+</div>
+
+<button class="dark-grey-button club-demo-button" id="play">Play</button>
+
+<script>
+gsap.registerPlugin(MorphSVGPlugin) 
+  gsap.to("#circle", {
+    morphSVG: "#hippo",
+    duration: 2,
+    repeat: -1,
+    yoyo: true
+  });
+</script>
+
+</body>
+</html>

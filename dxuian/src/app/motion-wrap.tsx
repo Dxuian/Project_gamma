@@ -1,13 +1,13 @@
 'use client';
 import React, { ReactNode } from 'react';
-import { motion, MotionProps } from 'framer-motion';
+import { m, LazyMotion, domAnimation } from 'framer-motion';
 import { cn } from '@/lib/utils';
 
 type MotionWrapProps = {
   children: ReactNode;
   className?: string;
   id?: string;
-} & MotionProps;
+};
 
 const MotionWrap: React.FC<MotionWrapProps> = ({
   children,
@@ -15,14 +15,17 @@ const MotionWrap: React.FC<MotionWrapProps> = ({
   ...props
 }) => {
   return (
-    <motion.section
-      whileInView={{ y: [100, 50, 0], opacity: [0, 0, 1] }}
-      transition={{ duration: 0.5 }}
-      className={cn(className, 'app__flex')}
-      {...props}
-    >
-      {children}
-    </motion.section>
+    <LazyMotion features={() => import('framer-motion').then(mod => mod.domAnimation)}>
+      <m.section
+        initial={{ y: 100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        className={cn(className, 'app__flex')}
+        {...props}
+      >
+        {children}
+      </m.section>
+    </LazyMotion>
   );
 };
 
