@@ -75,28 +75,25 @@ export default async function Body() {
 }
 
 import Reveal from '@/app/reveal';
-
+import "@/app/ui/SpinAnimation.css"
 function Topanimations(){
   return(
         // <Reveal >
     <div className="grid grid-cols-1 md:grid-cols-2 gap-32 p-8 !pt-12">
-      <div className="relative  flex items-center justify-center">
+
+      <div className="relative spin-into-existence  flex items-center justify-center">
         <div className="relative  flex items-center justify-center">
         <AppWithUI /> 
         </div>
         <div className="absolute  flex !text-6xl text-center">
           <TypewriterComponent />
         </div>
-      
       </div>
-        {/* <Reveal > */}
-      <div className="relative  flex items-center justify-center">
-        
+
+      <div className="relative spin-into-existence flex items-center justify-center">
           <App className="transform rounded-lg border-2 border-slate-500 p-2 md:p-4 transition-transform duration-500 ease-in-out scale-75 z-10" />
       </div>
-        {/* </Reveal> */}
     </div>
-        // </Reveal>
   )
 }
 

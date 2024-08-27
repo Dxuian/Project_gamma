@@ -1,0 +1,15 @@
+@keyframes spinIn {
+    0% {
+      transform: rotate(0deg) scale(0);
+      opacity: 0;
+    }
+    100% {
+      transform: rotate(360deg) scale(1);
+      opacity: 1;
+    }
+  }
+  
+  .spin-into-existence {
+    animation: spinIn 1s ease-in-out;
+  }
+  
