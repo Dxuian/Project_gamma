@@ -24,9 +24,9 @@ const projects: Project[] = [
   },
   {
     name: 'Youtube shorts blocker - chrome extension',
-    slug: 'https://github.com/Dxuian/Youtube-shorts-blocker-extension',
+    slug: 'https://addons.mozilla.org/en-US/firefox/addon/youtube-shorts-remover-ultra/',
     description:
-    'A Chrome extension that allows users to block YouTube shorts for a distraction-free viewing experience.',
+    'A Browser extension that allows users to block YouTube shorts for a distraction-free viewing experience.',
     thumbnail: '/ytshort.gif'
   },
   {
