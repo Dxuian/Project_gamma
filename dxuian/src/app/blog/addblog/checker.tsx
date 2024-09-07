@@ -8,7 +8,7 @@ import z from "zod";
 let schemaforform = z.object({
   title: z.string().min(1).max(20).optional(),
   content: z.string().min(1).max(300),
-  file: z.any().refine((file) => file ? file.size <= 800000 : true, `Max image size is 5MB.`).refine((file) => file ? ["image/jpeg", "image/jpg", "image/png", "image/webp", "image/bmp"].includes(file.type) : true, "Only .jpg, .jpeg, .png and .webp formats are supported.").optional()
+  file: z.any().refine((file) => file ? file.size <= ((1024 * 1024)+1) : true, `Max image size is 1MB.`).refine((file) => file ? ["image/jpeg", "image/jpg", "image/png", "image/webp", "image/bmp"].includes(file.type) : true, "Only .jpg, .jpeg, .png and .webp formats are supported.").optional()
 })
 
 
