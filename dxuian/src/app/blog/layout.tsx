@@ -55,7 +55,7 @@ export default async function RootLayout({ children }: { children: any }) {
   //  <FollowerPointerCard > 
   <div id="con" className="!w-full">
     {children} 
-    <Suspense fallback={<Skeleton className="w-[100vw] h-[100vh]" ><div className="loading absolute top-1/2 left-[50vw] loading-infinity loading-lg"></div></Skeleton>}>
+    <Suspense fallback={<Skeleton className="w-[100vw] h-[100vh]" ><div className="loading absolute top-1/2 left-[48vw] md:left[50vw] loading-infinity loading-lg"></div></Skeleton>}>
       <Blogsser component={component} />
     </Suspense>
   </div >

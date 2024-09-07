@@ -47,7 +47,7 @@ async function Component() {
 import {Skeleton } from "@/components/ui/skeleton"
 export default async function Body() {
   return (
-    <Suspense fallback={<Skeleton className="!h-full !w-full" ><div className="loading absolute top-1/2 left-[50vw] loading-infinity loading-lg"></div></Skeleton>}>
+    <Suspense fallback={<Skeleton className="!h-full !w-full" ><div className="loading absolute top-1/2 left-[48vw] md:left[50vw] loading-infinity loading-lg"></div></Skeleton>}>
       
     <div className="w-full flex flex-col">
         <Lincomponent />
