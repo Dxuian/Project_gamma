@@ -37,11 +37,11 @@ const projects: Project[] = [
     thumbnail: '/kc.jpg'
   },
   {
-    name: 'Personal Portfolio/blog Website',
-    slug: '/',
+    name: 'Dxubot',
+    slug: 'https://www.dxubot.tech/',
     description:
-      'A personal portfolio + blog to showcase your programming projects, resume, and skills in a beautifully designed format.',
-    thumbnail: '/portfolio.jpg'
+      'A llm that can be fine -tuned on the go to experiment as one wants ',
+    thumbnail: '/dxubot.png'
   },
 
 ];
