@@ -40,7 +40,7 @@ const projects: Project[] = [
     name: 'Dxubot',
     slug: 'https://www.dxubot.tech/',
     description:
-      'A llm that can be fine -tuned on the go to experiment as one wants ',
+      'A llm that can be fine-tuned on the go to experiment as one wants ',
     thumbnail: '/dxubot.png'
   },
 
