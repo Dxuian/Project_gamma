@@ -2,7 +2,7 @@
 import { Suspense, } from "react"
 import { ModeToggle } from "./ui/darkmode"
 import Link from 'next/link'
-
+import { Ppp } from "@/app/Ppp.js"
 
 import App from "@/app/ui/App"
 import isusersignin from "@/app/client"
@@ -23,21 +23,22 @@ async function Component() {
   noStore();
   const isSignedIn = await isusersignin();
   return (
-    <div className="inline-flex !sticky top-12 md:top-4 mx-auto z-50 rounded-md shadow-sm">
-      <Link href="/blog" aria-current="page" className="px-4 py-1 text-sm font-medium text-blue-700 bg-white border border-gray-200 rounded-s-lg hover:bg-gray-100 focus:z-10  focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700  dark:focus:text-white">
-        Blog
-      </Link>
-      
-      {isSignedIn ? <form
-      action={async () => {
-        "use server"   
-        await signOut()}}>
-        <input value={"Sign out"} type="submit" className="px-4 py-1 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-e-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10  focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700  dark:focus:text-white">
-        </input>
-      </form> : <Link href="/blog/signin" className="px-4 py-1 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-e-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10  focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700  dark:focus:text-white">
-        Sign in
-      </Link>}
-
+       <div className="flex !fixed top-12 items-center justify-center min-h-screen">
+      <div className="inline-flex  md:top-4 mx-auto z-50 rounded-md shadow-sm">
+        <Link href="/blog" aria-current="page" className="px-4 py-1 text-sm font-medium text-blue-700 bg-white border border-gray-200 rounded-s-lg hover:bg-gray-100 focus:z-10  focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700  dark:focus:text-white">
+          Blog
+        </Link>
+        
+        {isSignedIn ? <form
+        action={async () => {
+          "use server"   
+          await signOut()}}>
+          <input value={"Sign out"} type="submit" className="px-4 py-1 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-e-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10  focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700  dark:focus:text-white">
+          </input>
+        </form> : <Link href="/blog/signin" className="px-4 py-1 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-e-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10  focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700  dark:focus:text-white">
+          Sign in
+        </Link>}
+      </div>
     </div>
   );
 }
@@ -45,21 +46,21 @@ async function Component() {
 
 
 import {Skeleton } from "@/components/ui/skeleton"
-export default async function Body() {
+export default async function Body({}) {
   return (
     <Suspense fallback={<Skeleton className="!h-full !w-full" ><div className="loading absolute top-1/2 left-[48vw] md:left[50vw] loading-infinity loading-lg"></div></Skeleton>}>
       
     <div className="w-full flex flex-col">
         <Lincomponent />
+        <Topanimations />
         <Component />
         {/* </div> */}
-       
-        <div className="mb-4">
-          <ModeToggle className="float-right !mt-0  m-4 "></ModeToggle>
+        <div className="mb-4 absolute top-12 right-8">
+          <ModeToggle className="float-right   m-4 "></ModeToggle>
         </div>
        
         
-        <Topanimations />
+        
         <About />
         <Skills />
         <Scrollfx />
@@ -79,9 +80,9 @@ import "@/app/ui/SpinAnimation.css"
 function Topanimations(){
   return(
         // <Reveal >
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-32 p-8 !pt-12">
-
-      <div className="relative spin-into-existence  flex items-center justify-center">
+    <div className="grid h-screen">
+      <Ppp></Ppp>
+      {/* <div className="relative spin-into-existence  flex items-center justify-center">
         <div className="relative  flex items-center justify-center">
         <AppWithUI /> 
         </div>
@@ -92,7 +93,7 @@ function Topanimations(){
 
       <div className="relative spin-into-existence flex items-center justify-center">
           <App className="transform rounded-lg border-2 border-slate-500 p-2 md:p-4 transition-transform duration-500 ease-in-out scale-75 z-10" />
-      </div>
+      </div> */}
     </div>
   )
 }
