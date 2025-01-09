@@ -1,7 +1,7 @@
 import "./globals.css";
 
 import styles from "./ui/styles.module.css";
-
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import { ThemeProvider } from "@/components/theme-provider"
 
 
