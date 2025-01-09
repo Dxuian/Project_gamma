@@ -25,7 +25,7 @@ const shuffle = (accent = 0) => [
 ]
 
 export const Ppp = () => (
-  <div className="w-full !h-[50vh]">
+  <div className="w-full !h-full">
     {/* <div className="nav"></div> */}
     <Scene  />
   </div>
@@ -36,10 +36,12 @@ function Scene(props) {
   const connectors = useMemo(() => shuffle(accent), [accent])
   const {theme , setTheme} = useTheme()
   return (
-    <Canvas onClick={click} shadows dpr={[1, 1.5]} gl={{ antialias: false }} camera={{ position: [0, 0, 15], fov: 17.5, near: 1, far: 20 }} {...props}>
+    <Canvas onClick={click} shadows dpr={[1, 1.2]} gl={{ antialias: false }} camera={{ position: [0, 0, 15], fov: 17.5, near: 1, far: 20 }} {...props}>
       <color attach="background" args={[theme=='dark' ? '#000000' : '#ffffff']} />
       <ambientLight intensity={0.4} />
-      <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={1} castShadow />
+      <directionalLight position={[10, 10, 10]} intensity={0.5} />
+
+      {/* <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={1} castShadow /> */}
       <Physics /*debug*/ gravity={[0, 0, 0]}>
         <Pointer />
         {connectors.map((props, i) => <Connector key={i} {...props} />) /* prettier-ignore */}
@@ -49,7 +51,7 @@ function Scene(props) {
           </Model>
         </Connector> */}
       </Physics>
-      <EffectComposer disableNormalPass multisampling={8}>
+      <EffectComposer disableNormalPass multisampling={2}>
         <N8AO distanceFalloff={1} aoRadius={1} intensity={4} />
       </EffectComposer>
       <Environment resolution={256}>

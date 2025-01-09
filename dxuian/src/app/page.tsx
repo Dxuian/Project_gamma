@@ -23,23 +23,31 @@ async function Component() {
   noStore();
   const isSignedIn = await isusersignin();
   return (
-       <div className="flex !fixed top-12 items-center justify-center min-h-screen">
-      <div className="inline-flex  md:top-4 mx-auto z-50 rounded-md shadow-sm">
-        <Link href="/blog" aria-current="page" className="px-4 py-1 text-sm font-medium text-blue-700 bg-white border border-gray-200 rounded-s-lg hover:bg-gray-100 focus:z-10  focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700  dark:focus:text-white">
-          Blog
-        </Link>
-        
-        {isSignedIn ? <form
-        action={async () => {
-          "use server"   
-          await signOut()}}>
-          <input value={"Sign out"} type="submit" className="px-4 py-1 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-e-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10  focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700  dark:focus:text-white">
-          </input>
-        </form> : <Link href="/blog/signin" className="px-4 py-1 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-e-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10  focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700  dark:focus:text-white">
-          Sign in
-        </Link>}
+           <div className="fixed top-12 left-0 right-0">
+        <div className="  flex items-center justify-center z-50">
+          <div className="inline-flex rounded-md shadow-sm">
+            <Link href="/blog" aria-current="page" className="px-4 py-1 text-sm font-medium text-blue-700 bg-white border border-gray-200 rounded-s-lg hover:bg-gray-100 focus:z-10 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:text-white">
+              Blog
+            </Link>
+            
+            {isSignedIn ? (
+              <form
+                action={async () => {
+                  "use server"
+                  await signOut()
+                }}
+              >
+                <input value={"Sign out"} type="submit" className="px-4 py-1 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-e-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:text-white">
+                </input>
+              </form>
+            ) : (
+              <Link href="/blog/signin" className="px-4 py-1 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-e-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:text-white">
+                Sign in
+              </Link>
+            )}
+          </div>
+        </div>
       </div>
-    </div>
   );
 }
 
@@ -80,18 +88,28 @@ import "@/app/ui/SpinAnimation.css"
 function Topanimations(){
   return(
         // <Reveal >
-    <div className="grid h-screen">
-      <Ppp></Ppp>
-      {/* <div className="relative spin-into-existence  flex items-center justify-center">
-        <div className="relative  flex items-center justify-center">
+    <div className="grid h-screen w-full ">
+      <div className="relative  w-full flex items-center justify-center">
+        {/* <AppWithUI />  */}
+        <div className="relative !w-full !h-full flex items-center justify-center">
+        <Ppp></Ppp>
+        </div>
+        <div className="absolute flex text-7xl text-center ">
+            <TypewriterComponent />
+        </div>
+      </div>
+    {/* <div className="grid h-screen">
+      <div className="relative spin-into-existence  flex items-center justify-center">
         <AppWithUI /> 
+        <div className="relative  flex items-center justify-center">
+        <Ppp></Ppp>
         </div>
         <div className="absolute  flex !text-6xl text-center">
           <TypewriterComponent />
         </div>
-      </div>
+      </div> */}
 
-      <div className="relative spin-into-existence flex items-center justify-center">
+      {/* <div className="relative spin-into-existence flex items-center justify-center">
           <App className="transform rounded-lg border-2 border-slate-500 p-2 md:p-4 transition-transform duration-500 ease-in-out scale-75 z-10" />
       </div> */}
     </div>
