@@ -13,15 +13,15 @@ import { useTheme } from 'next-themes'
 
 const accents = ['#4060ff', '#20ffa0', '#ff4060', '#ffcc00']
 const shuffle = (accent = 0) => [
+  { color: '#444', roughness: 0.75 },
   { color: '#444', roughness: 0.1 },
   { color: '#444', roughness: 0.75 },
-  { color: '#444', roughness: 0.75 },
-  { color: 'white', roughness: 0.1 },
+  { color: 'white', roughness: 0.75 },
   { color: 'white', roughness: 0.75 },
   { color: 'white', roughness: 0.1 },
   { color: accents[accent], roughness: 0.1, accent: true },
   { color: accents[accent], roughness: 0.75, accent: true },
-  { color: accents[accent], roughness: 0.1, accent: true }
+  { color: accents[accent], roughness: 0.75, accent: true }
 ]
 
 export const Ppp = () => (
@@ -103,7 +103,7 @@ function Model({ children, color = 'white', roughness = 0, ...props }) {
     easing.dampC(ref.current.material.color, color, 0.2, delta)
   })
   return (
-    <mesh ref={ref} castShadow receiveShadow scale={10} geometry={nodes.connector.geometry}>
+    <mesh ref={ref} castShadow receiveShadow scale={6} geometry={nodes.connector.geometry}>
       <meshStandardMaterial metalness={0.2} roughness={roughness} map={materials.base.map} />
       {children}
     </mesh>
