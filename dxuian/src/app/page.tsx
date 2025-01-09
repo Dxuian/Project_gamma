@@ -7,7 +7,8 @@ import { Ppp } from "@/app/Ppp.js"
 import App from "@/app/ui/App"
 import isusersignin from "@/app/client"
 // import Pa from "@/app/test/page"
-import {  Lincomponent, TypewriterComponent , Footer  } from "@/app/clienta"
+import {  Lincomponent,  Footer  } from "@/app/clienta"
+import   Topanimations from "@/app/topanimations.js"
 import { AppWithUI } from "@/app/t"
 import About from "./about"
 import {Skills} from "./skills"
@@ -83,39 +84,35 @@ export default async function Body({}) {
   )
 }
 
-import Reveal from '@/app/reveal';
 import "@/app/ui/SpinAnimation.css"
-function Topanimations(){
-  return(
-        // <Reveal >
-    <div className="grid h-screen w-full ">
-      <div className="relative  w-full flex items-center justify-center">
-        {/* <AppWithUI />  */}
-        <div className="relative !w-full !h-full flex items-center justify-center">
-        <Ppp></Ppp>
-        </div>
-        <div className="absolute flex text-7xl text-center ">
-            <TypewriterComponent />
-        </div>
-      </div>
-    {/* <div className="grid h-screen">
-      <div className="relative spin-into-existence  flex items-center justify-center">
-        <AppWithUI /> 
-        <div className="relative  flex items-center justify-center">
-        <Ppp></Ppp>
-        </div>
-        <div className="absolute  flex !text-6xl text-center">
-          <TypewriterComponent />
-        </div>
-      </div> */}
 
-      {/* <div className="relative spin-into-existence flex items-center justify-center">
-          <App className="transform rounded-lg border-2 border-slate-500 p-2 md:p-4 transition-transform duration-500 ease-in-out scale-75 z-10" />
-      </div> */}
-    </div>
-  )
-}
+// import { useState, useEffect } from 'react';
 
+// function Topanimations() {
+//   const [isLoaded, setIsLoaded] = useState(false);
+
+//   useEffect(() => {
+//     // Simulate loading completion
+//     setTimeout(() => setIsLoaded(true), 2000); // Adjust time based on your loading time
+//   }, []);
+
+//   return (
+//     <div className="grid h-screen w-full">
+//       <div className="relative w-full flex items-center justify-center">
+//         <div className="relative !w-full !h-full flex items-center justify-center">
+//           <Suspense fallback={null}>
+//             <Ppp />
+//           </Suspense>
+//         </div>
+//         {isLoaded && (
+//           <div className="absolute flex text-7xl text-center">
+//             <TypewriterComponent />
+//           </div>
+//         )}
+//       </div>
+//     </div>
+//   );
+// }
 
 
 
