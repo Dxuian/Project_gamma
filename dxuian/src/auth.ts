@@ -21,6 +21,7 @@ export const signInSchema = object({
 
 
 export const { handlers, signIn, signOut, auth } =  NextAuth({
+  secret: process.env.AUTH_SECRET,
   providers: [
     GoogleProvider({
       clientId: process.env.AUTH_GOOGLE_ID,
@@ -79,7 +80,7 @@ export const { handlers, signIn, signOut, auth } =  NextAuth({
 
 
 
- 
+
 
 
 
