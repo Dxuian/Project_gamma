@@ -7,7 +7,7 @@ import * as schema from '@/seed/schema';
 import { drizzle } from 'drizzle-orm/postgres-js';
 import postgres from 'postgres';
 import { posts } from '@/seed/schema';
-import { desc } from 'drizzle-orm';
+import { desc, eq } from 'drizzle-orm';
 export async function fetchblogs() {
   const connectionString = process.env.DATABASE_URL as string
   const client = postgres(connectionString, { prepare: false, ssl: { rejectUnauthorized: false } });
@@ -21,6 +21,7 @@ export async function fetchblogs() {
     timestamp: posts.timestamp
   })
     .from(posts)
+    .where(eq(posts.hidden, false))
     .orderBy(desc(posts.timestamp));
 
   // let supabase = await createClient();

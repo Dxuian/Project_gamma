@@ -20,7 +20,7 @@
 //   }
 // })
 
-import { text, uuid, bigint, primaryKey, unique, pgTable, index } from 'drizzle-orm/pg-core';
+import { text, uuid, bigint, primaryKey, unique, pgTable, index, boolean } from 'drizzle-orm/pg-core';
 import { string } from 'zod';
 
 export const posts = pgTable('posts', {
@@ -30,6 +30,7 @@ export const posts = pgTable('posts', {
   title: text('title'),
   content: text('content').notNull(),
   filename: text('filename').unique(),
+  hidden: boolean('hidden').notNull().default(false),
 }, (table) => ({
   pk: primaryKey({ columns: [table.uuid, table.timestamp] }),
   timestampidx: index("timestampidx").on(table.timestamp),

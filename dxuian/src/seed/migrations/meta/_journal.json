@@ -134,6 +134,13 @@
       "when": 1717838584698,
       "tag": "0018_aspiring_deathstrike",
       "breakpoints": true
+    },
+    {
+      "idx": 19,
+      "version": "7",
+      "when": 1748535621566,
+      "tag": "0019_bouncy_lionheart",
+      "breakpoints": true
     }
   ]
 }
