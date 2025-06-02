@@ -122,7 +122,7 @@ export function Fileadder() {
           <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
             <span className="font-semibold">{fileName}</span>{fileName=="Click to upload " ? "or drag and drop" : ""} 
           </p>
-          <p className="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 1MB)</p>
+          <p className="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 3MB)</p>
         </div>
         <FileInput id="dropzone-file" className="hidden" name="file" onChange={handleFileChange} />
       </Label>
