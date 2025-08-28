@@ -11,10 +11,17 @@ import { SiTensorflow } from "react-icons/si";
 import { SiTypescript } from "react-icons/si";
 import { VscVscode } from "react-icons/vsc";
 import { FaGitAlt } from "react-icons/fa";
+import { AiOutlineKubernetes } from "react-icons/ai";
 import { SiFlask } from "react-icons/si";
+import { FaJava } from "react-icons/fa";
+import { FaGolang } from "react-icons/fa6";
 import { FaGithub } from "react-icons/fa";
 import { DiNodejs } from "react-icons/di";
+import { FaBitbucket } from "react-icons/fa";
+import { SiApachekafka } from "react-icons/si";
+import { SiGrafana } from "react-icons/si";
 import { SiDrizzle } from "react-icons/si";
+import { SiSpringboot } from "react-icons/si";
 import { SiFastify } from "react-icons/si";
 import { DiDjango } from "react-icons/di";
 import { RiNextjsFill } from "react-icons/ri";
@@ -34,6 +41,7 @@ import { FaWindows } from "react-icons/fa6";
 import { RiTailwindCssFill } from "react-icons/ri";
 import { FaBootstrap } from "react-icons/fa";
 import { FaSass } from "react-icons/fa";
+import { AiFillOpenAI } from "react-icons/ai";
 import { SiJupyter } from "react-icons/si";
 import { FcLinux } from "react-icons/fc";
 import { SiShadcnui } from "react-icons/si";
@@ -66,6 +74,19 @@ export async function Skills() {
                     </h1>
                     <div className="text-5xl opacity-75 flex gap-8 flex-wrap w-full sm:justify-center justify-center">
                         <span><Reveal><Link className="text-yellow-500" href="https://www.javascript.com/"><div className={styles.scaleonhover}><IoLogoJavascript /></div></Link></Reveal></span>
+                        <span><Reveal><Link className="text-yellow-500" href="https://kubernetes.io/"><div className={styles.scaleonhover}><AiOutlineKubernetes /></div></Link></Reveal></span>
+                        <span><Reveal><Link className="text-yellow-500" href="https://kubernetes.io/"><div className={styles.scaleonhover}><SiApachekafka /></div></Link></Reveal></span>
+                        <span><Reveal><Link className="text-yellow-500" href="https://kubernetes.io/"><div className={styles.scaleonhover}><SiGrafana /></div></Link></Reveal></span>
+                        <span><Reveal><Link className="text-yellow-500" href="https://kubernetes.io/"><div className={styles.scaleonhover}><FaBitbucket /></div></Link></Reveal></span>
+                        <span><Reveal><Link className="text-yellow-500" href="https://kubernetes.io/"><div className={styles.scaleonhover}><AiFillOpenAI /></div></Link></Reveal></span>
+                        <span><Reveal><Link className="text-yellow-500" href="https://kubernetes.io/"><div className={styles.scaleonhover}><FaGolang /></div></Link></Reveal></span>
+                        <span><Reveal><Link className="text-yellow-500" href="https://kubernetes.io/"><div className={styles.scaleonhover}><FaJava /></div></Link></Reveal></span>
+                        <span><Reveal><Link className="text-yellow-500" href="https://kubernetes.io/"><div className={styles.scaleonhover}><SiSpringboot /></div></Link></Reveal></span>
+                        <span><Reveal><Link className="text-yellow-500" href="https://kubernetes.io/"><div className={styles.scaleonhover}><SiPrometheus /></div></Link></Reveal></span>
+                        <span><Reveal><Link className="text-yellow-500" href="https://kubernetes.io/"><div className={styles.scaleonhover}><SiRedis /></div></Link></Reveal></span>
+                        <span><Reveal><Link className="text-yellow-500" href="https://kubernetes.io/"><div className={styles.scaleonhover}><SiGooglebigquery /></div></Link></Reveal></span>
+                        <span><Reveal><Link className="text-yellow-500" href="https://kubernetes.io/"><div className={styles.scaleonhover}><SiGooglecloud /></div></Link></Reveal></span>
+                        <span><Reveal><Link className="text-yellow-500" href="https://kubernetes.io/"><div className={styles.scaleonhover}><SiFastapi /></div></Link></Reveal></span>
                         <span><Reveal><Link className="text-blue-600" href="https://developer.mozilla.org/en-US/docs/Web/HTML"><div className={styles.scaleonhover}><FaHtml5 /></div></Link></Reveal></span>
                         <span><Reveal><Link className="text-blue-400" href="https://developer.mozilla.org/en-US/docs/Web/CSS"><div className={styles.scaleonhover}><FaCss3Alt /></div></Link></Reveal></span>
                         <span><Reveal><Link className="text-blue-700" href="https://isocpp.org/"><div className={styles.scaleonhover}><SiCplusplus /></div></Link></Reveal></span>
