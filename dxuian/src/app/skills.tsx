@@ -79,19 +79,19 @@ export async function Skills() {
                     </h1>
                     <div className="text-5xl opacity-75 flex gap-8 flex-wrap w-full sm:justify-center justify-center">
                         <span><Reveal><Link className="text-yellow-500" href="https://www.javascript.com/"><div className={styles.scaleonhover}><IoLogoJavascript /></div></Link></Reveal></span>
-                        <span><Reveal><Link className="text-yellow-500" href="https://kubernetes.io/"><div className={styles.scaleonhover}><AiOutlineKubernetes /></div></Link></Reveal></span>
-                        <span><Reveal><Link className="text-yellow-500" href="https://kafka.apache.org/"><div className={styles.scaleonhover}><SiApachekafka /></div></Link></Reveal></span>
-                        <span><Reveal><Link className="text-yellow-500" href="https://grafana.com/"><div className={styles.scaleonhover}><SiGrafana /></div></Link></Reveal></span>
-                        <span><Reveal><Link className="text-yellow-500" href="https://bitbucket.org/"><div className={styles.scaleonhover}><FaBitbucket /></div></Link></Reveal></span>
-                        <span><Reveal><Link className="text-yellow-500" href="https://openai.com/"><div className={styles.scaleonhover}><AiFillOpenAI /></div></Link></Reveal></span>
-                        <span><Reveal><Link className="text-yellow-500" href="https://golang.org/"><div className={styles.scaleonhover}><FaGolang /></div></Link></Reveal></span>
-                        <span><Reveal><Link className="text-yellow-500" href="https://www.java.com/"><div className={styles.scaleonhover}><FaJava /></div></Link></Reveal></span>
-                        <span><Reveal><Link className="text-yellow-500" href="https://spring.io/projects/spring-boot"><div className={styles.scaleonhover}><SiSpringboot /></div></Link></Reveal></span>
-                        <span><Reveal><Link className="text-yellow-500" href="https://prometheus.io/"><div className={styles.scaleonhover}><SiPrometheus /></div></Link></Reveal></span>
-                        <span><Reveal><Link className="text-yellow-500" href="https://redis.io/"><div className={styles.scaleonhover}><SiRedis /></div></Link></Reveal></span>
-                        <span><Reveal><Link className="text-yellow-500" href="https://cloud.google.com/bigquery"><div className={styles.scaleonhover}><SiGooglebigquery /></div></Link></Reveal></span>
-                        <span><Reveal><Link className="text-yellow-500" href="https://cloud.google.com/"><div className={styles.scaleonhover}><SiGooglecloud /></div></Link></Reveal></span>
-                        <span><Reveal><Link className="text-yellow-500" href="https://fastapi.tiangolo.com/"><div className={styles.scaleonhover}><SiFastapi /></div></Link></Reveal></span>
+                        <span><Reveal><Link className="text-blue-500" href="https://kubernetes.io/"><div className={styles.scaleonhover}><AiOutlineKubernetes /></div></Link></Reveal></span>
+                        <span><Reveal><Link className="text-white" href="https://kafka.apache.org/"><div className={styles.scaleonhover}><SiApachekafka /></div></Link></Reveal></span>
+                        <span><Reveal><Link className="text-orange-500" href="https://grafana.com/"><div className={styles.scaleonhover}><SiGrafana /></div></Link></Reveal></span>
+                        <span><Reveal><Link className="text-blue-500" href="https://bitbucket.org/"><div className={styles.scaleonhover}><FaBitbucket /></div></Link></Reveal></span>
+                        <span><Reveal><Link className="text-green-500" href="https://openai.com/"><div className={styles.scaleonhover}><AiFillOpenAI /></div></Link></Reveal></span>
+                        <span><Reveal><Link className="text-cyan-500" href="https://golang.org/"><div className={styles.scaleonhover}><FaGolang /></div></Link></Reveal></span>
+                        <span><Reveal><Link className="text-red-500" href="https://www.java.com/"><div className={styles.scaleonhover}><FaJava /></div></Link></Reveal></span>
+                        <span><Reveal><Link className="text-green-500" href="https://spring.io/projects/spring-boot"><div className={styles.scaleonhover}><SiSpringboot /></div></Link></Reveal></span>
+                        <span><Reveal><Link className="text-orange-500" href="https://prometheus.io/"><div className={styles.scaleonhover}><SiPrometheus /></div></Link></Reveal></span>
+                        <span><Reveal><Link className="text-red-500" href="https://redis.io/"><div className={styles.scaleonhover}><SiRedis /></div></Link></Reveal></span>
+                        <span><Reveal><Link className="text-blue-500" href="https://cloud.google.com/bigquery"><div className={styles.scaleonhover}><SiGooglebigquery /></div></Link></Reveal></span>
+                        <span><Reveal><Link className="text-blue-500" href="https://cloud.google.com/"><div className={styles.scaleonhover}><SiGooglecloud /></div></Link></Reveal></span>
+                        <span><Reveal><Link className="text-green-500" href="https://fastapi.tiangolo.com/"><div className={styles.scaleonhover}><SiFastapi /></div></Link></Reveal></span>
                         <span><Reveal><Link className="text-blue-600" href="https://developer.mozilla.org/en-US/docs/Web/HTML"><div className={styles.scaleonhover}><FaHtml5 /></div></Link></Reveal></span>
                         <span><Reveal><Link className="text-blue-400" href="https://developer.mozilla.org/en-US/docs/Web/CSS"><div className={styles.scaleonhover}><FaCss3Alt /></div></Link></Reveal></span>
                         <span><Reveal><Link className="text-blue-700" href="https://isocpp.org/"><div className={styles.scaleonhover}><SiCplusplus /></div></Link></Reveal></span>
