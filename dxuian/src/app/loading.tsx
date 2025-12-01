@@ -1,8 +1,7 @@
-import { Skeleton } from "@/components/ui/skeleton";
-export  default function Loading() {
+export default function Loading() {
   return (
-    <Skeleton className="!w-full !h-full" />
-   //</> <div className='skeleton wave w-[100vw] h-[100vh] success' ><div className="loading absolute top-1/2 left-1/2 right-1/2 mx-auto bottom-1/2 loading-infinity loading-lg"></div></div>
-    // <Skeleton className="w-[100vw] h-[100vh]" ><span className="loading absolute top-1/2 left-1/2 loading-infinity loading-lg"></span></Skeleton>
+    <div className="fixed inset-0 w-screen h-screen bg-background flex items-center justify-center z-50">
+      <div className="loading loading-infinity loading-lg"></div>
+    </div>
   )
 }

@@ -1,5 +1,4 @@
 "use server"
-import { Suspense, } from "react"
 import { ModeToggle } from "./ui/darkmode"
 import Link from 'next/link'
 // Ppp is lazy-loaded in topanimations.js for better LCP
@@ -54,11 +53,8 @@ async function Component() {
 
 
 
-import {Skeleton } from "@/components/ui/skeleton"
 export default async function Body({}) {
   return (
-    <Suspense fallback={<Skeleton className="!h-full !w-full" ><div className="loading absolute top-1/2 left-[48vw] md:left[50vw] loading-infinity loading-lg"></div></Skeleton>}>
-      
     <div className="w-full flex flex-col">
         <Lincomponent />
         <Topanimations />
@@ -79,8 +75,6 @@ export default async function Body({}) {
         
         {/* <Head /> */}
     </ div >
-            
-    </Suspense>
   )
 }
 

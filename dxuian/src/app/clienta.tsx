@@ -159,11 +159,16 @@ export const TypewriterEffectSmooth = () => {
   const words = ["a student", "a learner", "a developer"];
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
-  const [text, setText] = useState("");
+  const [text, setText] = useState("a developer"); // Start with initial text
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
+    // Start the animation after a brief delay
+    const startTimer = setTimeout(() => {
+      setIsDeleting(true);
+    }, 1000);
+    return () => clearTimeout(startTimer);
   }, []);
 
   useEffect(() => {
@@ -180,7 +185,7 @@ export const TypewriterEffectSmooth = () => {
         setText(word.substring(0, text.length - 1));
         if (text === "") {
           setIsDeleting(false);
-          setCurrentWordIndex((prev) => (prev + 1) % words.length);
+          setCurrentWordIndex((prev: number) => (prev + 1) % words.length);
         }
       }
     }, isDeleting ? 50 : 75);
@@ -188,9 +193,6 @@ export const TypewriterEffectSmooth = () => {
     return () => clearTimeout(timeout);
   }, [text, isDeleting, currentWordIndex, mounted]);
 
-  // Return just the text content - H1 wrapper is in topanimations.js for SSR
-  if (!mounted) return null;
-  
   return (
     <>
       {text}
