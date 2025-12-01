@@ -5,7 +5,18 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Analytics } from "@vercel/analytics/react"
 
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
+
+// Viewport configuration for better mobile performance
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+    { media: '(prefers-color-scheme: dark)', color: '#030712' },
+  ],
+};
+
 export const metadata: Metadata = {
   //@ts-ignore
   title: {
@@ -81,18 +92,40 @@ export const metadata: Metadata = {
 
 import { Inter } from 'next/font/google';
  
-export const inter = Inter({ subsets: ['latin'] });
-export default async  function RootLayout({
+// Optimize font loading with display swap for better LCP
+export const inter = Inter({ 
+  subsets: ['latin'],
+  display: 'swap',
+  preload: true,
+  variable: '--font-inter',
+});
+
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        {/* Preconnect to external domains for faster resource loading */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://vercel.live" />
+        <link rel="dns-prefetch" href="https://vitals.vercel-insights.com" />
+        {/* Preload critical fonts */}
+        <link 
+          rel="preload" 
+          href="https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiJ-Ek-_EeA.woff2" 
+          as="font" 
+          type="font/woff2" 
+          crossOrigin="anonymous"
+        />
+      </head>
       <body className={`${styles.bodyc} ${inter.className} antialiased`}>
-      <SpeedInsights />
-      <Analytics />
-        <Container >{children}</Container>
+        <SpeedInsights />
+        <Analytics />
+        <Container>{children}</Container>
       </body>
     </html>
   );

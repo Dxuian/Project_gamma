@@ -97,3 +97,33 @@
     opacity: 1;
   }
 }
+
+/* Critical LCP optimization - typewriter cursor */
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.animate-pulse {
+  animation: blink 1s infinite;
+}
+
+/* Reduce layout shift */
+#changingWord {
+  display: inline-block;
+  min-width: 200px;
+  text-align: left;
+}
+
+/* Optimize paint performance */
+.will-change-transform {
+  will-change: transform;
+}
+
+/* Reduce CLS from font loading */
+body {
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

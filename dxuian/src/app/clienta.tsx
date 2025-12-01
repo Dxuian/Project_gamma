@@ -154,41 +154,53 @@ export const Lincomponent = () => {
 
 
 
-import Typewriter from 'typewriter-effect';
+// Lightweight CSS-based typewriter effect - removes heavy JS library
+export const TypewriterEffectSmooth = () => {
+  const words = ["a student", "a learner", "a developer"];
+  const [currentWordIndex, setCurrentWordIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [text, setText] = useState("");
+  const [mounted, setMounted] = useState(false);
 
-export const TypewriterComponent = () => {
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
+    
+    const word = words[currentWordIndex];
+    const timeout = setTimeout(() => {
+      if (!isDeleting) {
+        setText(word.substring(0, text.length + 1));
+        if (text === word) {
+          setTimeout(() => setIsDeleting(true), 1500);
+        }
+      } else {
+        setText(word.substring(0, text.length - 1));
+        if (text === "") {
+          setIsDeleting(false);
+          setCurrentWordIndex((prev) => (prev + 1) % words.length);
+        }
+      }
+    }, isDeleting ? 50 : 75);
+
+    return () => clearTimeout(timeout);
+  }, [text, isDeleting, currentWordIndex, mounted]);
+
+  // Return just the text content - H1 wrapper is in topanimations.js for SSR
+  if (!mounted) return null;
+  
   return (
-    <div>
-      <h1>
-        Hi, I&apos;m dxu&nbsp;
-        <span id="changingWord">
-          <Typewriter
-            onInit={(typewriter) => {
-              typewriter
-                .typeString('a student')
-                .pauseFor(1500)
-                .deleteChars(9)
-                .typeString('a learner')
-                .pauseFor(1500)
-                .deleteChars(9)
-                .typeString('an aspiring developer')
-                .pauseFor(1500)
-                .deleteChars(21)
-                .start();
-            }}
-            options={{
-              autoStart: true,
-              loop: true,
-              deleteSpeed: 50,
-              delay: 75,
-              cursor: '|',
-            }}
-          />
-        </span>
-      </h1>
-    </div>
+    <>
+      {text}
+      <span className="animate-pulse">|</span>
+    </>
   );
 };
+
+// Keep old export for backwards compatibility
+export const TypewriterComponent = TypewriterEffectSmooth;
 
 
 

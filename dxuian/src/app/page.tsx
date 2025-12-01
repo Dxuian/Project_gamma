@@ -2,7 +2,7 @@
 import { Suspense, } from "react"
 import { ModeToggle } from "./ui/darkmode"
 import Link from 'next/link'
-import { Ppp } from "@/app/Ppp.js"
+// Ppp is lazy-loaded in topanimations.js for better LCP
 
 import App from "@/app/ui/App"
 import isusersignin from "@/app/client"
