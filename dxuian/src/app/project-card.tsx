@@ -80,9 +80,10 @@ async function ProjectCard({
         <Image
           src={thumbnail || '/placeholder.svg'}
           alt={`Image of ${name}`}
-          width={0}
-          height={0}
-          sizes="100vw"
+          width={600}
+          height={400}
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          loading="lazy"
           className="h-auto max-h-96 w-full object-cover transition-transform duration-200 hover:scale-110"
         />
       </CardContent>
