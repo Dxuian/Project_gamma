@@ -31,7 +31,7 @@ export default async function TimelineDemo() {
               <img
                 src="/Untitled.jpg"
                 alt="Magicpin logo"
-                className="rounded-xl"
+                className="rounded-xl h-full"
               />
             </div>
           </div>
