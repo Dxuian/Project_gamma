@@ -79,7 +79,7 @@ export default async function TimelineDemo() {
             <span className="font-semibold text-neutral-900 dark:text-neutral-100">Delhi Technological University</span>
           </p>
           <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-8">
-            Pursuing B.Tech at one of India&apos;s premier technological universities, building a strong foundation in computer science and engineering.
+            Pursuing B.Tech at one of India&apos;s premier technological universities, building a strong foundation in  engineering.
           </p>
           <div className="mb-8">
             <div className="flex gap-2 items-center text-neutral-700 dark:text-neutral-300 text-xs md:text-sm mb-2">
