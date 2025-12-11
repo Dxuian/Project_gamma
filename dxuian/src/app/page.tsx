@@ -11,6 +11,7 @@ import {  Lincomponent,  Footer  } from "@/app/clienta"
 import   Topanimations from "@/app/topanimations.js"
 import { AppWithUI } from "@/app/t"
 import About from "./about"
+import TimelineDemo from "./timeline"
 import {Skills} from "./skills"
 import Scrollfx from "./scrollfx"
 import Projects from "./projects"
@@ -71,6 +72,7 @@ export default async function Body({}) {
         
         
         <About />
+        <TimelineDemo />
         <Skills />
         <Scrollfx />
         <Projects />

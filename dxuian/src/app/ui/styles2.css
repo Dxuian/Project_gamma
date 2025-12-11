@@ -147,7 +147,8 @@ section {
   position: relative;
 }
 
-img {
+.parallax img,
+section img {
   position: absolute;
   top: 0;
   left: 0;
