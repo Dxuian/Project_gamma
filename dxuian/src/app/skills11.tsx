@@ -18,6 +18,7 @@ import {
   CodeIcon,
   DatabaseIcon,
   LayoutIcon,
+  Server,
   
 } from 'lucide-react';
 import { IoMdSpeedometer } from "react-icons/io";
@@ -36,6 +37,16 @@ const skills: Skill[] = [
     name: 'Database Management',
     description: 'Storing and organizing data efficiently.',
     Icon: DatabaseIcon
+  },
+  {
+    name: 'Distributed Systems',
+    description: 'Building scalable, reliable architectures that can grow with demand.',
+    Icon: Server
+  },
+  {
+    name: 'System Design',
+    description: 'Designing robust and efficient systems for real-world applications.',
+    Icon: Server
   },
   {
     name: 'Data Structures & Algorithms',
