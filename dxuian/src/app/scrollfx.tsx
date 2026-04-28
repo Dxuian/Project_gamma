@@ -1,13 +1,11 @@
 "use client"
 import "@/app/ui/styles2.css";
-import React, { useRef, memo } from "react";
+import React, { useRef, memo, createContext, useContext } from "react";
 import {
   motion,
   useScroll,
-  useSpring,
   useTransform,
   useMotionValue,
-  useVelocity,
   useAnimationFrame
 } from "framer-motion";
 import { wrap } from "@motionone/utils";
@@ -17,34 +15,75 @@ interface ParallaxProps {
   baseVelocity: number;
 }
 
-const ParallaxText = memo(({ children, baseVelocity = 100 }: ParallaxProps) => {
-  const baseX = useMotionValue(0);
-  const { scrollY } = useScroll();
-  const scrollVelocity = useVelocity(scrollY);
-  const smoothVelocity = useSpring(scrollVelocity, {
-    damping: 50,
-    stiffness: 400
-  });
-  const velocityFactor = useTransform(smoothVelocity, [0, 1000], [0, 5], {
-    clamp: false
-  });
+// Flyweight: Shared animation coordinator - runs ONE animation frame for all parallax elements
+class AnimationCoordinator {
+  private scrollY: any = null;
+  private lastScroll: number = 0;
+  private velocity: number = 0;
+  private directionFactor: number = 1;
+  private animators: Set<(velocity: number, directionFactor: number) => void> = new Set();
 
-  const x = useTransform(baseX, (v) => `${wrap(-20, -45, v)}%`);
+  setScrollY(scrollY: any) {
+    this.scrollY = scrollY;
+  }
 
-  const directionFactor = useRef<number>(1);
-  useAnimationFrame((t, delta) => {
-    let moveBy = directionFactor.current * baseVelocity * (delta / 1000);
+  register(animator: (velocity: number, directionFactor: number) => void) {
+    this.animators.add(animator);
+    return () => this.animators.delete(animator);
+  }
 
-    if (velocityFactor.get() < 0) {
-      directionFactor.current = -1;
-    } else if (velocityFactor.get() > 0) {
-      directionFactor.current = 1;
+  update(delta: number) {
+    if (!this.scrollY) return;
+
+    const currentScroll = this.scrollY.get();
+    this.velocity = currentScroll - this.lastScroll;
+    this.lastScroll = currentScroll;
+
+    // Calculate direction once for all animators
+    if (this.velocity < -10) {
+      this.directionFactor = -1;
+    } else if (this.velocity > 10) {
+      this.directionFactor = 1;
     }
 
-    moveBy += directionFactor.current * moveBy * velocityFactor.get();
+    // Notify all registered animators with shared velocity data
+    this.animators.forEach(animator => animator(this.velocity, this.directionFactor));
+  }
+}
 
-    baseX.set(baseX.get() + moveBy);
+// Global coordinator instance - shared across all ParallaxText components
+const coordinatorRef = new AnimationCoordinator();
+const CoordinatorContext = createContext(coordinatorRef);
+
+const CoordinatorProvider = ({ children }: { children: React.ReactNode }) => {
+  const { scrollY } = useScroll();
+  coordinatorRef.setScrollY(scrollY);
+
+  // Single animation frame for entire component tree
+  useAnimationFrame((t, delta) => {
+    coordinatorRef.update(delta);
   });
+
+  return <CoordinatorContext.Provider value={coordinatorRef}>{children}</CoordinatorContext.Provider>;
+};
+
+const ParallaxText = memo(({ children, baseVelocity = 100 }: ParallaxProps) => {
+  const coordinator = useContext(CoordinatorContext);
+  const baseX = useMotionValue(0);
+  const directionFactorRef = useRef<number>(1);
+  const x = useTransform(baseX, (v) => `${wrap(-20, -45, v)}%`);
+
+  // Register this component's animator with the coordinator
+  React.useEffect(() => {
+    const unregister = coordinator.register((velocity, directionFactor) => {
+      directionFactorRef.current = directionFactor;
+      let moveBy = directionFactor * baseVelocity * 0.016; // ~16ms per frame
+      moveBy += directionFactor * moveBy * (velocity / 100);
+      baseX.set(baseX.get() + moveBy);
+    });
+
+    return unregister;
+  }, [baseVelocity, baseX, coordinator]);
 
   return (
     <div className="parallax">
@@ -61,12 +100,14 @@ ParallaxText.displayName = 'ParallaxText';
 
 export default function Scrollfx() {
   return (
-    <div className="bg-gradient-to-t from-[#020817] my-8 -skew-y-6 via-[#f05252] 10% to-[#020817]">
-      <section className="bg-red-500 mt-6 mb-6  !w-[100vw] -rotate-5 PY-2 ">
-        <ParallaxText baseVelocity={-3}>Fueled by curiosity, powered by knowledge.</ParallaxText>
-        <ParallaxText baseVelocity={3}>Im always open to learning new things</ParallaxText>
-      </section>
-    </div>
+    <CoordinatorProvider>
+      <div className="bg-gradient-to-t from-[#020817] my-8 -skew-y-6 via-[#f05252] 10% to-[#020817]">
+        <section className="bg-red-500 mt-6 mb-6  !w-[100vw] -rotate-5 PY-2 ">
+          <ParallaxText baseVelocity={-3}>Fueled by curiosity, powered by knowledge.</ParallaxText>
+          <ParallaxText baseVelocity={3}>Im always open to learning new things</ParallaxText>
+        </section>
+      </div>
+    </CoordinatorProvider>
   );
 }
 

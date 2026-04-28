@@ -183,8 +183,9 @@ section img {
   font-size: 64px;
   display: flex;
   white-space: nowrap;
-  display: flex;
   flex-wrap: nowrap;
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 .parallax span {
