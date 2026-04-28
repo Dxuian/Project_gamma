@@ -27,7 +27,7 @@ export default async function TimelineDemo() {
             </div>
           </div>
           <div className="flex items-center gap-4 mb-4">
-            <div className="relative w-96 h-48 rounded-2xl overflow-hidden shadow-md">
+            <div className="relative w-96 h-48 rounded-2xl overflow-hidden ">
               <img
                 src="/Untitled.jpg"
                 alt="Magicpin logo"
@@ -60,7 +60,7 @@ export default async function TimelineDemo() {
             </div>
           </div>
           <div className="flex items-center gap-4 mb-4">
-            <div className="relative w-96 h-48 rounded-2xl overflow-hidden shadow-md">
+            <div className="relative w-96 h-48 rounded-2xl overflow-hidden ">
               <img
                 src="/sda.jpg"
                 alt="ZFA Labs logo"
@@ -93,7 +93,7 @@ export default async function TimelineDemo() {
             </div>
           </div>
           <div className="flex items-center gap-4 mb-4">
-            <div className="relative w-96 h-48 rounded-2xl overflow-hidden shadow-md">
+            <div className="relative w-96 h-48 rounded-2xl overflow-hidden ">
               <Image
                 src="/dtuy.webp"
                 alt="DTU logo"
