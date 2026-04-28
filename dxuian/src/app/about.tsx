@@ -22,14 +22,15 @@ async function About() {
               </h2>
             </Reveal>
           </div>
-          <p className="mt-6 max-w-[700px] text-gray-500 dark:text-gray-400 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-            Here&apos;s where I share my journey through tech, highlighting the
-            experiences and passions that drive my innovative pursuits.
+          <div className="mt-6 max-w-[700px]">
+            <p className="text-gray-500 dark:text-gray-400 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+              Here&apos;s where I share my journey through tech, highlighting the
+              experiences and passions that drive my innovative pursuits.
+            </p>
             <Reveal>
-            <Location />
+              <Location />
             </Reveal>
-           
-          </p>
+          </div>
         </div>
         <p className="mt-6 max-w-[700px] text-gray-500 dark:text-gray-400 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
         I&apos;m a final year student at DTU and am constantly learning new things.
