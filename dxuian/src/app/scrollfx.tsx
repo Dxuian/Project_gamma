@@ -29,7 +29,9 @@ class AnimationCoordinator {
 
   register(animator: (velocity: number, directionFactor: number) => void) {
     this.animators.add(animator);
-    return () => this.animators.delete(animator);
+    return () => {
+      this.animators.delete(animator);
+    };
   }
 
   update(delta: number) {

@@ -82,9 +82,7 @@ export const metadata: Metadata = {
 import { Inter } from 'next/font/google';
  
 export const inter = Inter({ subsets: ['latin'] });
-const enableAnalytics = process.env.NEXT_PUBLIC_ENABLE_VERCEL_ANALYTICS === "true";
-const enableSpeedInsights = process.env.NEXT_PUBLIC_ENABLE_VERCEL_SPEED_INSIGHTS === "true";
-console.log("Analytics enabled:", enableAnalytics, "Speed Insights enabled:", enableSpeedInsights);
+const isProduction = process.env.NODE_ENV === "production";
 export default async  function RootLayout({
   children,
 }: Readonly<{
@@ -93,8 +91,8 @@ export default async  function RootLayout({
   return (
     <html lang="en">
       <body className={`${styles.bodyc} ${inter.className} antialiased`}>
-      {enableSpeedInsights ? <SpeedInsights /> : null}
-      {enableAnalytics ? <Analytics /> : null}
+      {isProduction ? <SpeedInsights /> : null}
+      {isProduction ? <Analytics /> : null}
         <Container >{children}</Container>
       </body>
     </html>

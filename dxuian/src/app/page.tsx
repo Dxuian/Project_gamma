@@ -25,7 +25,7 @@ async function Component() {
   noStore();
   const isSignedIn = await isusersignin();
   return (
-           <div className="fixed top-12 left-0 right-0">
+           <div className="fixed !z-50 top-12 left-0 right-0">
         <div className="  flex items-center justify-center z-50">
           <div className="inline-flex rounded-md shadow-sm">
             <Link href="/blog" aria-current="page" className="px-4 py-1 text-sm font-medium text-blue-700 bg-white border border-gray-200 rounded-s-lg hover:bg-gray-100 focus:z-10 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:text-white">
