@@ -23,7 +23,7 @@ const Reveal = ({ children, width = '100%', className }: RevealProps) => {
 
   return (
     <LazyMotion features={() => import('framer-motion').then(mod => mod.domAnimation)}>
-      <div ref={ref} className={className} style={{ position: 'relative', width, overflow: 'hidden' }}>
+      <div ref={ref} className={className} style={{ position: 'relative', width, overflow: 'hidden', willChange: 'contents' }}>
         <m.div
           variants={{
             hidden: { opacity: 0, y: 75 },

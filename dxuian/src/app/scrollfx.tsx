@@ -58,7 +58,8 @@ const coordinatorRef = new AnimationCoordinator();
 const CoordinatorContext = createContext(coordinatorRef);
 
 const CoordinatorProvider = ({ children }: { children: React.ReactNode }) => {
-  const { scrollY } = useScroll();
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollY } = useScroll({ target: containerRef });
   coordinatorRef.setScrollY(scrollY);
 
   // Single animation frame for entire component tree
@@ -66,7 +67,7 @@ const CoordinatorProvider = ({ children }: { children: React.ReactNode }) => {
     coordinatorRef.update(delta);
   });
 
-  return <CoordinatorContext.Provider value={coordinatorRef}>{children}</CoordinatorContext.Provider>;
+  return <div ref={containerRef} style={{ position: 'relative' }}><CoordinatorContext.Provider value={coordinatorRef}>{children}</CoordinatorContext.Provider></div>;
 };
 
 const ParallaxText = memo(({ children, baseVelocity = 100 }: ParallaxProps) => {

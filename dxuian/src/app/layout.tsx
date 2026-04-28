@@ -81,7 +81,7 @@ export const metadata: Metadata = {
 
 import { Inter } from 'next/font/google';
  
-export const inter = Inter({ subsets: ['latin'] });
+export const inter = Inter({ subsets: ['latin'], display: 'swap', preload: true });
 const isProduction = process.env.NODE_ENV === "production";
 export default async  function RootLayout({
   children,

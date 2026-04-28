@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 
 import { motion, AnimatePresence, useMotionValue } from "framer-motion";
 import { cn } from "@/lib/utils";
@@ -20,9 +20,12 @@ export const FollowerPointerCard = ({
   const [isInside, setIsInside] = useState<boolean>(false); // Add this line
 
   useEffect(() => {
-    if (ref.current) {
-      setRect(ref.current.getBoundingClientRect());
-    }
+    const timer = requestAnimationFrame(() => {
+      if (ref.current) {
+        setRect(ref.current.getBoundingClientRect());
+      }
+    });
+    return () => cancelAnimationFrame(timer);
   }, []);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -140,14 +143,17 @@ import { useScroll, useSpring } from "framer-motion";
 
 import styles from "@/app/ui/addblog.module.css"
 export const Lincomponent = () => {
-  const { scrollYProgress } = useScroll();
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: containerRef });
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
     restDelta: 0.001
   });
   return (
-    <motion.div className={`${styles.progresshome} !z-50 mb-20`}  style={{ scaleX }} />
+    <div ref={containerRef} style={{ position: 'relative' }}>
+      <motion.div className={`${styles.progresshome} !z-50 mb-20`}  style={{ scaleX }} />
+    </div>
   )
 }
 
